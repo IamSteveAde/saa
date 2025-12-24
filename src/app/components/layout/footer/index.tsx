@@ -45,11 +45,7 @@ export default function Footer() {
             <div>
               <h4 className="text-white font-semibold mb-4 text-lg">Company</h4>
               <ul className="space-y-3">
-                <li>
-                  <Link href="/about" className="text-gray-400 hover:text-primary transition">
-                    About
-                  </Link>
-                </li>
+                
                 <li>
                   <Link href="/#how" className="text-gray-400 hover:text-primary transition">
                     How it Works
@@ -58,6 +54,11 @@ export default function Footer() {
                 <li>
                   <Link href="/#services" className="text-gray-400 hover:text-primary transition">
                     Services
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/#features" className="text-gray-400 hover:text-primary transition">
+                    Features
                   </Link>
                 </li>
                 <li>
