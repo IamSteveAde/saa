@@ -1,139 +1,98 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
+import { ArrowRight, Handshake } from "lucide-react";
 
-/* -------------------------------------------------------
-   EASING (typed — safe for TS)
-------------------------------------------------------- */
-const easeEditorial: [number, number, number, number] = [0.22, 1, 0.36, 1];
-
-/* -------------------------------------------------------
-   VARIANTS
-------------------------------------------------------- */
-const container: Variants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.03,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const charVariant: Variants = {
-  hidden: {
-    y: 22,
-    opacity: 0,
-    filter: "blur(6px)",
-  },
-  visible: {
-    y: 0,
-    opacity: 1,
-    filter: "blur(0px)",
-    transition: {
-      duration: 0.65,
-      ease: easeEditorial,
-    },
-  },
-};
-
-/* -------------------------------------------------------
-   TEXT SPLITTER
-------------------------------------------------------- */
-const splitText = (text: string) =>
-  text.split("").map((char, index) => (
-    <motion.span
-      key={index}
-      variants={charVariant}
-      className="inline-block"
-    >
-      {char === " " ? "\u00A0" : char}
-    </motion.span>
-  ));
-
-export default function PublishedByCED() {
+export default function PartnerSection() {
   return (
-    <section className="relative py-32 md:py-40 bg-black overflow-hidden">
+    <section className="relative bg-white overflow-hidden">
+      {/* Subtle Particles */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-32 h-2 w-2 rounded-full bg-[#5f3b86]/20 animate-float-slow" />
+        <div className="absolute top-1/3 right-40 h-3 w-3 rounded-full bg-[#61abbb]/20 animate-float-medium" />
+        <div className="absolute bottom-32 left-1/4 h-2 w-2 rounded-full bg-[#5f3b86]/15 animate-float-fast" />
+        <div className="absolute bottom-20 right-1/3 h-4 w-4 rounded-full bg-[#bcc8d7]/30 animate-float-slow" />
+        <div className="absolute top-1/2 left-1/2 h-2 w-2 rounded-full bg-black/10 animate-float-medium" />
+      </div>
 
-      {/* Subtle Horizontal Divider */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[1px] w-[70%] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-
-      <div className="relative z-10 container mx-auto px-6 lg:max-w-screen-xl">
-        <div className="grid lg:grid-cols-12 gap-16 items-start">
-
-          {/* LEFT AXIS LABEL */}
+      {/* Content */}
+      <div className="relative z-10 py-32">
+        <div className="container mx-auto px-6 lg:max-w-screen-xl">
           <motion.div
-            className="lg:col-span-3"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-120px" }}
-            variants={container}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            className="max-w-3xl"
           >
-            <span className="block text-[11px] tracking-[0.45em] uppercase text-white/40">
-              {splitText("Published by")}
-            </span>
-          </motion.div>
+            {/* Eyebrow */}
+            <div className="flex items-center gap-3 text-black/60 mb-6">
+              <Handshake size={18} />
+              <span className="text-[11px] tracking-[0.45em] uppercase">
+                Collaboration
+              </span>
+            </div>
 
-          {/* EDITORIAL BODY */}
-          <motion.div
-            className="lg:col-span-7 space-y-10"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-120px" }}
-            variants={container}
-          >
-            {/* TITLE */}
-            <h3 className="text-white font-light text-2xl md:text-4xl leading-snug">
-              <motion.span variants={container}>
-                {splitText("CED Africa")}
-              </motion.span>
-            </h3>
+            {/* Headline */}
+            <h2 className="text-4xl md:text-5xl font-light leading-tight text-black">
+              Partner with Digital Inclusion Initiative
+            </h2>
 
-            {/* DESCRIPTION */}
-            <motion.p
-              className="text-white/70 text-sm md:text-base leading-relaxed max-w-3xl"
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.7, ease: easeEditorial }}
-              viewport={{ once: true }}
-            >
-              CED Africa is a specialist AV consulting and distribution group working at
-              the highest level of the built environment.
-            </motion.p>
-
-            <motion.p
-              className="text-white/60 text-sm md:text-base leading-relaxed max-w-3xl"
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.85, duration: 0.7, ease: easeEditorial }}
-              viewport={{ once: true }}
-            >
-              Their work focuses on early-stage thinking, technical precision, and
-              long-term performance — ensuring sound and technology are designed,
-              not added.
-            </motion.p>
+            {/* Body */}
+            <p className="mt-6 text-black/60 max-w-2xl leading-relaxed text-lg">
+              We’re always looking for new partners to collaborate on projects
+              and events. If your organisation shares our values and mission,
+              let’s work together to create meaningful and lasting impact
+              through digital inclusion.
+            </p>
 
             {/* CTA */}
-            <motion.div
-              className="pt-4"
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.1, duration: 0.6, ease: easeEditorial }}
-              viewport={{ once: true }}
-            >
+            <div className="mt-10">
               <a
-                href="https://www.ced.africa"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block text-[11px] tracking-[0.3em] uppercase text-white/80 border-b border-white/30 pb-1 hover:text-white hover:border-white transition"
+                href="/partner"
+                className="inline-flex items-center gap-4 px-10 py-5 rounded-2xl text-xs tracking-[0.3em] uppercase font-medium transition-all group"
+                style={{
+                  backgroundColor: "#5f3b86",
+                  color: "#ffffff",
+                }}
               >
-                Visit CED Africa
+                Partner With Us
+                <ArrowRight
+                  size={16}
+                  className="transition-transform group-hover:translate-x-1"
+                />
               </a>
-            </motion.div>
-
+            </div>
           </motion.div>
         </div>
       </div>
+
+      {/* GLOBAL PARTICLE ANIMATIONS */}
+      <style jsx global>{`
+        @keyframes float {
+          0% {
+            transform: translateY(0) translateX(0);
+          }
+          50% {
+            transform: translateY(-20px) translateX(10px);
+          }
+          100% {
+            transform: translateY(0) translateX(0);
+          }
+        }
+
+        .animate-float-slow {
+          animation: float 14s ease-in-out infinite;
+        }
+
+        .animate-float-medium {
+          animation: float 10s ease-in-out infinite;
+        }
+
+        .animate-float-fast {
+          animation: float 7s ease-in-out infinite;
+        }
+      `}</style>
     </section>
   );
 }

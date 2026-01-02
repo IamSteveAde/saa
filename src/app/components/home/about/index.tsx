@@ -1,148 +1,118 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
+import {
+  HeartHandshake,
+  Users,
+  CalendarDays,
+  ArrowRight,
+} from "lucide-react";
 
-/* -------------------------------------------------------
-   EASING
-------------------------------------------------------- */
-const easeEditorial: [number, number, number, number] = [0.22, 1, 0.36, 1];
-
-/* -------------------------------------------------------
-   VARIANTS
-------------------------------------------------------- */
-const container: Variants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.03,
-      delayChildren: 0.2,
-    },
+const actions = [
+  {
+    title: "Donate Today",
+    headline: "Support Digital Inclusion Initiative",
+    description:
+      "Your donation today could help transform someone’s life through digital access, skills, and opportunity. Together, we can fix the digital divide — for good.",
+    cta: "Donate Now",
+    href: "/donate",
+    icon: HeartHandshake,
+    accent: "#61abbb",
   },
-};
-
-const charVariant: Variants = {
-  hidden: {
-    y: 24,
-    opacity: 0,
-    filter: "blur(6px)",
+  {
+    title: "Volunteer",
+    headline: "Volunteer with Digital Inclusion Initiative",
+    description:
+      "Join our team of volunteers and make a difference in your community. Whether it’s a few hours a week or a few hours a month, your time and skills matter.",
+    cta: "Become a Volunteer",
+    href: "/volunteer",
+    icon: Users,
+    accent: "#5f3b86",
   },
-  visible: {
-    y: 0,
-    opacity: 1,
-    filter: "blur(0px)",
-    transition: {
-      duration: 0.65,
-      ease: easeEditorial,
-    },
+  {
+    title: "Events",
+    headline: "Attend Our Events",
+    description:
+      "We host fundraisers, community outreach programs, and educational seminars throughout the year. Stay engaged and be part of the movement.",
+    cta: "View Events",
+    href: "/events",
+    icon: CalendarDays,
+    accent: "#bcc8d7",
   },
-};
+];
 
-/* -------------------------------------------------------
-   WORD-SAFE TEXT SPLITTER (NO MID-WORD BREAKS)
-------------------------------------------------------- */
-const splitText = (text: string) =>
-  text.split(" ").map((word, wordIndex) => (
-    <motion.span
-      key={wordIndex}
-      variants={container}
-      className="inline-flex whitespace-nowrap"
-    >
-      {word.split("").map((char, charIndex) => (
-        <motion.span
-          key={charIndex}
-          variants={charVariant}
-          className="inline-block"
-        >
-          {char}
-        </motion.span>
-      ))}
-      {/* Space between words */}
-      <span className="inline-block">&nbsp;</span>
-    </motion.span>
-  ));
-
-export default function DesignedPhilosophy() {
+export default function SupportSection() {
   return (
-    <section className="relative py-32 md:py-40 bg-black overflow-hidden">
-      {/* Editorial Divider */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[1px] w-[65%] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+    <section className="relative bg-white py-32">
+      <div className="container mx-auto px-6 lg:max-w-screen-xl">
+        {/* Section Header */}
+        <div className="max-w-3xl mb-20">
+          <span className="block text-[11px] tracking-[0.45em] uppercase text-black/40 mb-4">
+            Get Involved
+          </span>
+          <h2 className="text-4xl md:text-5xl font-light leading-tight text-black">
+            Support Digital Inclusion Initiative Today
+          </h2>
+          <p className="mt-6 text-black/60 max-w-xl leading-relaxed">
+            Do a good thing today. Your support helps expand access, build skills,
+            and unlock opportunities through digital inclusion.
+          </p>
+        </div>
 
-      <div className="relative z-10 container mx-auto px-6 lg:max-w-screen-xl">
-        <div className="grid lg:grid-cols-12 gap-16 items-start">
-          {/* LEFT AXIS LABEL */}
-          <motion.div
-            className="lg:col-span-3"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-120px" }}
-            variants={container}
-          >
-            <motion.span className="block text-[11px] tracking-[0.45em] uppercase text-white/40">
-              {splitText("DESIGNED")}
-            </motion.span>
-          </motion.div>
+        {/* Action Cards */}
+        <div className="grid gap-10 md:grid-cols-3">
+          {actions.map((item, index) => {
+            const Icon = item.icon;
 
-          {/* EDITORIAL BODY */}
-          <motion.div
-            className="lg:col-span-7 space-y-12"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-120px" }}
-            variants={container}
-          >
-            {/* HEADLINE */}
-            <h2 className="text-white font-light leading-tight text-3xl md:text-5xl whitespace-normal md:whitespace-nowrap">
-              <motion.span variants={container}>
-                {splitText("Experience. Excellence. Expertise.")}
-              </motion.span>
-            </h2>
-
-            {/* INTRO COPY */}
-            <motion.p
-              className="text-white/70 text-sm md:text-base leading-relaxed max-w-2xl"
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.7, ease: easeEditorial }}
-              viewport={{ once: true }}
-            >
-              A luxury magazine dedicated to how sound and technology shape
-              experience — quietly, intentionally, and with restraint.
-            </motion.p>
-
-            {/* STATEMENT BLOCK */}
-            <motion.div
-              className="space-y-2 text-white/85 text-sm md:text-base leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.85, duration: 0.7, ease: easeEditorial }}
-              viewport={{ once: true }}
-            >
-              <p>DESIGNED explores AV as an invisible layer of luxury.</p>
-              <p>Not what is seen.</p>
-              <p>But what is felt.</p>
-            </motion.div>
-
-            {/* CTA */}
-            <motion.div
-              className="pt-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.1, duration: 0.6, ease: easeEditorial }}
-              viewport={{ once: true }}
-            >
-              <a
-                href="/issues"
-                className="group inline-flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-white/80 border-b border-white/30 pb-1 hover:text-white hover:border-white transition"
+            return (
+              <motion.div
+                key={index}
+                whileHover={{ y: -6 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="relative rounded-3xl p-10 border border-black/5 bg-white shadow-[0_30px_80px_rgba(0,0,0,0.06)] overflow-hidden"
               >
-                Explore the Issues
-                <ArrowRight
-                  size={14}
-                  className="transition-transform group-hover:translate-x-1"
+                {/* Accent Glow */}
+                <div
+                  className="absolute -top-24 -right-24 h-64 w-64 rounded-full blur-3xl opacity-30"
+                  style={{ backgroundColor: item.accent }}
                 />
-              </a>
-            </motion.div>
-          </motion.div>
+
+                {/* Icon */}
+                <div
+                  className="flex h-12 w-12 items-center justify-center rounded-xl mb-8"
+                  style={{ backgroundColor: `${item.accent}22` }}
+                >
+                  <Icon size={22} style={{ color: item.accent }} />
+                </div>
+
+                {/* Text */}
+                <span className="block text-[11px] tracking-[0.35em] uppercase text-black/40 mb-3">
+                  {item.title}
+                </span>
+
+                <h3 className="text-xl font-medium text-black mb-4 leading-snug">
+                  {item.headline}
+                </h3>
+
+                <p className="text-black/60 leading-relaxed mb-8">
+                  {item.description}
+                </p>
+
+                {/* CTA */}
+                <a
+                  href={item.href}
+                  className="inline-flex items-center gap-3 text-xs tracking-[0.25em] uppercase font-medium transition-all group"
+                  style={{ color: item.accent }}
+                >
+                  {item.cta}
+                  <ArrowRight
+                    size={16}
+                    className="transition-transform group-hover:translate-x-1"
+                  />
+                </a>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

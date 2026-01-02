@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
@@ -9,15 +10,15 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   /* --------------------------------------------------
-     Detect dark sections SAFELY
+     Detect dark sections
   -------------------------------------------------- */
   useEffect(() => {
-    const sections = document.querySelectorAll<HTMLElement>("section[data-dark]");
+    const sections =
+      document.querySelectorAll<HTMLElement>("section[data-dark]");
     if (!sections.length) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
-        // IMPORTANT: only true if ANY section is intersecting
         setOnDark(entries.some((entry) => entry.isIntersecting));
       },
       {
@@ -31,7 +32,7 @@ export default function Header() {
   }, []);
 
   /* --------------------------------------------------
-     Lock scroll only when menu is open
+     Lock scroll on mobile menu
   -------------------------------------------------- */
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -44,39 +45,47 @@ export default function Header() {
         className={`
           fixed top-0 left-0 w-full z-50
           backdrop-blur-xl
-          bg-white
+          bg-white/80
           transition-colors duration-300
           ${onDark ? "text-white" : "text-black"}
         `}
       >
         <div className="container mx-auto px-6 lg:max-w-screen-xl">
           <div className="flex items-center justify-between h-20">
-
             {/* LOGO */}
-            <Link href="/" className="z-50">
-              <span
-                className="text-sm tracking-[0.35em] uppercase font-light"
-                style={{
-                  textShadow: onDark
-                    ? "0 4px 20px rgba(0,0,0,0.45)"
-                    : "0 4px 20px rgba(0,0,0,0.25)",
-                }}
-              >
-                DESIGNED
-              </span>
+            <Link href="/" className="z-50 flex items-center">
+              <Image
+                src="/images/logo/dlogo.svg"
+                alt="Digital Inclusion Initiative"
+                width={120}
+                height={32}
+                className={`transition-opacity ${
+                  onDark ? "invert brightness-200" : ""
+                }`}
+                priority
+              />
             </Link>
 
             {/* DESKTOP NAV */}
             <nav className="hidden md:flex items-center gap-10">
-              <NavItem onDark={onDark} href="/">Home</NavItem>
-              <NavItem onDark={onDark} href="/issues">Issues</NavItem>
-              <NavItem onDark={onDark} href="/about-designed">About</NavItem>
-              <NavItem onDark={onDark} href="https://www.ced.africa" external>
-                CED Africa
+              <NavItem onDark={onDark} href="/about">
+                About
+              </NavItem>
+              <NavItem onDark={onDark} href="/donate">
+                Donate
+              </NavItem>
+              <NavItem onDark={onDark} href="/volunteer">
+                Volunteer
+              </NavItem>
+              <NavItem onDark={onDark} href="/mentor">
+                Mentor
+              </NavItem>
+              <NavItem onDark={onDark} href="/partner">
+                Partner
               </NavItem>
             </nav>
 
-            {/* MOBILE HAMBURGER */}
+            {/* MOBILE MENU BUTTON */}
             <button
               aria-label="Open menu"
               onClick={() => setMenuOpen(true)}
@@ -94,7 +103,6 @@ export default function Header() {
             >
               <Menu size={18} />
             </button>
-
           </div>
         </div>
       </header>
@@ -102,7 +110,6 @@ export default function Header() {
       {/* ================= MOBILE MENU ================= */}
       {menuOpen && (
         <div className="fixed inset-0 z-40 bg-black/90 backdrop-blur-2xl">
-
           {/* Close */}
           <button
             aria-label="Close menu"
@@ -122,34 +129,41 @@ export default function Header() {
 
           {/* Menu */}
           <nav className="h-full flex flex-col items-center justify-center">
-
-            <MobileNavItem delay={0} href="/" onClick={() => setMenuOpen(false)}>
-              Home
+            <MobileNavItem delay={0} href="/about" onClick={() => setMenuOpen(false)}>
+              About Us
             </MobileNavItem>
 
             <Divider />
 
-            <MobileNavItem delay={1} href="/issues" onClick={() => setMenuOpen(false)}>
-              Issues
-            </MobileNavItem>
-
-            <Divider />
-
-            <MobileNavItem delay={2} href="/about-designed" onClick={() => setMenuOpen(false)}>
-              About
+            <MobileNavItem delay={1} href="/donate" onClick={() => setMenuOpen(false)}>
+              Donate
             </MobileNavItem>
 
             <Divider />
 
             <MobileNavItem
-              delay={3}
-              href="https://www.ced.africa"
-              external
+              delay={2}
+              href="/volunteer"
               onClick={() => setMenuOpen(false)}
             >
-              CED Africa
+              Volunteer
             </MobileNavItem>
 
+            <Divider />
+
+            <MobileNavItem delay={3} href="/mentor" onClick={() => setMenuOpen(false)}>
+              Become a Mentor
+            </MobileNavItem>
+
+            <Divider />
+
+            <MobileNavItem
+              delay={4}
+              href="/partner"
+              onClick={() => setMenuOpen(false)}
+            >
+              Partner With Us
+            </MobileNavItem>
           </nav>
         </div>
       )}
@@ -163,12 +177,10 @@ export default function Header() {
 function NavItem({
   href,
   children,
-  external = false,
   onDark,
 }: {
   href: string;
   children: React.ReactNode;
-  external?: boolean;
   onDark: boolean;
 }) {
   const className = `
@@ -177,25 +189,7 @@ function NavItem({
     ${onDark ? "text-white/90 hover:text-white" : "text-black/85 hover:text-black"}
   `;
 
-  const style = {
-    textShadow: onDark
-      ? "0 3px 18px rgba(0,0,0,0.6)"
-      : "0 3px 18px rgba(0,0,0,0.25)",
-  };
-
-  if (external) {
-    return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className={className} style={style}>
-        {children}
-      </a>
-    );
-  }
-
-  return (
-    <Link href={href} className={className} style={style}>
-      {children}
-    </Link>
-  );
+  return <Link href={href} className={className}>{children}</Link>;
 }
 
 /* ======================================================
@@ -205,19 +199,16 @@ function MobileNavItem({
   href,
   children,
   onClick,
-  external = false,
   delay = 0,
 }: {
   href: string;
   children: React.ReactNode;
   onClick: () => void;
-  external?: boolean;
   delay?: number;
 }) {
   return (
-    <LinkOrAnchor
+    <Link
       href={href}
-      external={external}
       onClick={onClick}
       style={{ animationDelay: `${delay * 90}ms` }}
       className="
@@ -229,29 +220,6 @@ function MobileNavItem({
         transition hover:opacity-70
       "
     >
-      {children}
-    </LinkOrAnchor>
-  );
-}
-
-function LinkOrAnchor({
-  href,
-  external,
-  onClick,
-  className,
-  style,
-  children,
-}: any) {
-  if (external) {
-    return (
-      <a href={href} target="_blank" rel="noopener noreferrer" onClick={onClick} className={className} style={style}>
-        {children}
-      </a>
-    );
-  }
-
-  return (
-    <Link href={href} onClick={onClick} className={className} style={style}>
       {children}
     </Link>
   );

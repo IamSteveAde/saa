@@ -1,175 +1,218 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
-import { motion, Variants } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
+import {
+  ArrowRight,
+  ArrowLeft,
+  Wifi,
+  GraduationCap,
+  Briefcase,
+} from "lucide-react";
 import { getImgPath } from "@/utils/pathUtils";
 
-/* -------------------------------------------------------
-   EASING — explicitly typed (fixes TS error permanently)
-------------------------------------------------------- */
-const easeEditorial: [number, number, number, number] = [0.22, 1, 0.36, 1];
-
-/* -------------------------------------------------------
-   VARIANTS
-------------------------------------------------------- */
-const container: Variants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.03,
-      delayChildren: 0.4,
-    },
-  },
+/* -------------------------------------
+   BRAND COLORS
+------------------------------------- */
+const BRAND = {
+  teal: "#61abbb",
+  purple: "#5f3b86",
+  mist: "#bcc8d7",
 };
 
-const charVariant: Variants = {
+/* -------------------------------------
+   EASING (STRICTLY TYPED — FIXES TS ERROR)
+------------------------------------- */
+const easeEditorial: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
+/* -------------------------------------
+   SLIDES
+------------------------------------- */
+const slides = [
+  {
+    title: "Digital Access",
+    headline: "Technology for everyone.",
+    description:
+      "We work to ensure communities are not excluded from the digital world because of location, income, or circumstance.",
+    image: "/images/hero/every.png",
+    icon: Wifi,
+    accent: BRAND.teal,
+  },
+  {
+    title: "Digital Skills",
+    headline: "Skills that unlock futures.",
+    description:
+      "Through mentorship, training, and education, we empower people with skills needed to thrive in a digital economy.",
+    image: "/images/hero/tutor.png",
+    icon: GraduationCap,
+    accent: BRAND.purple,
+  },
+  {
+    title: "Digital Opportunity",
+    headline: "Inclusion creates opportunity.",
+    description:
+      "Access and skills lead to jobs, innovation, and economic participation across Africa.",
+    image: "/images/hero/access.png",
+    icon: Briefcase,
+    accent: BRAND.teal,
+  },
+];
+
+/* -------------------------------------
+   VARIANTS (TYPE-SAFE)
+------------------------------------- */
+const fade: Variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+  exit: { opacity: 0 },
+};
+
+const content: Variants = {
   hidden: {
-    y: 28,
     opacity: 0,
-    filter: "blur(6px)",
+    y: 28,
   },
   visible: {
-    y: 0,
     opacity: 1,
-    filter: "blur(0px)",
+    y: 0,
     transition: {
-      duration: 0.7,
+      duration: 0.9,
       ease: easeEditorial,
     },
   },
 };
 
-/* -------------------------------------------------------
-   TEXT SPLITTER
-------------------------------------------------------- */
-const splitText = (text: string) =>
-  text.split("").map((char, index) => (
-    <motion.span
-      key={index}
-      variants={charVariant}
-      className="inline-block"
-    >
-      {char === " " ? "\u00A0" : char}
-    </motion.span>
-  ));
-
 export default function Hero() {
+  const [index, setIndex] = useState(0);
+
+  const next = () => setIndex((i) => (i + 1) % slides.length);
+  const prev = () =>
+    setIndex((i) => (i - 1 + slides.length) % slides.length);
+
+  useEffect(() => {
+    const timer = setInterval(next, 8000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const slide = slides[index];
+  const Icon = slide.icon;
+
   return (
-    <section className="relative pt-24 md:pt-44 pb-32 overflow-hidden bg-[#f5f6f8]">
+    <section className="relative h-screen w-full overflow-hidden group">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={index}
+          variants={fade}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          transition={{ duration: 1.1, ease: "easeInOut" }}
+          className="absolute inset-0"
+        >
+          {/* Background Image */}
+          <Image
+            src={getImgPath(slide.image)}
+            alt={slide.title}
+            fill
+            priority
+            className="object-cover"
+          />
 
-      {/* Grain Overlay */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="silver-grain opacity-[0.35]" />
-      </div>
-
-      {/* Light Fades */}
-      <div className="absolute -top-64 -left-64 h-[620px] w-[620px] rounded-full bg-white blur-[220px]" />
-      <div className="absolute bottom-[-260px] -right-52 h-[520px] w-[520px] rounded-full bg-slate-200 blur-[240px]" />
-
-      <div className="relative z-10 container mx-auto px-6 lg:max-w-screen-xl">
-        <div className="grid lg:grid-cols-12 items-center gap-16">
-
-          {/* LEFT — EDITORIAL */}
-          <motion.div
-            className="col-span-6 space-y-8"
-            initial="hidden"
-            animate="visible"
-            variants={container}
-          >
-            <motion.span
-              variants={charVariant}
-              className="inline-block text-[11px] tracking-[0.35em] uppercase text-black/50"
-            >
-              Current Issue
-            </motion.span>
-
-            <h1 className="text-black font-light leading-tight text-4xl md:text-6xl">
-              <motion.div variants={container} className="block">
-                {splitText("DESIGNED")}
-              </motion.div>
-
-              <motion.div
-                variants={container}
-                className="block font-extralight bg-gradient-to-r from-black via-neutral-600 to-black bg-clip-text text-black"
-              >
-                {splitText("TO DISAPPEAR")}
-              </motion.div>
-            </h1>
-
-            <motion.p
-              className="text-black/70 text-sm md:text-base max-w-md leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.15, duration: 0.8, ease: easeEditorial }}
-            >
-              Technology, when designed early, leaves no trace.
-            </motion.p>
-
-            <motion.div
-              className="pt-2"
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.35, duration: 0.7, ease: easeEditorial }}
-            >
-              <a
-                href="/issues/issue-01"
-                className="group inline-flex items-center gap-3 px-8 py-4 border border-black/30 text-black rounded-xl text-xs tracking-[0.25em] uppercase bg-black/5 hover:bg-black/10 transition-all"
-              >
-                Read the Issue
-                <ArrowRight
-                  size={16}
-                  className="transition-transform group-hover:translate-x-1"
-                />
-              </a>
-            </motion.div>
-          </motion.div>
-
-          {/* RIGHT — IMAGE */}
-          <motion.div
-            className="col-span-6 relative flex justify-center lg:justify-end"
-            initial={{ opacity: 0, y: 60, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{
-              delay: 0.6,
-              duration: 1.2,
-              ease: easeEditorial,
+          {/* Brand Overlay */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: `linear-gradient(
+                120deg,
+                rgba(0,0,0,0.78),
+                ${slide.accent}55
+              )`,
             }}
-          >
-            <div className="relative w-[85%] md:w-[70%] lg:w-[78%] shadow-[0_80px_200px_rgba(0,0,0,0.35)]">
-              <Image
-                src={getImgPath("/images/issue/DTD.webp")}
-                alt="DESIGNED — Issue 01 Cover"
-                width={700}
-                height={900}
-                priority
-                className="w-full h-auto object-cover rounded-2xl"
-              />
+          />
 
-              <div className="absolute inset-0 rounded-2xl border border-black/10 pointer-events-none" />
+          {/* Content */}
+          <div className="relative z-10 h-full flex items-center">
+            <div className="container mx-auto px-6 lg:max-w-screen-xl">
+              <motion.div
+                variants={content}
+                initial="hidden"
+                animate="visible"
+                className="max-w-2xl space-y-6"
+              >
+                {/* Eyebrow */}
+                <div className="flex items-center gap-3 text-white/80">
+                  <Icon size={20} />
+                  <span className="text-[11px] tracking-[0.4em] uppercase">
+                    {slide.title}
+                  </span>
+                </div>
+
+                {/* H1 — WHITE + PURPLE */}
+                <h1 className="text-4xl md:text-6xl font-light leading-tight">
+                  <span className="text-white"> {slide.headline.split(" ")[0]} </span>
+                  <span
+                    className="bg-clip-text text-transparent"
+                    style={{
+                      backgroundImage: `linear-gradient(90deg, #ffffff, ${BRAND.purple})`,
+                    }}
+                  >
+                    {" " + slide.headline.split(" ").slice(1).join(" ")}
+                  </span>
+                </h1>
+
+                <p className="text-white/80 max-w-lg leading-relaxed">
+                  {slide.description}
+                </p>
+
+                <div className="pt-6">
+                  <a
+                    href="/about"
+                    className="inline-flex items-center gap-3 px-8 py-4 rounded-xl text-xs tracking-[0.25em] uppercase transition-all hover:opacity-90"
+                    style={{
+                      backgroundColor: BRAND.purple,
+                      color: "#fff",
+                    }}
+                  >
+                    Learn More
+                    <ArrowRight size={16} />
+                  </a>
+                </div>
+              </motion.div>
             </div>
-          </motion.div>
+          </div>
+        </motion.div>
+      </AnimatePresence>
 
-        </div>
+      {/* Navigation Arrows */}
+      <div className="absolute inset-y-0 w-full flex items-center justify-between px-6 z-20">
+        <button
+          onClick={prev}
+          className="h-12 w-12 rounded-full bg-white/10 backdrop-blur text-white flex items-center justify-center hover:bg-white hover:text-black transition-all"
+        >
+          <ArrowLeft size={20} />
+        </button>
+
+        <button
+          onClick={next}
+          className="h-12 w-12 rounded-full bg-white/10 backdrop-blur text-white flex items-center justify-center hover:bg-white hover:text-black transition-all"
+        >
+          <ArrowRight size={20} />
+        </button>
       </div>
 
-      {/* GLOBAL STYLES */}
-      <style jsx global>{`
-        .silver-grain {
-          position: absolute;
-          width: 200%;
-          height: 200%;
-          background: radial-gradient(rgba(0,0,0,0.08) 1px, transparent 1px);
-          background-size: 3px 3px;
-          animation: moveGrain 45s linear infinite;
-        }
-
-        @keyframes moveGrain {
-          0% { transform: translate(0, 0); }
-          100% { transform: translate(-15%, -15%); }
-        }
-      `}</style>
-
+      {/* Progress Bars */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-4 z-20">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setIndex(i)}
+            className={`h-[3px] w-10 transition-all ${
+              i === index ? "bg-white" : "bg-white/30"
+            }`}
+          />
+        ))}
+      </div>
     </section>
   );
 }

@@ -1,94 +1,98 @@
 "use client";
 
-export default function AboutDesigned() {
+import { motion } from "framer-motion";
+import { ArrowRight, Handshake } from "lucide-react";
+
+export default function PartnerSection() {
   return (
-    <main className="relative min-h-screen bg-black overflow-hidden">
+    <section className="relative bg-white overflow-hidden">
+      {/* Subtle Particles */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-32 h-2 w-2 rounded-full bg-[#5f3b86]/20 animate-float-slow" />
+        <div className="absolute top-1/3 right-40 h-3 w-3 rounded-full bg-[#61abbb]/20 animate-float-medium" />
+        <div className="absolute bottom-32 left-1/4 h-2 w-2 rounded-full bg-[#5f3b86]/15 animate-float-fast" />
+        <div className="absolute bottom-20 right-1/3 h-4 w-4 rounded-full bg-[#bcc8d7]/30 animate-float-slow" />
+        <div className="absolute top-1/2 left-1/2 h-2 w-2 rounded-full bg-black/10 animate-float-medium" />
+      </div>
 
-      {/* Subtle Editorial Divider */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[1px] w-[70%] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-
-      <div className="relative z-10 container mx-auto px-6 lg:max-w-screen-xl pt-40 pb-36">
-
-        <div className="grid lg:grid-cols-12 gap-20 items-start">
-
-          {/* Left Axis */}
-          <div className="lg:col-span-3">
-            <span className="block text-[11px] tracking-[0.45em] uppercase text-white/40">
-              About
-            </span>
-          </div>
-
-          {/* Editorial Body */}
-          <div className="lg:col-span-7 space-y-20">
-
-            {/* INTRO */}
-            <section className="space-y-6">
-              <h1 className="text-white font-light text-3xl md:text-5xl leading-tight">
-                DESIGNED
-              </h1>
-
-              <p className="text-white/70 text-sm md:text-base leading-relaxed max-w-2xl">
-                DESIGNED is a luxury editorial platform exploring experience,
-                excellence, and expertise — through the lens of sound and
-                technology.
-              </p>
-            </section>
-
-            {/* CORE STATEMENT */}
-            <section className="space-y-4">
-              <p className="text-white font-light text-2xl md:text-4xl leading-snug">
-                Great spaces are not defined by what they show.
-              </p>
-              <p className="text-white/80 text-base md:text-lg leading-relaxed">
-                They are defined by how they feel.
-              </p>
-            </section>
-
-            {/* MANIFESTO */}
-            <section className="space-y-3 text-white/70 text-sm md:text-base leading-relaxed">
-              <p>Sound that belongs.</p>
-              <p>Technology that disappears.</p>
-              <p>Control that feels effortless.</p>
-            </section>
-
-            {/* POSITIONING */}
-            <section className="space-y-4 text-white/65 text-sm md:text-base leading-relaxed max-w-2xl">
-              <p>
-                DESIGNED exists to examine the quiet decisions that shape the
-                experience of a space long after construction is complete.
-              </p>
-              <p>
-                When AV is considered early, it supports intent. When it is not,
-                intent is interrupted.
-              </p>
-            </section>
-
-            {/* PUBLISHER */}
-            <section className="space-y-6 pt-8">
-              <span className="block text-[11px] tracking-[0.3em] uppercase text-white/40">
-                Published by
+      {/* Content */}
+      <div className="relative z-10 py-32">
+        <div className="container mx-auto px-6 lg:max-w-screen-xl">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            className="max-w-3xl"
+          >
+            {/* Eyebrow */}
+            <div className="flex items-center gap-3 text-black/60 mb-6">
+              <Handshake size={18} />
+              <span className="text-[11px] tracking-[0.45em] uppercase">
+                Collaboration
               </span>
+            </div>
 
-              <p className="text-white/70 text-sm md:text-base leading-relaxed max-w-2xl">
-                DESIGNED is published by CED Africa, a specialist AV consulting and
-                distribution group working at the highest level of the built
-                environment.
-              </p>
+            {/* Headline */}
+            <h2 className="text-4xl md:text-5xl font-light leading-tight text-black">
+              Partner with Digital Inclusion Initiative
+            </h2>
 
+            {/* Body */}
+            <p className="mt-6 text-black/60 max-w-2xl leading-relaxed text-lg">
+              We’re always looking for new partners to collaborate on projects
+              and events. If your organisation shares our values and mission,
+              let’s work together to create meaningful and lasting impact
+              through digital inclusion.
+            </p>
+
+            {/* CTA */}
+            <div className="mt-10">
               <a
-                href="https://www.ced.africa"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block text-[11px] tracking-[0.3em] uppercase text-white/80 border-b border-white/30 pb-1 hover:text-white hover:border-white transition"
+                href="/partner"
+                className="inline-flex items-center gap-4 px-10 py-5 rounded-2xl text-xs tracking-[0.3em] uppercase font-medium transition-all group"
+                style={{
+                  backgroundColor: "#5f3b86",
+                  color: "#ffffff",
+                }}
               >
-                Visit CED Africa
+                Partner With Us
+                <ArrowRight
+                  size={16}
+                  className="transition-transform group-hover:translate-x-1"
+                />
               </a>
-            </section>
-
-          </div>
-
+            </div>
+          </motion.div>
         </div>
       </div>
-    </main>
+
+      {/* GLOBAL PARTICLE ANIMATIONS */}
+      <style jsx global>{`
+        @keyframes float {
+          0% {
+            transform: translateY(0) translateX(0);
+          }
+          50% {
+            transform: translateY(-20px) translateX(10px);
+          }
+          100% {
+            transform: translateY(0) translateX(0);
+          }
+        }
+
+        .animate-float-slow {
+          animation: float 14s ease-in-out infinite;
+        }
+
+        .animate-float-medium {
+          animation: float 10s ease-in-out infinite;
+        }
+
+        .animate-float-fast {
+          animation: float 7s ease-in-out infinite;
+        }
+      `}</style>
+    </section>
   );
 }
