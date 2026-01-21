@@ -14,55 +14,69 @@ import Info from "./components/home/info";
 import AudioWelcome from "./components/AudioWelcome";
 
 /* -------------------------------------
-   METADATA — OPTIVANCE HR AFRICA
+   METADATA — SPOTLITE AFRICA AGENCY
 ------------------------------------- */
 export const metadata: Metadata = {
-  metadataBase: new URL("https://optivancehr.africa"),
+  metadataBase: new URL("https://spotliteafrica.com"),
 
   title: {
-    default: "Optivance HR Africa",
-    template: "%s | Optivance HR Africa",
+    default: "Spotlite Africa Agency | Digital Marketing & Brand Growth Agency",
+    template: "%s | Spotlite Africa Agency",
   },
 
   description:
-    "Optivance HR Africa is an AI-powered workforce platform helping businesses hire, train, certify, and manage blue-collar workers — all through WhatsApp.",
+    "Spotlite Africa Agency is a results-driven digital marketing and brand growth agency helping registered businesses build strong brands, deploy high-converting websites, run performance marketing campaigns, and scale revenue across Africa.",
 
   keywords: [
-    "Optivance HR Africa",
-    "blue collar recruitment Africa",
-    "workforce management Africa",
-    "HR platform Africa",
-    "WhatsApp HR platform",
-    "blue collar jobs Africa",
-    "AI workforce platform",
-    "staff recruitment and payroll",
-    "worker training and certification",
-    "HR compliance Africa",
+    // Core brand
+    "Spotlite Africa Agency",
+    "Spotlite Africa",
+
+    // High-intent agency keywords
+    "digital marketing agency Africa",
+    "digital marketing agency Nigeria",
+    "brand development agency Africa",
+    "performance marketing agency",
+    "social media marketing agency",
+    "digital advertising agency",
+
+    // Services
+    "website design agency Africa",
+    "ecommerce marketing agency",
+    "influencer marketing agency",
+    "campaign strategy agency",
+    "growth marketing agency",
+
+    // Business-focused intent
+    "marketing for registered businesses",
+    "CAC business branding",
+    "marketing agency for startups Africa",
+    "business growth agency Africa",
   ],
 
   openGraph: {
-    title: "Optivance HR Africa",
+    title: "Spotlite Africa Agency — Digital Marketing & Brand Growth",
     description:
-      "Hire, train, certify, and manage trusted blue-collar workers — powered by AI and delivered through WhatsApp.",
-    url: "https://optivancehr.africa",
-    siteName: "Optivance HR Africa",
+      "We help registered businesses build powerful brands, attract the right audience, and convert visibility into measurable revenue through strategy-led digital marketing.",
+    url: "https://spotliteafrica.com",
+    siteName: "Spotlite Africa Agency",
     type: "website",
     images: [
       {
-        url: "https://optivancehr.africa/og/og-cover.jpg",
+        url: "https://spotliteafrica.com/og/og-cover.jpg",
         width: 1200,
         height: 630,
-        alt: "Optivance HR Africa — AI-Powered Workforce Platform",
+        alt: "Spotlite Africa Agency — Digital Marketing & Brand Growth Agency",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Optivance HR Africa",
+    title: "Spotlite Africa Agency | Digital Marketing & Growth",
     description:
-      "The AI-powered workforce platform for hiring and managing blue-collar workers across Africa.",
-    images: ["https://optivancehr.africa/og/og-cover.jpg"],
+      "A digital marketing and brand growth agency helping African businesses scale visibility, conversions, and revenue.",
+    images: ["https://spotliteafrica.com/og/og-cover.jpg"],
   },
 
   robots: {
@@ -71,7 +85,7 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://optivancehr.africa",
+    canonical: "https://spotliteafrica.com",
   },
 };
 

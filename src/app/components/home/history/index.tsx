@@ -1,127 +1,135 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
-import {
-  Globe,
-  Smartphone,
-  Cpu,
-  BarChart3,
-  HeartHandshake,
-  ShieldCheck,
-} from "lucide-react";
+import { Users, Briefcase, Scale, ArrowRight } from "lucide-react";
 
-export default function WhyOptivance() {
+export default function Partnerships() {
   return (
-    <section className="relative overflow-hidden" id="why">
-      {/* PURPLE GRADIENT BACKGROUND */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(135deg, #2a123f 0%, #5f3b86 45%, #7b4db3 100%)",
-        }}
-      />
+    <section className="relative overflow-hidden py-40 bg-white" id="partnerwithspotlite">
+      {/* Soft background accent */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white via-[#ffd6b6]/30 to-white" />
 
-      {/* SOFT FLOW LINES */}
-      <div className="absolute inset-0 pointer-events-none opacity-30">
-        <div className="absolute top-0 left-1/3 h-full w-[1px] bg-gradient-to-b from-transparent via-white to-transparent" />
-        <div className="absolute top-0 left-2/3 h-full w-[1px] bg-gradient-to-b from-transparent via-white to-transparent" />
-      </div>
+      <div className="relative z-10 container mx-auto px-6 lg:max-w-screen-xl">
+        {/* Header */}
+        <div className="max-w-3xl">
+          <p className="uppercase tracking-[0.3em] text-xs text-black/50">
+            Partnerships
+          </p>
 
-      <div className="relative z-10 py-32">
-        <div className="container mx-auto px-6 lg:max-w-screen-xl">
-          {/* SECTION HEADER */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-2xl mb-20 text-white"
-          >
-            <span className="block text-[11px] tracking-[0.4em] uppercase text-white/70 mb-4">
-              Why Optivance
+          <h2 className="mt-6 text-4xl md:text-5xl font-light leading-tight text-black">
+            Partner With Us to Create
+            <span className="block mt-2 font-normal text-[#461248]">
+              Additional Revenue for Your Practice
             </span>
+          </h2>
 
-            <h2 className="text-4xl md:text-5xl font-light text-white leading-tight">
-              Built with context.
-              <span className="block font-normal">
-                Powered with intelligence.
-              </span>
-            </h2>
-          </motion.div>
-
-          {/* THREE PILLARS */}
-          <div className="grid lg:grid-cols-3 gap-10">
-            {/* BUILT FOR AFRICA */}
-            <Pillar
-              icon={<Globe />}
-              title="Built for Africa"
-              points={[
-                "WhatsApp-first access",
-                "Simple, mobile-friendly experience",
-                "Scales across cities and countries",
-              ]}
-            />
-
-            {/* POWERED BY TECHNOLOGY */}
-            <Pillar
-              icon={<Cpu />}
-              title="Powered by Technology"
-              points={[
-                "AI-driven screening and matching",
-                "Data-backed performance insights",
-                "Continuous skill improvement",
-              ]}
-            />
-
-            {/* HUMAN AT THE CORE */}
-            <Pillar
-              icon={<HeartHandshake />}
-              title="Human at the Core"
-              points={[
-                "Worker dignity and protection",
-                "Employer trust and reliability",
-                "Long-term workforce development",
-              ]}
-            />
-          </div>
+          <p className="mt-8 text-lg leading-relaxed text-black/70">
+            We work closely with professional service firms whose clients
+            require brand development, digital presence, and growth support
+            when registering or scaling their businesses.
+          </p>
         </div>
+
+        {/* Partner Types */}
+        <div className="mt-20 grid gap-10 md:grid-cols-3">
+          <PartnerType
+            icon={<Users />}
+            title="HR & People Advisory Firms"
+            text="Support clients building teams and internal structures — while we help them build visibility, credibility, and demand."
+          />
+
+          <PartnerType
+            icon={<Briefcase />}
+            title="Accounting & Financial Advisory Firms"
+            text="For businesses registering with CAC, setting up structures, and preparing for growth through proper financial systems."
+          />
+
+          <PartnerType
+            icon={<Scale />}
+            title="Legal & Corporate Advisory Firms"
+            text="Ideal for law firms assisting with company registration, compliance, and corporate structuring."
+          />
+        </div>
+
+        {/* How it Works */}
+        <div className="mt-24 max-w-4xl">
+          <h3 className="text-2xl font-light text-black">
+            How the Partnership Works
+          </h3>
+
+          <div className="mt-8 space-y-6 text-black/70">
+            <p>
+              • You refer clients who are registering with CAC or actively
+              building their businesses and require branding, websites,
+              digital systems, or marketing support.
+            </p>
+            <p>
+              • We engage the client professionally, deliver value, and manage
+              all digital execution end-to-end.
+            </p>
+            <p>
+              • You earn a referral commission for every successful engagement
+              — creating a new income stream without additional workload.
+            </p>
+          </div>
+
+          <p className="mt-8 text-sm text-black/60">
+            This partnership is designed strictly for registered businesses
+            and professional firms working with serious founders and companies.
+          </p>
+        </div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-16"
+        >
+          <Link
+            href="https://wa.me/234XXXXXXXXXX?text=Hello%20I’m%20interested%20in%20partnering%20with%20SAA"
+            target="_blank"
+            className="inline-flex items-center gap-4 rounded-full bg-[#461248] px-10 py-5 text-sm uppercase tracking-wide text-white transition hover:opacity-90"
+          >
+            Contact Us on WhatsApp
+            <ArrowRight size={16} />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );
 }
 
 /* -------------------------------------
-   PILLAR CARD
+   PARTNER TYPE CARD
 ------------------------------------- */
-function Pillar({
+function PartnerType({
   icon,
   title,
-  points,
+  text,
 }: {
   icon: React.ReactNode;
   title: string;
-  points: string[];
+  text: string;
 }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className="rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 p-10 text-white"
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      className="rounded-3xl border border-black/10 bg-white/80 p-8 backdrop-blur-sm"
     >
-      <div className="h-11 w-11 rounded-xl bg-white/15 flex items-center justify-center mb-6">
+      <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-[#461248]/10 text-[#461248]">
         {icon}
       </div>
 
-      <h3 className="text-xl font-medium mb-6">{title}</h3>
-
-      <ul className="space-y-3 text-sm text-white/85">
-        {points.map((point) => (
-          <li key={point}>• {point}</li>
-        ))}
-      </ul>
+      <h3 className="text-lg font-medium text-black">{title}</h3>
+      <p className="mt-3 text-sm leading-relaxed text-black/65">
+        {text}
+      </p>
     </motion.div>
   );
 }

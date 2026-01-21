@@ -3,14 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-
-/* -------------------------------------
-   BRAND COLORS
-------------------------------------- */
-const BRAND = {
-  purple: "#5f3b86",
-  teal: "#61abbb",
-};
+import Image from "next/image";
 
 export default function Header() {
   const [onDark, setOnDark] = useState(false);
@@ -59,31 +52,46 @@ export default function Header() {
       >
         <div className="container mx-auto px-6 lg:max-w-screen-xl">
           <div className="flex items-center justify-between h-20">
-            {/* LOGO — TEXT */}
+            {/* LOGO */}
             <Link href="/" className="z-50 flex items-center">
-              <span
-                className="text-sm tracking-[0.25em] uppercase font-light"
-                style={{
-                  textShadow: onDark
-                    ? "0 4px 20px rgba(0,0,0,0.45)"
-                    : "0 4px 20px rgba(0,0,0,0.25)",
-                }}
-              >
-                <span style={{ color: BRAND.purple }}>Optivance</span>{" "}
-                <span style={{ color: BRAND.teal }}>HR Africa</span>
-              </span>
+              <Image
+                src="/images/logo/saa.svg"
+                alt="Spotlite Africa Agency"
+                width={240}
+                height={24}
+                priority
+                className="object-contain"
+              />
             </Link>
 
             {/* DESKTOP NAV */}
             <nav className="hidden md:flex items-center gap-10">
-              <NavItem onDark={onDark} href="#about">About</NavItem>
-              
-              <NavItem onDark={onDark} href="#why">Why Optivance</NavItem>
-              <NavItem onDark={onDark} href="#industries">Industries</NavItem>
-              <NavItem onDark={onDark} href="#contact">Get Started</NavItem>
+              <NavItem onDark={onDark} href="#services">
+                Services
+              </NavItem>
+
+              <NavItem onDark={onDark} href="#process">
+                How We Work
+              </NavItem>
+
+              <NavItem onDark={onDark} href="#why">
+                Why Spotlite
+              </NavItem>
+
+              <NavItem onDark={onDark} href="#partnerwithspotlite">
+                Partner With Us
+              </NavItem>
+
+              <NavItem
+                onDark={onDark}
+                href="#contact"
+                className="px-5 py-2 rounded-full border border-black/20 hover:border-black transition"
+              >
+                Get Started
+              </NavItem>
             </nav>
 
-            {/* MOBILE TOGGLE BUTTON */}
+            {/* MOBILE TOGGLE */}
             <button
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               onClick={() => setMenuOpen((prev) => !prev)}
@@ -109,31 +117,53 @@ export default function Header() {
       {menuOpen && (
         <div className="fixed inset-0 z-40 bg-black/90 backdrop-blur-2xl">
           <nav className="h-full flex flex-col items-center justify-center">
-            <MobileNavItem delay={0} href="#about" onClick={() => setMenuOpen(false)}>
-              About Optivance
+            <MobileNavItem
+              delay={0}
+              href="#services"
+              onClick={() => setMenuOpen(false)}
+            >
+              Services
             </MobileNavItem>
 
             <Divider />
 
-            <MobileNavItem delay={1} href="#why" onClick={() => setMenuOpen(false)}>
-              Why Optivance
+            <MobileNavItem
+              delay={1}
+              href="#process"
+              onClick={() => setMenuOpen(false)}
+            >
+              How We Work
             </MobileNavItem>
 
             <Divider />
 
-            <MobileNavItem delay={2} href="#industries" onClick={() => setMenuOpen(false)}>
-              Industries
+            <MobileNavItem
+              delay={2}
+              href="#why"
+              onClick={() => setMenuOpen(false)}
+            >
+              Why Spotlite
             </MobileNavItem>
 
             <Divider />
 
-            <MobileNavItem delay={3} href="#contact" onClick={() => setMenuOpen(false)}>
+            <MobileNavItem
+              delay={3}
+              href="#partnerwithspotlite"
+              onClick={() => setMenuOpen(false)}
+            >
+              Partner With Us
+            </MobileNavItem>
+
+            <Divider />
+
+            <MobileNavItem
+              delay={4}
+              href="#contact"
+              onClick={() => setMenuOpen(false)}
+            >
               Get Started
             </MobileNavItem>
-
-            <Divider />
-
-            
           </nav>
         </div>
       )}
@@ -148,18 +178,24 @@ function NavItem({
   href,
   children,
   onDark,
+  className = "",
 }: {
   href: string;
   children: React.ReactNode;
   onDark: boolean;
+  className?: string;
 }) {
-  const className = `
+  const base = `
     text-[11px] tracking-[0.3em] uppercase
     transition-colors duration-300
     ${onDark ? "text-white/90 hover:text-white" : "text-black/85 hover:text-black"}
   `;
 
-  return <Link href={href} className={className}>{children}</Link>;
+  return (
+    <Link href={href} className={`${base} ${className}`}>
+      {children}
+    </Link>
+  );
 }
 
 /* ======================================================

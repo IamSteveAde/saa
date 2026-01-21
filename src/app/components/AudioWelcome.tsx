@@ -23,18 +23,20 @@ export default function AudioWelcome() {
   return (
     <>
       {/* AUDIO */}
-      <audio ref={audioRef} src="/audio/welcome.m4a" preload="auto" />
+      <audio ref={audioRef} src="/audio/welcomes.mp3" preload="auto" />
 
       {showPrompt && (
         <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-[440px]">
-          <div className="
-            relative
-            rounded-2xl
-            bg-white
-            px-5 py-4
-            shadow-[0_30px_80px_rgba(0,0,0,0.15)]
-            border border-black/5
-          ">
+          <div
+            className="
+              relative
+              rounded-2xl
+              bg-white
+              px-5 py-4
+              shadow-[0_30px_80px_rgba(0,0,0,0.15)]
+              border border-black/5
+            "
+          >
             {/* Close */}
             <button
               onClick={dismiss}
@@ -46,24 +48,24 @@ export default function AudioWelcome() {
 
             {/* Content */}
             <div className="flex items-start gap-3">
-              <Volume2 size={18} className="text-[#5f3b86] mt-1 shrink-0" />
+              <Volume2 size={18} className="text-[#461248] mt-1 shrink-0" />
 
               <div className="text-sm text-black/80 leading-relaxed">
                 <strong className="block text-black mb-1">
-                  Welcome to Optivance HR Africa
+                  Welcome to Spotlite Africa Agency
                 </strong>
 
                 {/* Mobile copy */}
                 <span className="block sm:hidden">
-                  Hear a quick overview of how we help businesses hire and manage
-                  blue-collar workers on WhatsApp.
+                  Listen to a short overview of how we help businesses build
+                  strong brands and grow through digital marketing.
                 </span>
 
                 {/* Desktop copy */}
                 <span className="hidden sm:block">
-                  Would you like a brief audio overview of how we help businesses
-                  hire, train, and manage trusted blue-collar workers through
-                  WhatsApp?
+                  Would you like a brief audio overview of how we help registered
+                  businesses build visibility, convert attention, and scale
+                  revenue through strategy-led digital marketing?
                 </span>
               </div>
             </div>
@@ -75,7 +77,7 @@ export default function AudioWelcome() {
                 className="
                   w-full sm:w-auto
                   rounded-xl
-                  bg-[#5f3b86]
+                  bg-[#461248]
                   px-5 py-3
                   text-xs
                   tracking-wide

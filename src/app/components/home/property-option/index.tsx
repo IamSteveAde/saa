@@ -1,125 +1,141 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 import {
-  Bot,
-  Users,
-  BookOpen,
-  ClipboardCheck,
-  BadgeCheck,
-  Wallet,
-  FileCheck,
-  Shield,
+  Search,
+  Layers,
+  PenTool,
+  Rocket,
   BarChart3,
+  Plus,
+  Minus,
 } from "lucide-react";
 
-export default function AIPlatform() {
+const phases = [
+  {
+    id: 1,
+    icon: <Search />,
+    title: "Discovery & Market Clarity",
+    description:
+      "We deep-dive into your business, audience, competitors, and market dynamics. This phase defines positioning, opportunity gaps, and the exact levers that will drive growth.",
+  },
+  {
+    id: 2,
+    icon: <Layers />,
+    title: "Strategy & System Design",
+    description:
+      "We architect a clear growth strategy — channels, messaging, funnels, and KPIs — ensuring every action aligns with measurable business outcomes.",
+  },
+  {
+    id: 3,
+    icon: <PenTool />,
+    title: "Brand, Content & Asset Development",
+    description:
+      "We design and build high-performing digital assets: websites, e-commerce flows, content systems, creatives, and brand touchpoints optimized for conversion.",
+  },
+  {
+    id: 4,
+    icon: <Rocket />,
+    title: "Execution, Campaigns & Launch",
+    description:
+      "We deploy campaigns, activate channels, manage influencers, and execute with precision — continuously optimizing for performance, speed, and scale.",
+  },
+  {
+    id: 5,
+    icon: <BarChart3 />,
+    title: "Optimization, Reporting & Growth",
+    description:
+      "We analyze performance, refine systems, improve conversion rates, and scale what works — with transparent reporting and strategic insights.",
+  },
+];
+
+export default function HowWeWork() {
+  const [openPhase, setOpenPhase] = useState<number | null>(1);
+
   return (
-    <section className="relative overflow-hidden">
-      {/* PURPLE GRADIENT BACKGROUND */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(135deg, #2a123f 0%, #5f3b86 45%, #7b4db3 100%)",
-        }}
-      />
+    <section className="relative overflow-hidden py-40" id="process">
+      {/* Deep Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#461248] via-[#a93747] to-[#f2a15f]" />
+      <div className="absolute inset-0 bg-black/20" />
 
-      {/* SOFT AI FLOW LINES */}
-      <div className="absolute inset-0 pointer-events-none opacity-30">
-        <div className="absolute top-0 left-1/4 h-full w-[1px] bg-gradient-to-b from-transparent via-white to-transparent" />
-        <div className="absolute top-0 left-2/4 h-full w-[1px] bg-gradient-to-b from-transparent via-white to-transparent" />
-        <div className="absolute top-0 left-3/4 h-full w-[1px] bg-gradient-to-b from-transparent via-white to-transparent" />
-      </div>
+      <div className="relative z-10 container mx-auto px-6 lg:max-w-screen-xl text-white">
+        {/* Header */}
+        <div className="max-w-3xl">
+          <p className="uppercase tracking-[0.3em] text-xs text-white/70">
+            How We Work
+          </p>
 
-      <div className="relative z-10 py-32">
-        <div className="container mx-auto px-6 lg:max-w-screen-xl">
-          <div className="grid lg:grid-cols-12 gap-20 items-start">
-            {/* LEFT — EXPLANATION */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:col-span-5 space-y-8 text-white"
-            >
-              <div className="flex items-center gap-3 text-white/80">
-                <Bot size={18} />
-                <span className="text-[11px] tracking-[0.4em] uppercase">
-                  AI-Powered Platform
-                </span>
-              </div>
+          <h2 className="mt-6 text-4xl md:text-5xl font-light text-white leading-tight">
+            A Structured Process
+            <span className="block mt-2 font-normal text-[#ffd6b6]">
+              Designed for Consistent Growth
+            </span>
+          </h2>
 
-              <h2 className="text-4xl md:text-5xl font-light leading-tight text-white">
-                Our AI-Powered
-                <span className="block font-normal">
-                  WhatsApp Workforce Platform
-                </span>
-              </h2>
+          <p className="mt-8 text-lg text-white/80 leading-relaxed">
+            Our methodology follows a clear, phased approach — eliminating
+            guesswork, reducing risk, and ensuring every action contributes to
+            measurable business results.
+          </p>
+        </div>
 
-              <p className="text-white/80 leading-relaxed text-lg max-w-md">
-                Optivance is building an AI-first workforce platform on WhatsApp,
-                designed for accessibility, scale, and speed.
-              </p>
+        {/* Timeline */}
+        <div className="relative mt-24 max-w-4xl">
+          {/* Vertical Line */}
+          <div className="absolute left-6 top-0 h-full w-px bg-white/20" />
 
-              <p className="text-white/70 leading-relaxed max-w-md">
-                Workers and employers interact with Optivance through an AI agent
-                on WhatsApp — no apps, no complexity.
-              </p>
+          <div className="space-y-10">
+            {phases.map((phase) => (
+              <div key={phase.id} className="relative pl-20">
+                {/* Icon */}
+                <div className="absolute left-0 top-0 flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#461248] shadow-lg">
+                  {phase.icon}
+                </div>
 
-              <p className="pt-6 text-white font-medium text-lg">
-                If you can use WhatsApp, you can use Optivance.
-              </p>
-            </motion.div>
+                {/* Card */}
+                <div className="rounded-2xl bg-white/10 backdrop-blur-md border border-white/20">
+                  <button
+                    onClick={() =>
+                      setOpenPhase(
+                        openPhase === phase.id ? null : phase.id
+                      )
+                    }
+                    className="flex w-full items-center justify-between px-6 py-5 text-left"
+                  >
+                    <h3 className="text-lg font-medium">
+                      Phase {phase.id}: {phase.title}
+                    </h3>
+                    <span className="ml-4">
+                      {openPhase === phase.id ? (
+                        <Minus size={18} />
+                      ) : (
+                        <Plus size={18} />
+                      )}
+                    </span>
+                  </button>
 
-            {/* RIGHT — AI CAPABILITIES */}
-            <motion.div
-              initial={{ opacity: 0, y: 32 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.15, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:col-span-7"
-            >
-              <div className="rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 p-10">
-                <h3 className="text-sm tracking-[0.3em] uppercase text-white/80 mb-8">
-                  What the AI Agent Does
-                </h3>
-
-                <div className="grid sm:grid-cols-2 gap-6">
-                  <Capability icon={<Users />} text="Screens and recruits workers" />
-                  <Capability icon={<BookOpen />} text="Delivers training and learning modules" />
-                  <Capability icon={<ClipboardCheck />} text="Conducts skills tests and assessments" />
-                  <Capability icon={<BadgeCheck />} text="Issues digital certifications" />
-                  <Capability icon={<Wallet />} text="Manages payroll and pays salaries" />
-                  <Capability icon={<FileCheck />} text="Handles tax deductions and compliance" />
-                  <Capability icon={<Shield />} text="Provides insurance onboarding and coverage" />
-                  <Capability icon={<BarChart3 />} text="Tracks deployment, attendance, and performance" />
+                  <AnimatePresence initial={false}>
+                    {openPhase === phase.id && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.4, ease: "easeOut" }}
+                        className="overflow-hidden px-6 pb-6"
+                      >
+                        <p className="text-sm leading-relaxed text-white/80">
+                          {phase.description}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               </div>
-            </motion.div>
+            ))}
           </div>
         </div>
       </div>
     </section>
-  );
-}
-
-/* -------------------------------------
-   CAPABILITY ITEM
-------------------------------------- */
-function Capability({
-  icon,
-  text,
-}: {
-  icon: React.ReactNode;
-  text: string;
-}) {
-  return (
-    <div className="flex items-start gap-4">
-      <div className="h-10 w-10 rounded-xl bg-white/15 text-white flex items-center justify-center">
-        {icon}
-      </div>
-      <span className="text-white/85 text-sm leading-relaxed">{text}</span>
-    </div>
   );
 }

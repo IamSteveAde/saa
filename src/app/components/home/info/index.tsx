@@ -1,115 +1,56 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Users, Smartphone } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
-export default function GetStarted() {
+export default function FinalCTA() {
   return (
-    <section className="relative overflow-hidden" id="contact">
-      {/* GRADIENT BACKGROUND */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(135deg, #2a123f 0%, #5f3b86 45%, #7b4db3 100%)",
-        }}
-      />
+    <section className="relative overflow-hidden py-40" id="contact">
+      {/* Controlled Brand Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#461248] via-[#a93747] to-[#461248]" />
+      <div className="absolute inset-0 bg-black/20" />
 
-      {/* SUBTLE LIGHT ACCENTS */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[-200px] left-[-200px] h-[500px] w-[500px] rounded-full bg-white/10 blur-[180px]" />
-        <div className="absolute bottom-[-200px] right-[-200px] h-[500px] w-[500px] rounded-full bg-white/10 blur-[180px]" />
-      </div>
-
-      <div className="relative z-10 py-32">
-        <div className="container mx-auto px-6 lg:max-w-screen-xl">
-          {/* HEADER */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-2xl mb-20 text-white"
-          >
-            <span className="block text-[11px] tracking-[0.4em] uppercase text-white/70 mb-4">
-              Get Started
+      <div className="relative z-10 container mx-auto px-6 lg:max-w-screen-xl text-white">
+        <motion.div
+          initial={{ opacity: 0, y: 32 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-3xl"
+        >
+          {/* Headline */}
+          <h2 className="text-4xl text-white md:text-5xl font-light leading-tight">
+            Ready to Build a Digital System
+            <span className="block mt-2 font-normal text-[#ffd6b6]">
+              That Actually Grows Your Business?
             </span>
+          </h2>
 
-            <h2 className="text-4xl md:text-5xl text-white font-light leading-tight">
-              Ready to build a better
-              <span className="block font-normal">
-                workforce with Optivance?
-              </span>
-            </h2>
-          </motion.div>
+          {/* Supporting text */}
+          <p className="mt-8 text-lg leading-relaxed text-white/80">
+            Whether you’re registering a new business, repositioning your brand,
+            or scaling an existing operation, we’ll help you move with clarity,
+            structure, and measurable intent.
+          </p>
 
-          {/* ACTION CARDS */}
-          <div className="grid lg:grid-cols-2 gap-10">
-            {/* EMPLOYERS */}
-            <motion.div
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 p-10 text-white"
+          {/* CTA */}
+          <div className="mt-12 flex flex-wrap items-center gap-6">
+            <Link
+              href="https://wa.me/234XXXXXXXXXX?text=Hello%20I’m%20interested%20in%20working%20with%20Spotlite%20Africa"
+              target="_blank"
+              className="inline-flex items-center gap-4 rounded-full bg-white px-10 py-5 text-sm uppercase tracking-wide text-[#461248] transition hover:bg-[#ffd6b6]"
             >
-              <div className="flex items-center gap-4 mb-6">
-                <div className="h-11 w-11 rounded-xl bg-white/15 flex items-center justify-center">
-                  <Users />
-                </div>
-                <h3 className="text-2xl font-light">
-                  Looking to Hire?
-                </h3>
-              </div>
+              Contact Us
+              <ArrowRight size={16} />
+            </Link>
 
-              <p className="text-white/80 leading-relaxed max-w-md mb-8">
-                Let us supply trained, certified, and fully managed blue-collar
-                workers — ready to deploy and compliant from day one.
-              </p>
-
-              <a
-                href="/hire"
-                className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-white text-[#5f3b86] text-sm tracking-[0.25em] uppercase transition hover:opacity-90"
-              >
-                Request Workers
-                <ArrowRight size={16} />
-              </a>
-            </motion.div>
-
-            {/* WORKERS */}
-            <motion.div
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 p-10 text-white"
-            >
-              <div className="flex items-center gap-4 mb-6">
-                <div className="h-11 w-11 rounded-xl bg-white/15 flex items-center justify-center">
-                  <Smartphone />
-                </div>
-                <h3 className="text-2xl font-light">
-                  Looking for Work?
-                </h3>
-              </div>
-
-              <p className="text-white/80 leading-relaxed max-w-md mb-8">
-                Start your journey with training, certification, and structured
-                job placement — all through WhatsApp.
-              </p>
-
-              <a
-                href="https://wa.me/XXXXXXXXXX"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-8 py-4 rounded-xl border border-white/40 text-white text-sm tracking-[0.25em] uppercase transition hover:bg-white hover:text-[#5f3b86]"
-              >
-                Join on WhatsApp
-                <ArrowRight size={16} />
-              </a>
-            </motion.div>
+            <p className="text-sm text-white/60 max-w-sm">
+              We work with serious founders, professionals, and businesses ready
+              to invest in long-term growth.
+            </p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

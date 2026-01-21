@@ -9,9 +9,9 @@ import { AppContextProvider } from "../context-api/PropertyContext";
 
 import Header from "./components/layout/header";
 import Footer from "./components/layout/footer";
-import ScrollToTop from "./components/scroll-to-top";
-import Aoscompo from "@/utils/aos";
 
+import WhatsAppFloat from "./components/WhatsAppFloat";
+import Aoscompo from "@/utils/aos";
 
 /* -------------------------------------
    FONT
@@ -19,15 +19,15 @@ import Aoscompo from "@/utils/aos";
 const dmsans = DM_Sans({ subsets: ["latin"] });
 
 /* -------------------------------------
-   METADATA — DIGITAL INCLUSION INITIATIVE
+   METADATA — SPOTLITE AFRICA AGENCY
 ------------------------------------- */
 export const metadata: Metadata = {
   title: {
-    default: "Digital Inclusion Initiative",
-    template: "%s | Digital Inclusion Initiative",
+    default: "Spotlite Africa Agency | Digital Marketing & Brand Growth",
+    template: "%s | Spotlite Africa Agency",
   },
   description:
-    "Digital Inclusion Initiative works to expand digital access, build skills, and create opportunities for women and underserved communities through technology.",
+    "Spotlite Africa Agency is a results-driven digital marketing and brand growth agency helping registered businesses build strong brands, drive visibility, and convert attention into measurable growth.",
 };
 
 /* -------------------------------------
@@ -54,10 +54,11 @@ export default function RootLayout({
               <Footer />
             </Aoscompo>
 
-            
+            {/* Global Floating WhatsApp Button */}
+            <WhatsAppFloat />
 
-            {/* Global Chat Widget */}
-            
+            {/* Optional: Scroll to top */}
+           
           </ThemeProvider>
         </AppContextProvider>
       </body>

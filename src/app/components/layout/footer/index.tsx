@@ -16,52 +16,68 @@ export default function Footer() {
               className="block text-sm tracking-[0.35em] uppercase text-white font-light"
               style={{ textShadow: "0 4px 20px rgba(0,0,0,0.35)" }}
             >
-              Optivance HR Africa
+              Spotlite Africa Agency
             </span>
 
             <p className="text-white/60 text-sm leading-relaxed max-w-sm">
-              Optivance HR Africa is an AI-powered workforce platform helping
-              businesses hire, train, certify, and manage blue-collar workers —
-              all through WhatsApp.
+              Spotlite Africa is a digital marketing and growth agency helping
+              businesses build strong brands, deploy effective digital systems,
+              and scale with clarity, structure, and measurable results.
             </p>
           </div>
 
-          {/* ================= PLATFORM ================= */}
+          {/* ================= AGENCY ================= */}
           <div className="lg:col-span-4 space-y-6">
             <span className="block text-[11px] tracking-[0.3em] uppercase text-white/40">
-              Platform
+              Agency
             </span>
 
             <ul className="space-y-3 text-sm">
               <li>
-                <Link href="#about" className="text-white/70 hover:text-white transition">
-                  About Optivance
+                <Link
+                  href="#services"
+                  className="text-white/70 hover:text-white transition"
+                >
+                  Services
                 </Link>
               </li>
               <li>
-                <Link href="#why" className="text-white/70 hover:text-white transition">
-                  Why Optivance
+                <Link
+                  href="#process"
+                  className="text-white/70 hover:text-white transition"
+                >
+                  How We Work
                 </Link>
               </li>
               <li>
-                <Link href="#industries" className="text-white/70 hover:text-white transition">
-                  Industries
+                <Link
+                  href="#why"
+                  className="text-white/70 hover:text-white transition"
+                >
+                  Why Spotlite
                 </Link>
               </li>
-              
+              <li>
+                <Link
+                  href="#partnerships"
+                  className="text-white/70 hover:text-white transition"
+                >
+                  Partnerships
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* ================= TRUST & CONTACT ================= */}
+          {/* ================= CONTACT & TRUST ================= */}
           <div className="lg:col-span-4 space-y-6">
             <span className="block text-[11px] tracking-[0.3em] uppercase text-white/40">
-              Trust & Support
+              Contact & Trust
             </span>
 
             <p className="text-white/70 text-sm leading-relaxed max-w-sm">
-              Built for compliance, reliability, and long-term workforce
-              development. We work with employers, workers, and partners across
-              Africa to build a safer, more dignified labour economy.
+              We work with serious founders, professionals, and registered
+              businesses committed to building long-term digital value and
+              sustainable growth.
             </p>
 
             <div className="space-y-3 text-sm">
@@ -69,16 +85,22 @@ export default function Footer() {
                 href="#contact"
                 className="block text-white/70 hover:text-white transition"
               >
-                Contact Us
+                Start a Conversation
               </Link>
-              
+
+              <Link
+                href="#partnerships"
+                className="block text-white/70 hover:text-white transition"
+              >
+                Become a Partner
+              </Link>
             </div>
           </div>
         </div>
 
         {/* ================= BOTTOM LINE ================= */}
         <div className="mt-20 text-center text-white/40 text-xs tracking-wide">
-          © {new Date().getFullYear()} Optivance HR Africa. All rights reserved.
+          © {new Date().getFullYear()} Spotlite Africa Agency. All rights reserved.
         </div>
       </div>
     </footer>

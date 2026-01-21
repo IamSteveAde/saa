@@ -1,87 +1,115 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import {
-  Hotel,
-  Utensils,
-  HardHat,
-  Factory,
-  ShoppingCart,
-  Truck,
-  Globe2,
+  Briefcase,
+  Users,
+  TrendingUp,
+  Globe,
 } from "lucide-react";
 
-export default function IndustriesAndVision() {
+/* -------------------------------------
+   COUNTER HOOK
+------------------------------------- */
+function useCountUp(end: number, duration = 2000) {
+  const [count, setCount] = useState(0);
+  const startTime = useRef<number | null>(null);
+
+  useEffect(() => {
+    function animate(timestamp: number) {
+      if (!startTime.current) startTime.current = timestamp;
+      const progress = timestamp - startTime.current;
+      const percentage = Math.min(progress / duration, 1);
+      setCount(Math.floor(percentage * end));
+      if (progress < duration) {
+        requestAnimationFrame(animate);
+      }
+    }
+    requestAnimationFrame(animate);
+  }, [end, duration]);
+
+  return count;
+}
+
+/* -------------------------------------
+   MAIN SECTION
+------------------------------------- */
+export default function Impact() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
   return (
-    <section className="relative bg-white overflow-hidden" id="industries">
-      <div className="relative z-10 py-32">
-        <div className="container mx-auto px-6 lg:max-w-screen-xl">
-          <div className="grid lg:grid-cols-12 gap-20 items-start">
-            {/* ================= INDUSTRIES ================= */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:col-span-6"
-            >
-              <span className="block text-[11px] tracking-[0.4em] uppercase text-[#5f3b86] mb-6">
-                Industries We Serve
-              </span>
+    <section className="relative overflow-hidden bg-white py-40">
+      {/* Orbit Background */}
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
+          className="absolute h-[800px] w-[800px] rounded-full border border-black/5"
+        />
+        <motion.div
+          animate={{ rotate: -360 }}
+          transition={{ duration: 90, repeat: Infinity, ease: "linear" }}
+          className="absolute h-[560px] w-[560px] rounded-full border border-black/10"
+        />
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+          className="absolute h-[360px] w-[360px] rounded-full border border-black/15"
+        />
+      </div>
 
-              <h2 className="text-4xl font-light leading-tight text-black mb-10">
-                Supporting Africa’s
-                <span className="block font-normal text-[#5f3b86]">
-                  essential industries
-                </span>
-              </h2>
+      <div
+        ref={ref}
+        className="relative z-10 container mx-auto px-6 lg:max-w-screen-xl"
+      >
+        {/* Header */}
+        <div className="max-w-3xl">
+          <p className="uppercase tracking-[0.3em] text-xs text-black/50">
+            Our Impact
+          </p>
 
-              <div className="grid sm:grid-cols-2 gap-6">
-                <Industry icon={<Hotel />} label="Hospitality & Tourism" />
-                <Industry icon={<Utensils />} label="Food & Beverage" />
-                <Industry icon={<HardHat />} label="Construction & Real Estate" />
-                <Industry icon={<Factory />} label="Manufacturing" />
-                <Industry icon={<ShoppingCart />} label="Retail & Supermarkets" />
-                <Industry icon={<Truck />} label="Logistics & Warehousing" />
-              </div>
-            </motion.div>
+          <h2 className="mt-6 text-4xl md:text-5xl font-light leading-tight text-black">
+            Measurable Results
+            <span className="block mt-2 font-normal text-[#461248]">
+              Built Across Industries
+            </span>
+          </h2>
 
-            {/* ================= VISION ================= */}
-            <motion.div
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:col-span-6"
-            >
-              <span className="block text-[11px] tracking-[0.4em] uppercase text-black/50 mb-6">
-                Our Vision
-              </span>
+          <p className="mt-8 text-lg text-black/70 leading-relaxed">
+            We focus on outcomes, not activity. Every project, partnership,
+            and engagement contributes to long-term growth and measurable
+            performance.
+          </p>
+        </div>
 
-              <div className="rounded-3xl border border-black/5 p-10 shadow-[0_30px_90px_rgba(0,0,0,0.06)]">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="h-11 w-11 rounded-xl bg-[#5f3b86]/10 text-[#5f3b86] flex items-center justify-center">
-                    <Globe2 />
-                  </div>
-                  <h3 className="text-2xl font-light text-black">
-                    Building Africa’s workforce infrastructure
-                  </h3>
-                </div>
-
-                <p className="text-black/70 leading-relaxed text-lg mb-6">
-                  To become Africa’s most trusted blue-collar workforce
-                  platform, connecting millions of workers to dignified jobs
-                  while helping businesses grow with confidence.
-                </p>
-
-                <p className="text-black/60 leading-relaxed">
-                  Optivance HR Africa is building the long-term infrastructure
-                  for Africa’s workforce economy — responsibly, inclusively,
-                  and at scale.
-                </p>
-              </div>
-            </motion.div>
-          </div>
+        {/* Counters */}
+        <div className="mt-24 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+          <Stat
+            icon={<Briefcase />}
+            label="Projects Delivered"
+            value={isInView ? 120 : 0}
+            suffix="+"
+          />
+          <Stat
+            icon={<Users />}
+            label="Happy Clients"
+            value={isInView ? 85 : 0}
+            suffix="+"
+          />
+          <Stat
+            icon={<TrendingUp />}
+            label="Campaigns Executed"
+            value={isInView ? 200 : 0}
+            suffix="+"
+          />
+          <Stat
+            icon={<Globe />}
+            label="Industries Served"
+            value={isInView ? 12 : 0}
+            suffix=""
+          />
         </div>
       </div>
     </section>
@@ -89,21 +117,41 @@ export default function IndustriesAndVision() {
 }
 
 /* -------------------------------------
-   INDUSTRY ITEM
+   STAT CARD
 ------------------------------------- */
-function Industry({
+function Stat({
   icon,
   label,
+  value,
+  suffix,
 }: {
   icon: React.ReactNode;
   label: string;
+  value: number;
+  suffix: string;
 }) {
+  const count = useCountUp(value);
+
   return (
-    <div className="flex items-center gap-4">
-      <div className="h-10 w-10 rounded-xl bg-black/5 text-black flex items-center justify-center">
+    <motion.div
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      className="rounded-3xl border border-black/10 bg-white/80 p-8 backdrop-blur-sm"
+    >
+      <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-[#461248]/10 text-[#461248]">
         {icon}
       </div>
-      <span className="text-black/80 text-sm">{label}</span>
-    </div>
+
+      <div className="text-4xl font-light text-black">
+        {count}
+        {suffix}
+      </div>
+
+      <p className="mt-2 text-sm uppercase tracking-wide text-black/60">
+        {label}
+      </p>
+    </motion.div>
   );
 }

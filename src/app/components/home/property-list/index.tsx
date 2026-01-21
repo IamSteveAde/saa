@@ -1,101 +1,68 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
-import {
-  ShieldCheck,
-  Rocket,
-  Wallet,
-  Users,
-  TrendingUp,
-  BadgeCheck,
-  Briefcase,
-  GraduationCap,
-  HeartHandshake,
-} from "lucide-react";
 
-export default function ForEmployersAndWorkers() {
+/* -------------------------------------
+   LOGOS (KEEP IN /public/images/logo)
+------------------------------------- */
+const logos = [
+  "/images/logo/okeowos.svg",
+  "/images/logo/chuks.png",
+  "/images/logo/dlogo.svg",
+  "/images/logo/ajaokuta.svg",
+  "/images/logo/bronta.svg",
+  "/images/logo/dmflogo.svg",
+  "/images/logo/dozylog.png",
+  "/images/logo/gpt.svg",
+  "/images/logo/olowu.svg",
+  "/images/logo/platformcapital.jpg",
+  "/images/logo/savl.png",
+  "/images/logo/soundhous.svg",
+  "/images/logo/diatomimpact.svg",
+  "/images/logo/atalantic1.png",
+  "/images/logo/CED.png",
+  "/images/logo/tingo.png",
+  "/images/logo/equity.png",
+  "/images/logo/africanholdings.png",
+];
+
+/* -------------------------------------
+   SPLIT INTO ROWS (IMPORTANT)
+------------------------------------- */
+const row1 = logos.slice(0, 6);
+const row2 = logos.slice(6, 12);
+const row3 = logos.slice(12);
+
+/* -------------------------------------
+   MAIN SECTION
+------------------------------------- */
+export default function TrustedBy() {
   return (
-    <section className="relative bg-white overflow-hidden">
-      {/* ORBIT BACKGROUND */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-black/5" />
-        <div className="absolute top-1/2 left-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-black/5" />
-        <div className="absolute top-1/2 left-1/2 h-[340px] w-[340px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-black/5" />
-      </div>
+    <section className="relative overflow-hidden bg-white py-28" id="partnerships">
+      <div className="container mx-auto px-6 lg:max-w-screen-xl">
+        {/* Header */}
+        <div className="max-w-2xl">
+          <p className="uppercase tracking-[0.25em] text-xs text-black/50">
+            Trusted Partnerships
+          </p>
 
-      <div className="relative z-10 py-32">
-        <div className="container mx-auto px-6 lg:max-w-screen-xl">
-          <div className="grid lg:grid-cols-2 gap-16 items-stretch">
-            {/* ================= EMPLOYERS ================= */}
-            <motion.div
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="rounded-3xl border border-black/5 p-10 shadow-[0_30px_90px_rgba(0,0,0,0.06)]"
-            >
-              <span className="block text-[11px] tracking-[0.4em] uppercase text-[#5f3b86] mb-4">
-                For Employers
-              </span>
+          <h2 className="mt-4 text-3xl md:text-4xl font-light text-black">
+            Trusted by Brands Serious About Growth
+          </h2>
 
-              <h3 className="text-3xl font-light text-black">
-                Hire Better. Faster. Safer.
-              </h3>
+          <p className="mt-6 text-lg leading-relaxed text-black/70">
+            We’ve partnered with brands that trust us to design, execute, and
+            scale digital systems with clarity, structure, and measurable
+            outcomes.
+          </p>
+        </div>
 
-              <p className="mt-4 text-black/70 leading-relaxed max-w-md">
-                Optivance removes the stress and risk of blue-collar hiring —
-                giving you a dependable, scalable workforce you can trust.
-              </p>
-
-              <ul className="mt-8 space-y-4">
-                <Item icon={<ShieldCheck />} text="Pre-screened, verified workers" />
-                <Item icon={<BadgeCheck />} text="Role-specific training and certification" />
-                <Item icon={<Rocket />} text="Faster deployment and replacements" />
-                <Item icon={<Wallet />} text="Payroll, tax, and compliance handled" />
-                <Item icon={<Users />} text="Reduced theft, absenteeism, and turnover" />
-                <Item icon={<TrendingUp />} text="Scalable workforce on demand" />
-              </ul>
-
-              <p className="mt-8 text-black/60 italic max-w-md">
-                We act as your trusted workforce partner — not just a recruiter.
-              </p>
-            </motion.div>
-
-            {/* ================= WORKERS ================= */}
-            <motion.div
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="rounded-3xl border border-black/5 p-10 shadow-[0_30px_90px_rgba(0,0,0,0.06)]"
-            >
-              <span className="block text-[11px] tracking-[0.4em] uppercase text-[#61abbb] mb-4">
-                For Workers
-              </span>
-
-              <h3 className="text-3xl font-light text-black">
-                More Than a Job. A Career Path.
-              </h3>
-
-              <p className="mt-4 text-black/70 leading-relaxed max-w-md">
-                Optivance helps workers move from informal jobs to structured,
-                protected employment with dignity and growth.
-              </p>
-
-              <ul className="mt-8 space-y-4">
-                <Item icon={<Briefcase />} text="Job matching based on skills" />
-                <Item icon={<GraduationCap />} text="Free or subsidized training" />
-                <Item icon={<BadgeCheck />} text="Digital certifications employers trust" />
-                <Item icon={<Wallet />} text="Stable income and payroll transparency" />
-                <Item icon={<ShieldCheck />} text="Tax and insurance coverage" />
-                <Item icon={<TrendingUp />} text="Opportunities to grow and earn more" />
-              </ul>
-
-              <p className="mt-8 text-black/60 italic max-w-md">
-                All through WhatsApp, in simple, familiar language.
-              </p>
-            </motion.div>
-          </div>
+        {/* Logo Rows */}
+        <div className="relative mt-20 space-y-12">
+          <LogoRow logos={row1} direction="left" />
+          <LogoRow logos={row2} direction="right" />
+          <LogoRow logos={row3} direction="left" />
         </div>
       </div>
     </section>
@@ -103,21 +70,53 @@ export default function ForEmployersAndWorkers() {
 }
 
 /* -------------------------------------
-   LIST ITEM
+   LOGO ROW (MARQUEE)
 ------------------------------------- */
-function Item({
-  icon,
-  text,
+function LogoRow({
+  logos,
+  direction,
 }: {
-  icon: React.ReactNode;
-  text: string;
+  logos: string[];
+  direction: "left" | "right";
 }) {
   return (
-    <li className="flex items-start gap-4">
-      <div className="h-10 w-10 rounded-xl bg-black/5 text-black flex items-center justify-center">
-        {icon}
-      </div>
-      <span className="text-black/80 text-sm leading-relaxed">{text}</span>
-    </li>
+    <div className="relative overflow-hidden">
+      {/* Fade edges */}
+      <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-24 bg-gradient-to-r from-white to-transparent" />
+      <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-24 bg-gradient-to-l from-white to-transparent" />
+
+      <motion.div
+        animate={{
+          x: direction === "left" ? ["0%", "-50%"] : ["-50%", "0%"],
+        }}
+        transition={{
+          duration: 45,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+        className="flex w-[200%] gap-32"
+      >
+        {[...logos, ...logos].map((logo, i) => (
+          <Logo key={`${logo}-${i}`} src={logo} />
+        ))}
+      </motion.div>
+    </div>
   );
 }
+
+/* -------------------------------------
+   LOGO (BIG, BLACK, VISIBLE)
+------------------------------------- */
+function Logo({ src }: { src: string }) {
+  return (
+    <div className="relative flex h-36 w-72 items-center justify-center">
+      <Image
+        src={src}
+        alt="Client brand logo"
+        fill
+        className="object-contain "
+      />
+    </div>
+  );
+}
+

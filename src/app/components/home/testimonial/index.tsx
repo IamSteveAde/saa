@@ -2,110 +2,72 @@
 
 import { motion } from "framer-motion";
 import {
-  GraduationCap,
-  ClipboardCheck,
+  Target,
+  BarChart3,
+  Layers,
   ShieldCheck,
-  Award,
-  Wallet,
-  FileCheck,
-  HeartPulse,
-  Building2,
 } from "lucide-react";
 
-export default function TrainingAndPayroll() {
+export default function WhySpotlite() {
   return (
-    <section className="relative bg-white overflow-hidden">
-      <div className="relative z-10 py-32">
-        <div className="container mx-auto px-6 lg:max-w-screen-xl">
-          <div className="grid lg:grid-cols-2 gap-16 items-stretch">
-            {/* ================= TRAINING & CERTIFICATION ================= */}
-            <motion.div
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="rounded-3xl border border-black/5 p-10 shadow-[0_30px_90px_rgba(0,0,0,0.06)]"
-            >
-              <span className="block text-[11px] tracking-[0.4em] uppercase text-[#5f3b86] mb-4">
-                Training & Certification
-              </span>
+    <section className="relative overflow-hidden py-40" id="why">
+      {/* Soft Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white via-[#ffd6b6]/40 to-white" />
 
-              <h3 className="text-3xl font-light text-black leading-tight">
-                Skills that employers trust.
-                <span className="block font-normal text-[#5f3b86]">
-                  Credentials workers carry.
-                </span>
-              </h3>
+      <div className="relative z-10 container mx-auto px-6 lg:max-w-screen-xl">
+        {/* Header */}
+        <div className="max-w-3xl">
+          <p className="uppercase tracking-[0.3em] text-xs text-black/50">
+            Why Spotlite
+          </p>
 
-              <p className="mt-6 text-black/70 leading-relaxed max-w-md">
-                Optivance delivers AI-optimized training programs tailored to
-                each role, ensuring workers are prepared, tested, and job-ready.
-              </p>
+          <h2 className="mt-6 text-4xl md:text-5xl font-light leading-tight text-black">
+            Not Just Another Agency —
+            <span className="block mt-2 font-normal text-[#461248]">
+              A Strategic Growth Partner
+            </span>
+          </h2>
 
-              <ul className="mt-8 space-y-4">
-                <Item icon={<GraduationCap />} text="Hospitality & customer service" />
-                <Item icon={<ShieldCheck />} text="Hygiene, safety, and compliance" />
-                <Item icon={<ClipboardCheck />} text="Trade-specific technical skills" />
-                <Item icon={<Award />} text="Workplace ethics and conduct" />
-              </ul>
+          <p className="mt-8 text-lg text-black/70 leading-relaxed">
+            Most agencies focus on activity. We focus on outcomes.
+            Our approach is built around structure, accountability,
+            and systems that scale with your business.
+          </p>
+        </div>
 
-              <div className="mt-8 border-t border-black/10 pt-6 space-y-3">
-                <p className="text-black/70 text-sm">
-                  Workers earn verifiable digital certificates that:
-                </p>
-                <ul className="space-y-2 text-sm text-black/60">
-                  <li>• Prove real competence</li>
-                  <li>• Increase employability</li>
-                  <li>• Travel with the worker across jobs</li>
-                </ul>
-              </div>
-            </motion.div>
+        {/* Differentiation Cards */}
+        <div className="mt-24 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+          <Pillar
+            icon={<Target />}
+            title="Strategy Before Execution"
+            text="We don’t jump into tactics. Every decision is guided by a clear growth strategy aligned with business goals."
+            bg="bg-[#461248]/10"
+            textColor="text-[#461248]"
+          />
 
-            {/* ================= PAYROLL, TAX & INSURANCE ================= */}
-            <motion.div
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="rounded-3xl border border-black/5 p-10 shadow-[0_30px_90px_rgba(0,0,0,0.06)]"
-            >
-              <span className="block text-[11px] tracking-[0.4em] uppercase text-[#61abbb] mb-4">
-                Payroll, Tax & Insurance
-              </span>
+          <Pillar
+            icon={<BarChart3 />}
+            title="Performance Over Vanity"
+            text="We optimize for revenue, conversions, and impact — not likes, impressions, or empty engagement."
+            bg="bg-[#f2a15f]/20"
+            textColor="text-[#a93747]"
+          />
 
-              <h3 className="text-3xl font-light text-black leading-tight">
-                We don’t stop at hiring.
-                <span className="block font-normal text-[#61abbb]">
-                  We manage employment end to end.
-                </span>
-              </h3>
+          <Pillar
+            icon={<Layers />}
+            title="Systems, Not One-Off Campaigns"
+            text="We build repeatable digital systems that compound results over time, not temporary spikes."
+            bg="bg-[#ffd6b6]/60"
+            textColor="text-black"
+          />
 
-              <p className="mt-6 text-black/70 leading-relaxed max-w-md">
-                Optivance manages the full employment lifecycle — removing
-                administrative burden from businesses and protecting workers.
-              </p>
-
-              <ul className="mt-8 space-y-4">
-                <Item icon={<Wallet />} text="Salary payments" />
-                <Item icon={<FileCheck />} text="PAYE and statutory tax deductions" />
-                <Item icon={<Building2 />} text="Pension and compliance support" />
-                <Item icon={<HeartPulse />} text="Health and accident insurance" />
-              </ul>
-
-              <div className="mt-10 grid grid-cols-2 gap-6">
-                <div>
-                  <p className="text-sm font-medium text-black">
-                    Businesses stay compliant.
-                  </p>
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-black">
-                    Workers stay protected.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
+          <Pillar
+            icon={<ShieldCheck />}
+            title="Clarity, Accountability & Trust"
+            text="Clear processes, transparent reporting, and ownership of results — no guesswork, no excuses."
+            bg="bg-[#a93747]/10"
+            textColor="text-[#a93747]"
+          />
         </div>
       </div>
     </section>
@@ -113,21 +75,39 @@ export default function TrainingAndPayroll() {
 }
 
 /* -------------------------------------
-   ITEM
+   PILLAR CARD
 ------------------------------------- */
-function Item({
+function Pillar({
   icon,
+  title,
   text,
+  bg,
+  textColor,
 }: {
   icon: React.ReactNode;
+  title: string;
   text: string;
+  bg: string;
+  textColor: string;
 }) {
   return (
-    <li className="flex items-start gap-4">
-      <div className="h-10 w-10 rounded-xl bg-black/5 text-black flex items-center justify-center">
+    <motion.div
+      initial={{ opacity: 0, y: 32 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      className={`relative rounded-3xl p-8 backdrop-blur-md border border-black/10 ${bg}`}
+    >
+      <div
+        className={`mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-white shadow-sm ${textColor}`}
+      >
         {icon}
       </div>
-      <span className="text-black/80 text-sm leading-relaxed">{text}</span>
-    </li>
+
+      <h3 className="text-lg font-medium text-black">{title}</h3>
+      <p className="mt-3 text-sm leading-relaxed text-black/65">
+        {text}
+      </p>
+    </motion.div>
   );
 }
