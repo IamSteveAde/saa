@@ -38,8 +38,8 @@ export default function Hero() {
             </p>
 
             {/* Headline */}
-            <h1 className="mt-6 text-[2.8rem] md:text-[4.2rem] leading-[1.05] font-light text-black">
-              We Design Visibility —
+            <h1 className="mt-6 text-[1.8rem] md:text-[3.2rem] leading-[1.05] font-light text-black">
+              We Design Visibility,
               <span className="block mt-3 font-normal text-[#461248]">
                 Then Engineer Revenue
               </span>
@@ -75,7 +75,7 @@ export default function Hero() {
           >
             <div className="relative rounded-3xl border border-black/10 bg-white p-10 shadow-[0_30px_90px_rgba(0,0,0,0.08)]">
               <p className="text-sm text-black/60 leading-relaxed">
-                Most brands struggle not because they lack visibility —
+                Most brands struggle not because they lack visibility,
                 <span className="text-black font-medium">
                   {" "}
                   but because their digital presence isn’t built to convert.

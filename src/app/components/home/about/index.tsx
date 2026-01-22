@@ -54,7 +54,7 @@ export default function WhatWeDo() {
           </h2>
 
           <p className="mt-8 text-lg text-black/70 leading-relaxed">
-            Our services work together as a single ecosystem — each one
+            Our services work together as a single ecosystem, each one
             reinforcing the other to create clarity, momentum, and measurable
             growth.
           </p>
@@ -71,7 +71,7 @@ export default function WhatWeDo() {
           <Service
             icon={<TrendingUp />}
             title="Performance & Paid Advertising"
-            text="ROI-focused advertising across search, social, and display — optimized for scalable growth."
+            text="ROI-focused advertising across search, social, and display, optimized for scalable growth."
           />
 
           <Service

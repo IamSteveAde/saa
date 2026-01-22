@@ -36,7 +36,7 @@ export default function Partnerships() {
           <PartnerType
             icon={<Users />}
             title="HR & People Advisory Firms"
-            text="Support clients building teams and internal structures — while we help them build visibility, credibility, and demand."
+            text="Support clients building teams and internal structures, while we help them build visibility, credibility, and demand."
           />
 
           <PartnerType
@@ -69,8 +69,8 @@ export default function Partnerships() {
               all digital execution end-to-end.
             </p>
             <p>
-              • You earn a referral commission for every successful engagement
-              — creating a new income stream without additional workload.
+              • You earn a referral commission for every successful engagement,
+             creating a new income stream without additional workload.
             </p>
           </div>
 

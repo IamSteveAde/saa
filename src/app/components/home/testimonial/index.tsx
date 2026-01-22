@@ -21,8 +21,8 @@ export default function WhySpotlite() {
             Why Spotlite
           </p>
 
-          <h2 className="mt-6 text-4xl md:text-5xl font-light leading-tight text-black">
-            Not Just Another Agency —
+          <h2 className="mt-6 text-3xl md:text-4xl font-light leading-tight text-black">
+            Not Just Another Agency,
             <span className="block mt-2 font-normal text-[#461248]">
               A Strategic Growth Partner
             </span>
@@ -48,7 +48,7 @@ export default function WhySpotlite() {
           <Pillar
             icon={<BarChart3 />}
             title="Performance Over Vanity"
-            text="We optimize for revenue, conversions, and impact — not likes, impressions, or empty engagement."
+            text="We optimize for revenue, conversions, and impact, not likes, impressions, or empty engagement."
             bg="bg-[#f2a15f]/20"
             textColor="text-[#a93747]"
           />
@@ -64,7 +64,7 @@ export default function WhySpotlite() {
           <Pillar
             icon={<ShieldCheck />}
             title="Clarity, Accountability & Trust"
-            text="Clear processes, transparent reporting, and ownership of results — no guesswork, no excuses."
+            text="Clear processes, transparent reporting, and ownership of results, no guesswork, no excuses."
             bg="bg-[#a93747]/10"
             textColor="text-[#a93747]"
           />

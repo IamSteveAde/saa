@@ -25,7 +25,7 @@ const phases = [
     icon: <Layers />,
     title: "Strategy & System Design",
     description:
-      "We architect a clear growth strategy — channels, messaging, funnels, and KPIs — ensuring every action aligns with measurable business outcomes.",
+      "We architect a clear growth strategy, channels, messaging, funnels, and KPIs, ensuring every action aligns with measurable business outcomes.",
   },
   {
     id: 3,
@@ -39,14 +39,14 @@ const phases = [
     icon: <Rocket />,
     title: "Execution, Campaigns & Launch",
     description:
-      "We deploy campaigns, activate channels, manage influencers, and execute with precision — continuously optimizing for performance, speed, and scale.",
+      "We deploy campaigns, activate channels, manage influencers, and execute with precision, continuously optimizing for performance, speed, and scale.",
   },
   {
     id: 5,
     icon: <BarChart3 />,
     title: "Optimization, Reporting & Growth",
     description:
-      "We analyze performance, refine systems, improve conversion rates, and scale what works — with transparent reporting and strategic insights.",
+      "We analyze performance, refine systems, improve conversion rates, and scale what works, with transparent reporting and strategic insights.",
   },
 ];
 
@@ -74,7 +74,7 @@ export default function HowWeWork() {
           </h2>
 
           <p className="mt-8 text-lg text-white/80 leading-relaxed">
-            Our methodology follows a clear, phased approach — eliminating
+            Our methodology follows a clear, phased approach, eliminating
             guesswork, reducing risk, and ensuring every action contributes to
             measurable business results.
           </p>
