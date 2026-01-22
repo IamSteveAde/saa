@@ -89,7 +89,7 @@ export default function Footer() {
               </Link>
 
               <Link
-                href="#partnerships"
+                href="#partnerwithspotlite"
                 className="block text-white/70 hover:text-white transition"
               >
                 Become a Partner

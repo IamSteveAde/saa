@@ -37,7 +37,7 @@ export default function FinalCTA() {
           {/* CTA */}
           <div className="mt-12 flex flex-wrap items-center gap-6">
             <Link
-              href="https://wa.me/234XXXXXXXXXX?text=Hello%20I’m%20interested%20in%20working%20with%20Spotlite%20Africa"
+              href="https://wa.me/2347048048164?text=Hello%20I’m%20interested%20in%20working%20with%20Spotlite%20Africa"
               target="_blank"
               className="inline-flex items-center gap-4 rounded-full bg-white px-10 py-5 text-sm uppercase tracking-wide text-[#461248] transition hover:bg-[#ffd6b6]"
             >

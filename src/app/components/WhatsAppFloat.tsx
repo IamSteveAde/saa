@@ -24,7 +24,7 @@ export default function WhatsAppFloat() {
 
       {/* WhatsApp Button */}
       <Link
-        href="https://wa.me/234XXXXXXXXXX?text=Hello%20I’m%20interested%20in%20working%20with%20Spotlite%20Africa%20Agency"
+        href="https://wa.me/2347048048164?text=Hello%20I’m%20interested%20in%20working%20with%20Spotlite%20Africa%20Agency"
         target="_blank"
         aria-label="Chat with Spotlite Africa on WhatsApp"
         className="

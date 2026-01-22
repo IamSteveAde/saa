@@ -12,7 +12,7 @@ import {
 
 export default function WhatWeDo() {
   return (
-    <section className="relative overflow-hidden bg-white py-40" id="services">
+    <section className="relative overflow-hidden bg-white py-15" id="services">
       {/* Orbit Background */}
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
         <motion.div

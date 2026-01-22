@@ -89,7 +89,7 @@ export default function Partnerships() {
           className="mt-16"
         >
           <Link
-            href="https://wa.me/234XXXXXXXXXX?text=Hello%20I’m%20interested%20in%20partnering%20with%20SAA"
+            href="https://wa.me/2347048048164?text=Hello%20I’m%20interested%20in%20partnering%20with%20SAA"
             target="_blank"
             className="inline-flex items-center gap-4 rounded-full bg-[#461248] px-10 py-5 text-sm uppercase tracking-wide text-white transition hover:opacity-90"
           >
