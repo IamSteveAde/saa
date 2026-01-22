@@ -57,8 +57,8 @@ export default function Header() {
               <Image
                 src="/images/logo/saa.svg"
                 alt="Spotlite Africa Agency"
-                width={240}
-                height={24}
+                width={180}
+                height={20}
                 priority
                 className="object-contain"
               />

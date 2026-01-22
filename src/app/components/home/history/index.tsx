@@ -1,12 +1,16 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Users, Briefcase, Scale, ArrowRight } from "lucide-react";
 
 export default function Partnerships() {
   return (
-    <section className="relative overflow-hidden py-40 bg-white" id="partnerwithspotlite">
+    <section
+      className="relative overflow-hidden py-32 md:py-40 bg-white"
+      id="partnerwithspotlite"
+    >
       {/* Soft background accent */}
       <div className="absolute inset-0 bg-gradient-to-br from-white via-[#ffd6b6]/30 to-white" />
 
@@ -52,51 +56,75 @@ export default function Partnerships() {
           />
         </div>
 
-        {/* How it Works */}
-        <div className="mt-24 max-w-4xl">
-          <h3 className="text-2xl font-light text-black">
-            How the Partnership Works
-          </h3>
-
-          <div className="mt-8 space-y-6 text-black/70">
-            <p>
-              • You refer clients who are registering with CAC or actively
-              building their businesses and require branding, websites,
-              digital systems, or marketing support.
-            </p>
-            <p>
-              • We engage the client professionally, deliver value, and manage
-              all digital execution end-to-end.
-            </p>
-            <p>
-              • You earn a referral commission for every successful engagement,
-             creating a new income stream without additional workload.
-            </p>
-          </div>
-
-          <p className="mt-8 text-sm text-black/60">
-            This partnership is designed strictly for registered businesses
-            and professional firms working with serious founders and companies.
-          </p>
-        </div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-16"
-        >
-          <Link
-            href="https://wa.me/2347048048164?text=Hello%20I’m%20interested%20in%20partnering%20with%20SAA"
-            target="_blank"
-            className="inline-flex items-center gap-4 rounded-full bg-[#461248] px-10 py-5 text-sm uppercase tracking-wide text-white transition hover:opacity-90"
+        {/* HOW IT WORKS + IMAGE */}
+        <div className="mt-28 grid gap-16 lg:grid-cols-2 lg:items-center">
+          {/* IMAGE — TOP ON MOBILE, RIGHT ON DESKTOP */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="relative order-1 lg:order-2"
           >
-            Contact Us on WhatsApp
-            <ArrowRight size={16} />
-          </Link>
-        </motion.div>
+            <div className="relative h-[160px] sm:h-[320px] lg:h-[420px] w-full rounded-3xl overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.15)]">
+              <Image
+                src="/images/hero/partners.png" // 👈 replace with your image
+                alt="Professional partnership with Spotlite Africa Agency"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
+          </motion.div>
+
+          {/* TEXT CONTENT */}
+          <div className="order-2 lg:order-1 max-w-xl">
+            <h3 className="text-2xl font-light text-black">
+              How the Partnership Works
+            </h3>
+
+            <div className="mt-8 space-y-6 text-black/70">
+              <p>
+                • You refer clients who are registering with CAC or actively
+                building their businesses and require branding, websites,
+                digital systems, or marketing support.
+              </p>
+              <p>
+                • We engage the client professionally, deliver value, and manage
+                all digital execution end-to-end.
+              </p>
+              <p>
+                • You earn a referral commission for every successful
+                engagement, creating a new income stream without additional
+                workload.
+              </p>
+            </div>
+
+            <p className="mt-8 text-sm text-black/60">
+              This partnership is designed strictly for registered businesses
+              and professional firms working with serious founders and
+              companies.
+            </p>
+
+            {/* CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-12"
+            >
+              <Link
+                href="https://wa.me/2347048048164?text=Hello%20I’m%20interested%20in%20partnering%20with%20Spotlite%20Africa%20Agency"
+                target="_blank"
+                className="inline-flex items-center gap-4 rounded-full bg-[#461248] px-10 py-5 text-sm uppercase tracking-wide text-white transition hover:opacity-90"
+              >
+                Contact Us on WhatsApp
+                <ArrowRight size={16} />
+              </Link>
+            </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );
