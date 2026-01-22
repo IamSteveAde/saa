@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
@@ -26,30 +25,34 @@ export default function Hero() {
 
       <div className="relative z-10 container mx-auto px-6 lg:max-w-screen-xl pt-40 pb-32">
         <div className="grid lg:grid-cols-12 gap-16 items-center">
-          {/* LEFT — COPY */}
+          {/* LEFT — TYPOGRAPHY LED */}
           <motion.div
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             className="lg:col-span-7"
           >
+            {/* Small authority line */}
             <p className="uppercase tracking-[0.25em] text-xs text-black/50">
               Digital Marketing & Growth Agency
             </p>
 
-            <h1 className="mt-6 text-[1.9rem] md:text-[3.2rem] leading-[1.05] font-light text-black">
+            {/* Headline */}
+            <h1 className="mt-6 text-[1.8rem] md:text-[3.2rem] leading-[1.05] font-light text-black">
               We Design Visibility,
               <span className="block mt-3 font-normal text-[#461248]">
                 Then Engineer Revenue
               </span>
             </h1>
 
+            {/* Subtext */}
             <p className="mt-8 max-w-xl text-lg leading-relaxed text-black/70">
               Spotlite Africa partners with ambitious brands to build digital
               systems that attract the right audience, convert demand into sales,
               and scale with precision.
             </p>
 
+            {/* CTA */}
             <div className="mt-12">
               <Link
                 href="/contact"
@@ -63,22 +66,31 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* RIGHT — HERO IMAGE */}
+          {/* RIGHT — SALES STATEMENT BLOCK */}
           <motion.div
             initial={{ opacity: 0, y: 48 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-5 flex justify-center lg:justify-end"
+            className="lg:col-span-5"
           >
-            <div className="relative w-full max-w-[520px]">
-              <Image
-                src="/images/hero/her.png" 
-                alt="Digital business growth powered by Spotlite Africa Agency"
-                width={520}
-                height={520}
-                priority
-                className="w-full h-auto object-contain"
-              />
+            <div className="relative rounded-3xl border border-black/10 bg-white p-10 shadow-[0_30px_90px_rgba(0,0,0,0.08)]">
+              <p className="text-sm text-black/60 leading-relaxed">
+                Most brands struggle not because they lack visibility,
+                <span className="text-black font-medium">
+                  {" "}
+                  but because their digital presence isn’t built to convert.
+                </span>
+              </p>
+
+              <div className="mt-8 space-y-3 text-sm text-black/70">
+                <p>• Campaigns without clear ROI</p>
+                <p>• Social growth without revenue</p>
+                <p>• Websites that look good but don’t sell</p>
+              </div>
+
+              <p className="mt-8 text-sm font-medium text-[#461248]">
+                We build clarity, structure, and performance.
+              </p>
             </div>
           </motion.div>
         </div>
