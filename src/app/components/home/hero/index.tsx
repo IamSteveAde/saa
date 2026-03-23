@@ -1,100 +1,182 @@
 "use client";
 
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import ConsultationModal from "../../../components/ConsultationModal";
 
 export default function Hero() {
+  const [index, setIndex] = useState(0);
+  const [openModal, setOpenModal] = useState(false);
+
+  const slides = [
+    {
+      id: "established",
+      label: "Established Companies",
+      title: "Your business works.",
+      desc: "We refine your brand, redesign your website, and structure your digital presence to match your level.",
+      cta: "Refine My Brand",
+    },
+    {
+      id: "emerging",
+      label: "Emerging Brands",
+      title: "Start with clarity.",
+      desc: "We define your brand, build your foundation, and guide how you enter the market properly.",
+      cta: "Guide My Launch",
+    },
+  ];
+
+  const logos = [
+    "/images/logo/aurora.svg",
+    "/images/logo/ajaokuta.svg",
+    "/images/logo/dmflogo.svg",
+    "/images/logo/dozylog.png",
+    "/images/logo/gpt.svg",
+    "/images/logo/plat.svg",
+    "/images/logo/dii.svg",
+    "/images/logo/tlacc.svg",
+    "/images/logo/1.png",
+    "/images/logo/rensource.svg",
+    "/images/logo/okeowo.svg",
+    "/images/logo/savl.png",
+    "/images/logo/soundhous.svg",
+    "/images/logo/diatomimpact.svg",
+    "/images/logo/atalantic1.png",
+    "/images/logo/CED.png",
+    "/images/logo/tingo.png",
+    "/images/logo/equity.png",
+    "/images/logo/africanholdings.png",
+    "/images/logo/ehglogo.svg",
+    "/images/logo/edc.svg",
+  ];
+
+  const nextSlide = () =>
+    setIndex((prev) => (prev + 1) % slides.length);
+
+  const prevSlide = () =>
+    setIndex((prev) => (prev - 1 + slides.length) % slides.length);
+
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 8000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section className="relative overflow-hidden bg-white">
-      {/* Decorative Background Elements */}
-      <div className="pointer-events-none absolute inset-0">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 2, ease: "easeOut" }}
-          className="absolute -top-32 -left-32 h-[420px] w-[420px] rounded-full bg-[#ffd6b6]/60 blur-[120px]"
-        />
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 2.2, ease: "easeOut" }}
-          className="absolute top-1/3 -right-32 h-[480px] w-[480px] rounded-full bg-[#a93747]/30 blur-[140px]"
-        />
-      </div>
+    <>
+      <section className="relative h-screen w-full overflow-hidden bg-[#0a0a0a] text-white">
 
-      <div className="relative z-10 container mx-auto px-6 lg:max-w-screen-xl pt-40 pb-32">
-        <div className="grid lg:grid-cols-12 gap-16 items-center">
-          {/* LEFT — TYPOGRAPHY LED */}
-          <motion.div
-            initial={{ opacity: 0, y: 32 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-7"
-          >
-            {/* Small authority line */}
-            <p className="uppercase tracking-[0.25em] text-xs text-black/50">
-              Digital Marketing & Growth Agency
-            </p>
+        {/* VIDEO */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover animate-zoom"
+        >
+          <source src="/images/hero/lagos.mp4" type="video/mp4" />
+        </video>
 
-            {/* Headline */}
-            <h1 className="mt-6 text-[1.8rem] md:text-[3.2rem] leading-[1.05] font-light text-black">
-              We Design Visibility,
-              <span className="block mt-3 font-normal text-[#461248]">
-                Then Engineer Revenue
-              </span>
-            </h1>
+        {/* OVERLAY */}
+        <div className="absolute inset-0 bg-black/75" />
 
-            {/* Subtext */}
-            <p className="mt-8 max-w-xl text-lg leading-relaxed text-black/70">
-              Spotlite Africa partners with ambitious brands to build digital
-              systems that attract the right audience, convert demand into sales,
-              and scale with precision.
-            </p>
-
-            {/* CTA */}
-            <div className="mt-12">
-              <Link
-                href="/contact"
-                className="group inline-flex items-center gap-4 rounded-full border border-black px-10 py-4 text-sm uppercase tracking-wide text-black transition-all hover:bg-black hover:text-white"
-              >
-                Get a Growth Strategy
-                <span className="transition-transform group-hover:translate-x-1">
-                  <ArrowRight size={16} />
-                </span>
-              </Link>
-            </div>
-          </motion.div>
-
-          {/* RIGHT — SALES STATEMENT BLOCK */}
-          <motion.div
-            initial={{ opacity: 0, y: 48 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.15, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-5"
-          >
-            <div className="relative rounded-3xl border border-black/10 bg-white p-10 shadow-[0_30px_90px_rgba(0,0,0,0.08)]">
-              <p className="text-sm text-black/60 leading-relaxed">
-                Most brands struggle not because they lack visibility,
-                <span className="text-black font-medium">
-                  {" "}
-                  but because their digital presence isn’t built to convert.
-                </span>
+        {/* CONTENT */}
+        <div className="relative z-10 h-full flex items-center px-6 md:px-24">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={slides[index].id}
+              initial={{ opacity: 0, y: 60 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -60 }}
+              transition={{ duration: 0.9 }}
+              className="max-w-2xl"
+            >
+              {/* LABEL */}
+              <p className="text-[11px] tracking-[0.35em] uppercase text-white/40 mb-6 flex items-center gap-3">
+                <span className="w-6 h-[1px] bg-[#c2410c]" />
+                {slides[index].label}
               </p>
 
-              <div className="mt-8 space-y-3 text-sm text-black/70">
-                <p>• Campaigns without clear ROI</p>
-                <p>• Social growth without revenue</p>
-                <p>• Websites that look good but don’t sell</p>
+              {/* TITLE */}
+              <h1 className="text-4xl md:text-6xl font-medium leading-[1.1] tracking-tight bg-gradient-to-r from-[#e5e5e5] via-[#cfcfcf] to-[#c2410c] bg-clip-text text-transparent">
+                {slides[index].title}
+              </h1>
+
+              {/* DESC */}
+              <p className="mt-6 text-base md:text-lg text-white/70 leading-relaxed max-w-lg">
+                {slides[index].desc}
+              </p>
+
+              {/* BUTTON */}
+              <div className="mt-10">
+                <button
+                  onClick={() => setOpenModal(true)}
+                  className="group relative inline-flex items-center gap-4 px-8 py-4 rounded-full border border-white/20 backdrop-blur-xl overflow-hidden transition"
+                >
+                  <span className="relative z-10 text-sm tracking-wide">
+                    {slides[index].cta}
+                  </span>
+
+                  <span className="relative z-10 text-white/60 group-hover:text-white transition transform group-hover:translate-x-1">
+                    →
+                  </span>
+
+                  <span className="absolute bottom-0 left-0 h-[1px] w-0 bg-[#c2410c] group-hover:w-full transition-all duration-500" />
+                </button>
               </div>
-
-              <p className="mt-8 text-sm font-medium text-[#461248]">
-                We build clarity, structure, and performance.
-              </p>
-            </div>
-          </motion.div>
+            </motion.div>
+          </AnimatePresence>
         </div>
-      </div>
-    </section>
+
+        {/* ARROWS */}
+        <div className="absolute bottom-24 right-10 flex gap-4 z-20">
+          <button
+            onClick={prevSlide}
+            className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center backdrop-blur-md hover:border-[#c2410c] transition"
+          >
+            ←
+          </button>
+          <button
+            onClick={nextSlide}
+            className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center backdrop-blur-md hover:border-[#c2410c] transition"
+          >
+            →
+          </button>
+        </div>
+
+        {/* INDICATOR */}
+        <div className="absolute right-10 top-1/2 -translate-y-1/2 flex flex-col gap-6 z-20">
+          {slides.map((_, i) => (
+            <div key={i} className="relative">
+              <div className="w-10 h-[1px] bg-white/20" />
+              {i === index && (
+                <motion.div
+                  layoutId="activeLine"
+                  className="absolute top-0 left-0 h-[1px] bg-[#c2410c]"
+                  initial={{ width: 0 }}
+                  animate={{ width: 40 }}
+                  transition={{ duration: 0.6 }}
+                />
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* LOGOS */}
+        <div className="absolute bottom-0 w-full border-t border-white/10 overflow-hidden">
+          <div className="flex whitespace-nowrap animate-marquee gap-20 py-6 items-center">
+            {[...logos, ...logos].map((logo, i) => (
+              <img
+                key={i}
+                src={logo}
+                alt="client"
+                className="h-6 md:h-8 opacity-50 hover:opacity-90 transition grayscale brightness-0 invert"
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ✅ MODAL */}
+      <ConsultationModal open={openModal} setOpen={setOpenModal} />
+    </>
   );
 }

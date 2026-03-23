@@ -1,108 +1,141 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
-    <footer className="relative bg-black py-24 md:py-32 overflow-hidden">
-      {/* Top Hairline Divider */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[1px] w-[70%] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+    <footer className="relative bg-[#0a0a0a] text-white overflow-hidden">
 
-      <div className="relative z-10 container mx-auto px-6 lg:max-w-screen-xl">
-        <div className="grid lg:grid-cols-12 gap-16 items-start">
-          {/* ================= BRAND ================= */}
-          <div className="lg:col-span-4 space-y-6">
-            <span
-              className="block text-sm tracking-[0.35em] uppercase text-white font-light"
-              style={{ textShadow: "0 4px 20px rgba(0,0,0,0.35)" }}
-            >
-              Spotlite Africa Agency
-            </span>
+      {/* SUBTLE GLOW */}
+      <div className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[#c2410c]/10 blur-[180px]" />
 
-            <p className="text-white/60 text-sm leading-relaxed max-w-sm">
-              Spotlite Africa is a digital marketing and growth agency helping
-              businesses build strong brands, deploy effective digital systems,
-              and scale with clarity, structure, and measurable results.
+      <div className="relative z-10 px-6 md:px-20 py-24">
+
+        {/* ================= TOP ================= */}
+        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-16">
+
+          {/* BRAND */}
+          <div>
+            <Image
+              src="/images/logo/saawhite.png"
+              alt="Spotlite Africa"
+              width={160}
+              height={40}
+              className="mb-6"
+            />
+
+            <p className="text-white/50 leading-relaxed max-w-sm">
+              We structure how brands are experienced — refining clarity, alignment, and digital presence for companies operating at a high level.
             </p>
           </div>
 
-          {/* ================= AGENCY ================= */}
-          <div className="lg:col-span-4 space-y-6">
-            <span className="block text-[11px] tracking-[0.3em] uppercase text-white/40">
-              Agency
-            </span>
-
-            <ul className="space-y-3 text-sm">
-              <li>
-                <Link
-                  href="#services"
-                  className="text-white/70 hover:text-white transition"
-                >
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#process"
-                  className="text-white/70 hover:text-white transition"
-                >
-                  How We Work
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#why"
-                  className="text-white/70 hover:text-white transition"
-                >
-                  Why Spotlite
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#partnerships"
-                  className="text-white/70 hover:text-white transition"
-                >
-                  Partnerships
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* ================= CONTACT & TRUST ================= */}
-          <div className="lg:col-span-4 space-y-6">
-            <span className="block text-[11px] tracking-[0.3em] uppercase text-white/40">
-              Contact & Trust
-            </span>
-
-            <p className="text-white/70 text-sm leading-relaxed max-w-sm">
-              We work with serious founders, professionals, and registered
-              businesses committed to building long-term digital value and
-              sustainable growth.
+          {/* NAV */}
+          <div>
+            <p className="text-sm tracking-[0.3em] uppercase text-white/40 mb-6">
+              Navigation
             </p>
 
-            <div className="space-y-3 text-sm">
-              <Link
-                href="#contact"
-                className="block text-white/70 hover:text-white transition"
-              >
-                Start a Conversation
-              </Link>
-
-              <Link
-                href="#partnerwithspotlite"
-                className="block text-white/70 hover:text-white transition"
-              >
-                Become a Partner
-              </Link>
+            <div className="flex flex-col gap-4 text-white/70">
+              <FooterLink href="/">Home</FooterLink>
+              <FooterLink href="/established">Established</FooterLink>
+              <FooterLink href="/emerging">Emerging</FooterLink>
+              <FooterLink href="/work">Work</FooterLink>
             </div>
           </div>
+
+          {/* CONTACT */}
+          <div>
+            <p className="text-sm tracking-[0.3em] uppercase text-white/40 mb-6">
+              Contact
+            </p>
+
+            <div className="space-y-4 text-white/70">
+
+              <a
+                href="mailto:info@spotliteafrica.com"
+                className="block hover:text-white transition"
+              >
+                info@spotliteafrica.com
+              </a>
+
+              <p className="text-white/40">
+                Lagos, Nigeria
+              </p>
+
+             {/* CONTACT NUMBER */}
+<div className="mt-6">
+  <a
+    href="tel:+2347048048164"
+    className="group relative inline-block text-sm text-white/80 hover:text-white transition"
+  >
+    +234 704 804 8164
+
+    {/* PREMIUM UNDERLINE */}
+    <span className="absolute left-0 bottom-[-4px] h-[1px] w-0 bg-gradient-to-r from-[#c2410c] to-[#e5e5e5] group-hover:w-full transition-all duration-500" />
+  </a>
+</div>
+
+            </div>
+          </div>
+
         </div>
 
-        {/* ================= BOTTOM LINE ================= */}
-        <div className="mt-20 text-center text-white/40 text-xs tracking-wide">
-          © {new Date().getFullYear()} Spotlite Africa Agency. All rights reserved.
+        {/* ================= MIDDLE LINE ================= */}
+        <div className="mt-20 relative h-[1px] w-full overflow-hidden">
+
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
+          <motion.div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(90deg, transparent, #c2410c, #e5e5e5, #c2410c, transparent)",
+              backgroundSize: "200% 100%",
+            }}
+            animate={{ backgroundPosition: ["0%", "200%"] }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
         </div>
+
+        {/* ================= BOTTOM ================= */}
+        <div className="mt-8 flex flex-col md:flex-row justify-between items-center text-sm text-white/40 gap-4">
+
+          <p>
+            © {new Date().getFullYear()} Spotlite Africa. All rights reserved.
+          </p>
+
+          
+
+        </div>
+
       </div>
     </footer>
+  );
+}
+
+/* ================= FOOTER LINK ================= */
+
+function FooterLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <Link
+      href={href}
+      className="relative group w-fit"
+    >
+      {children}
+
+      <span className="absolute left-0 bottom-[-4px] h-[1px] w-0 bg-gradient-to-r from-[#c2410c] to-[#e5e5e5] group-hover:w-full transition-all duration-500" />
+    </Link>
   );
 }

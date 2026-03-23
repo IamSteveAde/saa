@@ -7,11 +7,10 @@ import DiscoverProperties from "./components/home/property-option"; // mentor / 
 import Listing from "./components/home/property-list";
 import Testimonials from "./components/home/testimonial";
 import History from "./components/home/history";
-import Calculator from "./components/home/calculator";
-import Info from "./components/home/info";
+
 
 // Global components
-import AudioWelcome from "./components/AudioWelcome";
+
 
 /* -------------------------------------
    METADATA — SPOTLITE AFRICA AGENCY
@@ -96,7 +95,7 @@ export default function Home() {
   return (
     <main>
       {/* Audio welcome — brief, professional, plays once per visit */}
-      <AudioWelcome />
+     
 
       {/* Core hero & positioning */}
       <Hero />
@@ -113,8 +112,7 @@ export default function Home() {
 
       {/* Company journey, capability & infrastructure */}
       <History />
-      <Calculator />
-      <Info />
+      
     </main>
   );
 }

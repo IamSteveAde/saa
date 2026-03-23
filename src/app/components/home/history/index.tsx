@@ -1,163 +1,101 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
-import { Users, Briefcase, Scale, ArrowRight } from "lucide-react";
+import { useState } from "react";
+import ConsultationModal from "../../../components/ConsultationModal";
 
-export default function Partnerships() {
+export default function Consultation() {
+  const [openModal, setOpenModal] = useState(false);
+
   return (
-    <section
-      className="relative overflow-hidden py-32 md:py-40 bg-white"
-      id="partnerwithspotlite"
-    >
-      {/* Soft background accent */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white via-[#ffd6b6]/30 to-white" />
+    <>
+      <section className="relative bg-[#0a0a0a] text-white py-32 px-6 md:px-20 overflow-hidden">
 
-      <div className="relative z-10 container mx-auto px-6 lg:max-w-screen-xl">
-        {/* Header */}
-        <div className="max-w-3xl">
-          <p className="uppercase tracking-[0.3em] text-xs text-black/50">
-            Partnerships
-          </p>
+        {/* SUBTLE GLOW */}
+        <div className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[#c2410c]/10 blur-[180px] pointer-events-none" />
 
-          <h2 className="mt-6 text-4xl md:text-5xl font-light leading-tight text-black">
-            Partner With Us to Create
-            <span className="block mt-2 font-normal text-[#461248]">
-              Additional Revenue for Your Practice
-            </span>
-          </h2>
+        {/* CONTENT */}
+        <div className="max-w-3xl mx-auto text-center relative z-10">
 
-          <p className="mt-8 text-lg leading-relaxed text-black/70">
-            We work closely with professional service firms whose clients
-            require brand development, digital presence, and growth support
-            when registering or scaling their businesses.
-          </p>
-        </div>
-
-        {/* Partner Types */}
-        <div className="mt-20 grid gap-10 md:grid-cols-3">
-          <PartnerType
-            icon={<Users />}
-            title="HR & People Advisory Firms"
-            text="Support clients building teams and internal structures, while we help them build visibility, credibility, and demand."
-          />
-
-          <PartnerType
-            icon={<Briefcase />}
-            title="Accounting & Financial Advisory Firms"
-            text="For businesses registering with CAC, setting up structures, and preparing for growth through proper financial systems."
-          />
-
-          <PartnerType
-            icon={<Scale />}
-            title="Legal & Corporate Advisory Firms"
-            text="Ideal for law firms assisting with company registration, compliance, and corporate structuring."
-          />
-        </div>
-
-        {/* HOW IT WORKS + IMAGE */}
-        <div className="mt-28 grid gap-16 lg:grid-cols-2 lg:items-center">
-          {/* IMAGE — TOP ON MOBILE, RIGHT ON DESKTOP */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
+          {/* LABEL */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="relative order-1 lg:order-2"
+            transition={{ duration: 0.6 }}
+            className="text-[11px] tracking-[0.35em] uppercase text-white/40 mb-6 flex items-center justify-center gap-3"
           >
-            <div className="relative h-[160px] sm:h-[320px] lg:h-[420px] w-full rounded-3xl overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.15)]">
-              <Image
-                src="/images/hero/partners.png" // 👈 replace with your image
-                alt="Professional partnership with Spotlite Africa Agency"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </div>
+            <span className="w-6 h-[1px] bg-[#c2410c]" />
+            Consultation
+          </motion.p>
+
+          {/* HEADLINE */}
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-3xl md:text-5xl font-medium tracking-tight leading-tight bg-gradient-to-r from-[#e5e5e5] via-white to-[#c2410c] bg-clip-text text-transparent"
+          >
+            Start the conversation
+          </motion.h2>
+
+          {/* SUBTEXT */}
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9 }}
+            className="mt-6 text-lg text-white/60 leading-relaxed"
+          >
+            We partner with a select number of companies.  
+            If this aligns with where you're going, we can explore it.
+          </motion.p>
+
+          {/* ✅ CTA → OPEN MODAL */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="mt-12 flex justify-center"
+          >
+            <button
+              onClick={() => setOpenModal(true)}
+              className="group relative inline-flex items-center gap-4 px-10 py-4 rounded-full border border-white/20 backdrop-blur-xl overflow-hidden transition"
+            >
+
+              {/* glow */}
+              <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-r from-[#c2410c]/10 via-transparent to-[#c2410c]/10" />
+
+              {/* text */}
+              <span className="relative z-10 text-sm tracking-wide">
+                Request Private Consultation
+              </span>
+
+              {/* arrow */}
+              <span className="relative z-10 text-white/60 group-hover:text-white transition transform group-hover:translate-x-1">
+                →
+              </span>
+
+              {/* underline */}
+              <span className="absolute bottom-0 left-0 h-[1px] w-0 bg-[#c2410c] group-hover:w-full transition-all duration-500" />
+            </button>
           </motion.div>
 
-          {/* TEXT CONTENT */}
-          <div className="order-2 lg:order-1 max-w-xl">
-            <h3 className="text-2xl font-light text-black">
-              How the Partnership Works
-            </h3>
-
-            <div className="mt-8 space-y-6 text-black/70">
-              <p>
-                • You refer clients who are registering with CAC or actively
-                building their businesses and require branding, websites,
-                digital systems, or marketing support.
-              </p>
-              <p>
-                • We engage the client professionally, deliver value, and manage
-                all digital execution end-to-end.
-              </p>
-              <p>
-                • You earn a referral commission for every successful
-                engagement, creating a new income stream without additional
-                workload.
-              </p>
-            </div>
-
-            <p className="mt-8 text-sm text-black/60">
-              This partnership is designed strictly for registered businesses
-              and professional firms working with serious founders and
-              companies.
-            </p>
-
-            {/* CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-12"
-            >
-              <Link
-                href="https://wa.me/2347048048164?text=Hello%20I’m%20interested%20in%20partnering%20with%20Spotlite%20Africa%20Agency"
-                target="_blank"
-                className="inline-flex items-center gap-4 rounded-full bg-[#461248] px-10 py-5 text-sm uppercase tracking-wide text-white transition hover:opacity-90"
-              >
-                Contact Us on WhatsApp
-                <ArrowRight size={16} />
-              </Link>
-            </motion.div>
-          </div>
+          {/* EXCLUSIVITY */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="mt-6 text-sm text-white/30 tracking-wide"
+          >
+            We don’t take on every project.
+          </motion.p>
         </div>
-      </div>
-    </section>
-  );
-}
 
-/* -------------------------------------
-   PARTNER TYPE CARD
-------------------------------------- */
-function PartnerType({
-  icon,
-  title,
-  text,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  text: string;
-}) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="rounded-3xl border border-black/10 bg-white/80 p-8 backdrop-blur-sm"
-    >
-      <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-[#461248]/10 text-[#461248]">
-        {icon}
-      </div>
+        {/* FADE */}
+        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#0a0a0a] to-transparent pointer-events-none" />
+      </section>
 
-      <h3 className="text-lg font-medium text-black">{title}</h3>
-      <p className="mt-3 text-sm leading-relaxed text-black/65">
-        {text}
-      </p>
-    </motion.div>
+      {/* ✅ SAME MODAL USED HERE */}
+      <ConsultationModal open={openModal} setOpen={setOpenModal} />
+    </>
   );
 }

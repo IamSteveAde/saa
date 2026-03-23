@@ -4,238 +4,187 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
-  const [onDark, setOnDark] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const [step, setStep] = useState<"choice" | "form">("choice");
+  const [type, setType] = useState("");
 
-  /* --------------------------------------------------
-     Detect dark sections
-  -------------------------------------------------- */
   useEffect(() => {
-    const sections =
-      document.querySelectorAll<HTMLElement>("section[data-dark]");
-    if (!sections.length) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        setOnDark(entries.some((entry) => entry.isIntersecting));
-      },
-      {
-        rootMargin: "-80px 0px -70% 0px",
-        threshold: 0,
-      }
-    );
-
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+    const handleScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  /* --------------------------------------------------
-     Lock scroll on mobile menu
-  -------------------------------------------------- */
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
-  }, [menuOpen]);
+    document.body.style.overflow = menuOpen || openModal ? "hidden" : "";
+  }, [menuOpen, openModal]);
 
   return (
     <>
-      {/* ================= HEADER ================= */}
+      {/* ================= NAV ================= */}
       <header
-        className={`
-          fixed top-0 left-0 w-full z-50
-          backdrop-blur-xl
-          bg-white/80
-          transition-colors duration-300
-          ${onDark ? "text-white" : "text-black"}
-        `}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+          scrolled
+            ? "bg-white text-black shadow-[0_10px_40px_rgba(0,0,0,0.08)]"
+            : "bg-transparent text-white"
+        }`}
       >
-        <div className="container mx-auto px-6 lg:max-w-screen-xl">
+        <div className="max-w-screen-xl mx-auto px-6">
           <div className="flex items-center justify-between h-20">
-            {/* LOGO */}
-            <Link href="/" className="z-50 flex items-center">
+
+            {/* 🔥 LOGO SWITCH */}
+            <Link href="/">
               <Image
-                src="/images/logo/saa.svg"
-                alt="Spotlite Africa Agency"
-                width={180}
+                src={
+                  scrolled
+                    ? "/images/logo/saa.svg"        // original logo
+                    : "/images/logo/saawhite.png" // white logo
+                }
+                alt="Flight Africa"
+                width={150}
                 height={20}
-                priority
-                className="object-contain"
+                className="object-contain transition-all duration-300"
               />
             </Link>
 
-            {/* DESKTOP NAV */}
-            <nav className="hidden md:flex items-center gap-10">
-              <NavItem onDark={onDark} href="#services">
-                Services
-              </NavItem>
+            {/* NAV */}
+            <nav className="hidden md:flex items-center gap-12">
+              <NavItem href="/">Home</NavItem>
+              <NavItem href="/established">Established</NavItem>
+              <NavItem href="/emerging">Emerging</NavItem>
+              <NavItem href="/work">Work</NavItem>
 
-              <NavItem onDark={onDark} href="#process">
-                How We Work
-              </NavItem>
-
-              <NavItem onDark={onDark} href="#why">
-                Why Spotlite
-              </NavItem>
-
-              <NavItem onDark={onDark} href="#partnerwithspotlite">
-                Partner With Us
-              </NavItem>
-
-              <NavItem
-                onDark={onDark}
-                href="#contact"
-                className="px-5 py-2 rounded-full border border-black/20 hover:border-black transition"
+              {/* CTA */}
+              <button
+                onClick={() => setOpenModal(true)}
+                className="ml-4 px-6 py-2 rounded-full border border-black/20 text-[11px] tracking-[0.3em] uppercase hover:border-[#c2410c] transition"
               >
-                Get Started
-              </NavItem>
+                Consultation
+              </button>
             </nav>
 
-            {/* MOBILE TOGGLE */}
+            {/* MOBILE */}
             <button
-              aria-label={menuOpen ? "Close menu" : "Open menu"}
-              onClick={() => setMenuOpen((prev) => !prev)}
-              className="
-                md:hidden z-50
-                h-11 w-11
-                rounded-full
-                flex items-center justify-center
-                backdrop-blur-xl
-                bg-white/20
-                border border-white/30
-                shadow-[0_8px_30px_rgba(0,0,0,0.18)]
-                transition hover:bg-white/30
-              "
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="md:hidden z-50"
             >
-              {menuOpen ? <X size={18} /> : <Menu size={18} />}
+              {menuOpen ? <X /> : <Menu />}
             </button>
           </div>
         </div>
       </header>
 
-      {/* ================= MOBILE MENU ================= */}
-      {menuOpen && (
-        <div className="fixed inset-0 z-40 bg-black/90 backdrop-blur-2xl">
-          <nav className="h-full flex flex-col items-center justify-center">
-            <MobileNavItem
-              delay={0}
-              href="#services"
-              onClick={() => setMenuOpen(false)}
+      {/* ================= MODAL ================= */}
+      <AnimatePresence>
+        {openModal && (
+          <motion.div
+            className="fixed inset-0 bg-black/90 backdrop-blur-xl z-50 flex items-center justify-center p-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => {
+              setOpenModal(false);
+              setStep("choice");
+            }}
+          >
+            <motion.div
+              className="bg-[#111] w-full max-w-xl p-10 border border-white/10 text-white"
+              initial={{ scale: 0.95 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.95 }}
+              onClick={(e) => e.stopPropagation()}
             >
-              Services
-            </MobileNavItem>
 
-            <Divider />
+              {/* STEP 1 */}
+              {step === "choice" && (
+                <>
+                  <h2 className="text-2xl mb-8 text-white">
+                    Who are you?
+                  </h2>
 
-            <MobileNavItem
-              delay={1}
-              href="#process"
-              onClick={() => setMenuOpen(false)}
-            >
-              How We Work
-            </MobileNavItem>
+                  <div className="space-y-4">
 
-            <Divider />
+                    {[
+                      "Established Company",
+                      "Emerging Brand",
+                      "Other",
+                    ].map((item) => (
+                      <button
+                        key={item}
+                        onClick={() => {
+                          setType(item);
+                          setStep("form");
+                        }}
+                        className="w-full text-left p-4 border border-white/10 text-white hover:border-[#c2410c] transition"
+                      >
+                        {item}
+                      </button>
+                    ))}
+                  </div>
+                </>
+              )}
 
-            <MobileNavItem
-              delay={2}
-              href="#why"
-              onClick={() => setMenuOpen(false)}
-            >
-              Why Spotlite
-            </MobileNavItem>
+              {/* STEP 2 */}
+              {step === "form" && (
+                <form
+                  action="https://formsubmit.co/info@spotliteafrica.com"
+                  method="POST"
+                  className="space-y-6"
+                >
+                  <h2 className="text-xl text-white">{type}</h2>
 
-            <Divider />
+                  <input type="hidden" name="_captcha" value="false" />
 
-            <MobileNavItem
-              delay={3}
-              href="#partnerwithspotlite"
-              onClick={() => setMenuOpen(false)}
-            >
-              Partner With Us
-            </MobileNavItem>
+                  <input
+                    name="name"
+                    placeholder="Your Name"
+                    required
+                    className="w-full p-3 bg-transparent border border-white/10 text-white placeholder-white/40 focus:border-[#c2410c] outline-none"
+                  />
 
-            <Divider />
+                  <input
+                    name="email"
+                    placeholder="Email"
+                    required
+                    className="w-full p-3 bg-transparent border border-white/10 text-white placeholder-white/40 focus:border-[#c2410c] outline-none"
+                  />
 
-            <MobileNavItem
-              delay={4}
-              href="#contact"
-              onClick={() => setMenuOpen(false)}
-            >
-              Get Started
-            </MobileNavItem>
-          </nav>
-        </div>
-      )}
+                  <textarea
+                    name="message"
+                    placeholder="Tell us about your project"
+                    rows={4}
+                    className="w-full p-3 bg-transparent border border-white/10 text-white placeholder-white/40 focus:border-[#c2410c] outline-none"
+                  />
+
+                  <button
+                    type="submit"
+                    className="w-full py-3 border border-white/20 text-white hover:border-[#c2410c] transition"
+                  >
+                    Send Request →
+                  </button>
+                </form>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
 
-/* ======================================================
-   DESKTOP NAV ITEM
-====================================================== */
-function NavItem({
-  href,
-  children,
-  onDark,
-  className = "",
-}: {
-  href: string;
-  children: React.ReactNode;
-  onDark: boolean;
-  className?: string;
-}) {
-  const base = `
-    text-[11px] tracking-[0.3em] uppercase
-    transition-colors duration-300
-    ${onDark ? "text-white/90 hover:text-white" : "text-black/85 hover:text-black"}
-  `;
-
-  return (
-    <Link href={href} className={`${base} ${className}`}>
-      {children}
-    </Link>
-  );
-}
-
-/* ======================================================
-   MOBILE NAV ITEM
-====================================================== */
-function MobileNavItem({
-  href,
-  children,
-  onClick,
-  delay = 0,
-}: {
-  href: string;
-  children: React.ReactNode;
-  onClick: () => void;
-  delay?: number;
-}) {
+/* NAV ITEM */
+function NavItem({ href, children }: any) {
   return (
     <Link
       href={href}
-      onClick={onClick}
-      style={{ animationDelay: `${delay * 90}ms` }}
-      className="
-        text-white/90
-        text-sm
-        tracking-[0.35em]
-        uppercase
-        py-4
-        transition hover:opacity-70
-      "
+      className="relative text-[11px] tracking-[0.3em] uppercase group"
     >
       {children}
+      <span className="absolute left-1/2 bottom-[-6px] h-[1px] w-0 bg-gradient-to-r from-[#c2410c] to-[#e5e5e5] group-hover:w-full group-hover:left-0 transition-all duration-500" />
     </Link>
-  );
-}
-
-/* ======================================================
-   DIVIDER
-====================================================== */
-function Divider() {
-  return (
-    <div className="w-32 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
   );
 }

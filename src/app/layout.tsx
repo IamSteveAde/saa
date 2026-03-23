@@ -10,7 +10,7 @@ import { AppContextProvider } from "../context-api/PropertyContext";
 import Header from "./components/layout/header";
 import Footer from "./components/layout/footer";
 
-import WhatsAppFloat from "./components/WhatsAppFloat";
+
 import Aoscompo from "@/utils/aos";
 
 /* -------------------------------------
@@ -55,7 +55,7 @@ export default function RootLayout({
             </Aoscompo>
 
             {/* Global Floating WhatsApp Button */}
-            <WhatsAppFloat />
+            
 
             {/* Optional: Scroll to top */}
            

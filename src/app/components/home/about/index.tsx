@@ -1,134 +1,92 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  Globe,
-  ShoppingCart,
-  TrendingUp,
-  Users,
-  Megaphone,
-  BarChart3,
-} from "lucide-react";
+
+const pillars = [
+  {
+    title: "Brand",
+    desc: "We define and standardize how your brand looks, speaks, and presents itself across every touchpoint.",
+  },
+  {
+    title: "Digital",
+    desc: "We design and build your website and digital platforms to reflect a clear, structured, premium experience.",
+  },
+  {
+    title: "Continuity",
+    desc: "We maintain and refine your presence over time, ensuring everything remains aligned as your business evolves.",
+  },
+];
 
 export default function WhatWeDo() {
   return (
-    <section className="relative overflow-hidden bg-white py-15" id="services">
-      {/* Orbit Background */}
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
-          className="absolute h-[900px] w-[900px] rounded-full border border-black/5"
-        />
-        <motion.div
-          animate={{ rotate: -360 }}
-          transition={{ duration: 90, repeat: Infinity, ease: "linear" }}
-          className="absolute h-[650px] w-[650px] rounded-full border border-black/10"
-        />
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-          className="absolute h-[420px] w-[420px] rounded-full border border-black/15"
-        />
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute h-[420px] w-[420px]"
-        >
-          <div className="absolute -top-3 left-1/2 h-6 w-6 -translate-x-1/2 rounded-full bg-[#f2a15f] blur-md" />
-        </motion.div>
-      </div>
+    <section className="relative bg-[#0a0a0a] text-white py-32 px-6 md:px-20 overflow-hidden">
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 lg:max-w-screen-xl">
-        <div className="text-center max-w-3xl mx-auto">
-          <p className="uppercase tracking-[0.3em] text-xs text-black/50">
-            What We Do
+      {/* 🌫 BACKGROUND GLOW */}
+      <div className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[#c2410c]/10 blur-[180px] pointer-events-none" />
+
+      {/* 🌫 SUBTLE GRID */}
+      <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(#fff_1px,transparent_1px),linear-gradient(90deg,#fff_1px,transparent_1px)] bg-[size:60px_60px]" />
+
+      <div className="max-w-6xl mx-auto relative z-10">
+
+        {/* HEADER */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="max-w-2xl"
+        >
+          <p className="text-[11px] tracking-[0.35em] uppercase text-white/40 mb-6 flex items-center gap-3">
+            <span className="w-6 h-[1px] bg-[#c2410c]" />
+            What We Handle
           </p>
 
-          <h2 className="mt-6 text-4xl md:text-5xl font-light leading-tight text-black">
-            A Connected Growth System
-            <span className="block mt-2 font-normal text-[#461248]">
-              Built to Attract, Convert & Scale
-            </span>
+          <h2 className="text-3xl md:text-5xl font-medium leading-tight tracking-tight bg-gradient-to-r from-[#e5e5e5] via-white to-[#c2410c] bg-clip-text text-transparent">
+            We structure how your brand appears.
           </h2>
 
-          <p className="mt-8 text-lg text-black/70 leading-relaxed">
-            Our services work together as a single ecosystem, each one
-            reinforcing the other to create clarity, momentum, and measurable
-            growth.
+          <p className="mt-6 text-lg text-white/60 leading-relaxed">
+            Everything your business puts out digitally should feel intentional, consistent, and aligned with your level.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Services */}
-        <div className="mt-24 grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-          <Service
-            icon={<Globe />}
-            title="Brand, Websites & E-commerce"
-            text="Brand positioning, high-converting websites, and e-commerce experiences engineered for trust and sales."
-          />
+        {/* PILLARS */}
+        <div className="mt-20 grid md:grid-cols-3 gap-12">
 
-          <Service
-            icon={<TrendingUp />}
-            title="Performance & Paid Advertising"
-            text="ROI-focused advertising across search, social, and display, optimized for scalable growth."
-          />
+          {pillars.map((item, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: i * 0.15 }}
+              viewport={{ once: true }}
+              className="group relative"
+            >
+              {/* NUMBER */}
+              <div className="text-white/20 text-5xl font-light mb-6">
+                0{i + 1}
+              </div>
 
-          <Service
-            icon={<Users />}
-            title="Social Media & Content Systems"
-            text="Strategic content frameworks that grow relevance, consistency, and audience loyalty."
-          />
+              {/* TITLE */}
+              <h3 className="text-xl font-medium tracking-wide">
+                {item.title}
+              </h3>
 
-          <Service
-            icon={<Megaphone />}
-            title="Influencer & Creator Management"
-            text="Carefully curated partnerships that amplify reach without diluting brand credibility."
-          />
+              {/* DESC */}
+              <p className="mt-4 text-white/60 leading-relaxed max-w-sm">
+                {item.desc}
+              </p>
 
-          <Service
-            icon={<ShoppingCart />}
-            title="Campaign Strategy & Launches"
-            text="End-to-end digital campaigns designed to generate demand and accelerate conversions."
-          />
-
-          <Service
-            icon={<BarChart3 />}
-            title="Analytics, CRO & Growth Consulting"
-            text="Deep insights, conversion optimization, and strategic guidance to maximize performance."
-          />
+              {/* HOVER LINE */}
+              <span className="absolute left-0 bottom-[-10px] h-[1px] w-0 bg-gradient-to-r from-[#c2410c] to-white group-hover:w-full transition-all duration-500" />
+            </motion.div>
+          ))}
         </div>
       </div>
+
+      {/* 🌫 BOTTOM FADE */}
+      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#0a0a0a] to-transparent pointer-events-none" />
     </section>
-  );
-}
-
-/* -------------------------------------
-   SERVICE CARD
-------------------------------------- */
-function Service({
-  icon,
-  title,
-  text,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  text: string;
-}) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative rounded-2xl border border-black/10 bg-white/80 p-8 backdrop-blur-sm transition hover:shadow-[0_30px_80px_rgba(0,0,0,0.08)]"
-    >
-      <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-[#461248]/10 text-[#461248] transition group-hover:bg-[#461248] group-hover:text-white">
-        {icon}
-      </div>
-
-      <h3 className="text-lg font-medium text-black">{title}</h3>
-      <p className="mt-3 text-sm leading-relaxed text-black/65">{text}</p>
-    </motion.div>
   );
 }
