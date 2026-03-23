@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ConsultationModal from "../../../components/ConsultationModal";
+import Image from "next/image";
 
 export default function Hero() {
   const [index, setIndex] = useState(0);
@@ -161,18 +162,26 @@ export default function Hero() {
         </div>
 
         {/* LOGOS */}
-        <div className="absolute bottom-0 w-full border-t border-white/10 overflow-hidden">
-          <div className="flex whitespace-nowrap animate-marquee gap-20 py-6 items-center">
-            {[...logos, ...logos].map((logo, i) => (
-              <img
-                key={i}
-                src={logo}
-                alt="client"
-                className="h-6 md:h-8 opacity-50 hover:opacity-90 transition grayscale brightness-0 invert"
-              />
-            ))}
-          </div>
-        </div>
+        
+<div className="absolute bottom-0 w-full border-t border-white/10 overflow-hidden">
+  <div className="relative flex overflow-hidden py-6">
+    
+    <div className="flex gap-16 md:gap-20 items-center animate-marquee-fast will-change-transform">
+      {[...logos, ...logos].map((logo, i) => (
+        <Image
+          key={i}
+          src={logo}
+          alt="client"
+          width={100}
+          height={40}
+          priority={i < 6} // preload first few logos
+          className="h-5 md:h-7 w-auto opacity-60 hover:opacity-100 transition grayscale brightness-0 invert"
+        />
+      ))}
+    </div>
+
+  </div>
+</div>
       </section>
 
       {/* ✅ MODAL */}

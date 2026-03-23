@@ -33,56 +33,92 @@ export default function Header() {
             : "bg-transparent text-white"
         }`}
       >
-        <div className="max-w-screen-xl mx-auto px-6">
-          <div className="flex items-center justify-between h-20">
+        <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 sm:h-20">
 
-            {/* 🔥 LOGO SWITCH */}
+            {/* LOGO */}
             <Link href="/">
               <Image
                 src={
                   scrolled
-                    ? "/images/logo/saa.svg"        // original logo
-                    : "/images/logo/saawhite.png" // white logo
+                    ? "/images/logo/saa.svg"
+                    : "/images/logo/saawhite.png"
                 }
                 alt="Flight Africa"
-                width={150}
+                width={140}
                 height={20}
-                className="object-contain transition-all duration-300"
+                className="object-contain"
               />
             </Link>
 
-            {/* NAV */}
-            <nav className="hidden md:flex items-center gap-12">
+            {/* DESKTOP NAV */}
+            <nav className="hidden md:flex items-center gap-8 lg:gap-12">
               <NavItem href="/">Home</NavItem>
               <NavItem href="/established">Established</NavItem>
               <NavItem href="/emerging">Emerging</NavItem>
               <NavItem href="/work">Work</NavItem>
 
-              {/* CTA */}
               <button
                 onClick={() => setOpenModal(true)}
-                className="ml-4 px-6 py-2 rounded-full border border-black/20 text-[11px] tracking-[0.3em] uppercase hover:border-[#c2410c] transition"
+                className="ml-4 px-5 py-2 rounded-full border border-black/20 text-[11px] tracking-[0.3em] uppercase hover:border-[#c2410c] transition"
               >
                 Consultation
               </button>
             </nav>
 
-            {/* MOBILE */}
+            {/* MOBILE BUTTON */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               className="md:hidden z-50"
             >
-              {menuOpen ? <X /> : <Menu />}
+              {menuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
         </div>
       </header>
 
+      {/* ================= MOBILE MENU ================= */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            className="fixed inset-0 bg-black text-white z-40 flex flex-col items-center justify-center space-y-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            {["Home", "Established", "Emerging", "Work"].map((item) => (
+              <Link
+                key={item}
+                href={
+                  item === "Home"
+                    ? "/"
+                    : `/${item.toLowerCase()}`
+                }
+                onClick={() => setMenuOpen(false)}
+                className="text-lg tracking-[0.3em] uppercase"
+              >
+                {item}
+              </Link>
+            ))}
+
+            <button
+              onClick={() => {
+                setMenuOpen(false);
+                setOpenModal(true);
+              }}
+              className="mt-6 px-6 py-3 border border-white/20 uppercase tracking-[0.3em]"
+            >
+              Consultation
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* ================= MODAL ================= */}
       <AnimatePresence>
         {openModal && (
           <motion.div
-            className="fixed inset-0 bg-black/90 backdrop-blur-xl z-50 flex items-center justify-center p-6"
+            className="fixed inset-0 bg-black/90 backdrop-blur-xl z-50 flex items-center justify-center p-4 sm:p-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -92,22 +128,20 @@ export default function Header() {
             }}
           >
             <motion.div
-              className="bg-[#111] w-full max-w-xl p-10 border border-white/10 text-white"
+              className="bg-[#111] w-full max-w-lg sm:max-w-xl p-6 sm:p-10 border border-white/10 text-white"
               initial={{ scale: 0.95 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.95 }}
               onClick={(e) => e.stopPropagation()}
             >
-
               {/* STEP 1 */}
               {step === "choice" && (
                 <>
-                  <h2 className="text-2xl mb-8 text-white">
+                  <h2 className="text-xl sm:text-2xl mb-6 sm:mb-8">
                     Who are you?
                   </h2>
 
-                  <div className="space-y-4">
-
+                  <div className="space-y-3 sm:space-y-4">
                     {[
                       "Established Company",
                       "Emerging Brand",
@@ -119,7 +153,7 @@ export default function Header() {
                           setType(item);
                           setStep("form");
                         }}
-                        className="w-full text-left p-4 border border-white/10 text-white hover:border-[#c2410c] transition"
+                        className="w-full text-left p-3 sm:p-4 border border-white/10 hover:border-[#c2410c] transition"
                       >
                         {item}
                       </button>
@@ -133,9 +167,9 @@ export default function Header() {
                 <form
                   action="https://formsubmit.co/info@spotliteafrica.com"
                   method="POST"
-                  className="space-y-6"
+                  className="space-y-4 sm:space-y-6"
                 >
-                  <h2 className="text-xl text-white">{type}</h2>
+                  <h2 className="text-lg sm:text-xl">{type}</h2>
 
                   <input type="hidden" name="_captcha" value="false" />
 
@@ -143,26 +177,26 @@ export default function Header() {
                     name="name"
                     placeholder="Your Name"
                     required
-                    className="w-full p-3 bg-transparent border border-white/10 text-white placeholder-white/40 focus:border-[#c2410c] outline-none"
+                    className="w-full p-3 bg-transparent border border-white/10 placeholder-white/40 focus:border-[#c2410c] outline-none"
                   />
 
                   <input
                     name="email"
                     placeholder="Email"
                     required
-                    className="w-full p-3 bg-transparent border border-white/10 text-white placeholder-white/40 focus:border-[#c2410c] outline-none"
+                    className="w-full p-3 bg-transparent border border-white/10 placeholder-white/40 focus:border-[#c2410c] outline-none"
                   />
 
                   <textarea
                     name="message"
                     placeholder="Tell us about your project"
                     rows={4}
-                    className="w-full p-3 bg-transparent border border-white/10 text-white placeholder-white/40 focus:border-[#c2410c] outline-none"
+                    className="w-full p-3 bg-transparent border border-white/10 placeholder-white/40 focus:border-[#c2410c] outline-none"
                   />
 
                   <button
                     type="submit"
-                    className="w-full py-3 border border-white/20 text-white hover:border-[#c2410c] transition"
+                    className="w-full py-3 border border-white/20 hover:border-[#c2410c] transition"
                   >
                     Send Request →
                   </button>
