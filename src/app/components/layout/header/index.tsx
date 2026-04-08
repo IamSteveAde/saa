@@ -33,7 +33,7 @@ export default function Header() {
             : "bg-transparent text-white"
         }`}
       >
-        <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-screen-xl mx-auto px-1 sm:px-2 lg:px-2">
           <div className="flex items-center justify-between h-16 sm:h-20">
 
             {/* LOGO */}
@@ -54,9 +54,9 @@ export default function Header() {
             {/* DESKTOP NAV */}
             <nav className="hidden md:flex items-center gap-8 lg:gap-12">
               <NavItem href="/">Home</NavItem>
-              <NavItem href="/established">Established</NavItem>
-              <NavItem href="/emerging">Emerging</NavItem>
-              <NavItem href="/work">Work</NavItem>
+              <NavItem href="/established">For Established Businesses</NavItem>
+              <NavItem href="/emerging">For Emerging Businesses</NavItem>
+              <NavItem href="/work">Case Studies</NavItem>
 
               <button
                 onClick={() => setOpenModal(true)}

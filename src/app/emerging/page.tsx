@@ -24,22 +24,22 @@ export default function EmergingPage() {
           </p>
 
           <h1 className="text-4xl md:text-6xl font-medium leading-tight bg-gradient-to-r from-[#e5e5e5] via-white to-[#c2410c] bg-clip-text text-transparent">
-            Enter the market properly.
-            <br />
-            Not something you fix later.
-          </h1>
+  You only launch once.
+  <br />
+  Make it unforgettable.
+</h1>
 
           <p className="mt-6 text-lg text-white/60 max-w-xl">
-            We guide serious brands to build with clarity, structure, and a presence that is right from the start.
-          </p>
-
+  You’re not just launching a business.
+  We help you build a presence that earns attention, trust, and momentum from the start.
+</p>
           <div className="mt-10">
             <button
   onClick={() => setOpenModal(true)}
   className="group relative px-8 py-4 border border-white/20 rounded-full overflow-hidden"
 >
                 <span className="relative z-10 text-sm tracking-wide">
-                  Start With Strategy Session
+                  Start a Conversation
                 </span>
                 <span className="absolute bottom-0 left-0 h-[1px] w-0 bg-[#c2410c] group-hover:w-full transition-all duration-500" />
               </button>

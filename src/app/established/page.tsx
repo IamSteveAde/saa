@@ -19,14 +19,14 @@ export default function EstablishedPage() {
 
         <div className="max-w-4xl relative z-10">
           <h1 className="text-3xl md:text-5xl font-medium leading-tight bg-gradient-to-r from-[#e5e5e5] via-white to-[#c2410c] bg-clip-text text-transparent">
-            Your business is already working.
-            <br />
-            It just needs to be seen properly.
-          </h1>
+  Your reputation exists.
+  <br />
+  Your digital presence doesn’t.
+</h1>
 
           <p className="mt-6 text-lg text-white/60 max-w-xl">
-            We refine and structure how established companies are experienced digitally.
-          </p>
+  We bring your offline reputation into the digital world—so people see your business the way they should.
+</p>
 
           <div className="mt-10">
             <button
