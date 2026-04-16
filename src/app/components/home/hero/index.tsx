@@ -80,7 +80,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-black/75" />
 
         {/* CONTENT */}
-        <div className="relative z-10 h-full flex items-center px-6 md:px-24">
+       <div className="relative z-10 h-full flex items-center px-6 md:px-24 pb-32 md:pb-0">
           <AnimatePresence mode="wait">
             <motion.div
               key={slides[index].id}
@@ -128,7 +128,7 @@ export default function Hero() {
         </div>
 
         {/* ARROWS */}
-        <div className="absolute bottom-24 right-10 flex gap-4 z-20">
+       <div className="absolute bottom-6 right-4 md:bottom-24 md:right-10 flex gap-3 md:gap-4 z-20">
           <button
             onClick={prevSlide}
             className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center backdrop-blur-md hover:border-[#c2410c] transition"
@@ -144,7 +144,7 @@ export default function Hero() {
         </div>
 
         {/* INDICATOR */}
-        <div className="absolute right-10 top-1/2 -translate-y-1/2 flex flex-col gap-6 z-20">
+        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 md:top-1/2 md:right-10 md:left-auto md:-translate-x-0 md:-translate-y-1/2 flex md:flex-col flex-row gap-4 md:gap-6 z-20">
           {slides.map((_, i) => (
             <div key={i} className="relative">
               <div className="w-10 h-[1px] bg-white/20" />
