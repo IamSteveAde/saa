@@ -38,18 +38,17 @@ export default function Header() {
 
             {/* LOGO */}
             <Link href="/">
-              <Image
-                src={
-                  scrolled
-                    ? "/images/logo/saa.svg"
-                    : "/images/logo/saawhite.png"
-                }
-                alt="Flight Africa"
-                width={140}
-                height={20}
-                className="object-contain"
-              />
-            </Link>
+  <Image
+    src={scrolled 
+      ? "/images/logo/saaw.svg" 
+      : "/images/logo/saaw.svg"}
+    alt="Spotlite Africa"
+    width={140}
+    height={24}
+    priority
+    className="object-contain transition-all duration-300"
+  />
+</Link>
 
             {/* DESKTOP NAV */}
             <nav className="hidden md:flex items-center gap-8 lg:gap-12">
