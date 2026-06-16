@@ -25,7 +25,7 @@ const panels: Panel[] = [
     sub: "Your digital presence doesn't match it.",
     desc: "We work with businesses that are already operating at a high level but whose digital presence, brand, and marketing do not reflect that. We close that gap.",
     cta: "Refine My Brand",
-    href: "/",
+    href: "/contact",
     img: "/images/established.png",
     isFor: [
       "Already generating serious revenue",
@@ -46,7 +46,7 @@ const panels: Panel[] = [
     sub: "Make it count from day one.",
     desc: "We work with founders and startups entering the market with serious intent. We give them the positioning, identity, and digital infrastructure to launch correctly.",
     cta: "Guide My Launch",
-    href: "/emerging",
+    href: "/contact",
     img: "/images/emerging.png",
     isFor: [
       "Building something serious",

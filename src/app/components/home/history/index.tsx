@@ -248,8 +248,8 @@ const handleSubmit = async () => {
         {/* ── HEADER ── */}
         <motion.div {...fadeUp(0)} className="mb-16 max-w-2xl">
           <p
-            className="mb-6 flex items-center gap-3 text-[10px] font-medium uppercase tracking-[0.32em]"
-            style={{ color: "rgba(0,0,0,0.3)" }}
+            className="mb-6 flex items-center gap-3 text-[15px] font-medium uppercase tracking-[0.32em]"
+            style={{ color: "rgb(143, 78, 4)" }}
           >
             <span
               className="block h-px w-5 flex-shrink-0"

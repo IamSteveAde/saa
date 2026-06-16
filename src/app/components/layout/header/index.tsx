@@ -81,7 +81,7 @@ export default function Header() {
             : "none",
         }}
       >
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 md:h-20 md:px-24">
+        <div className="mx-auto flex h-16 w-full max-w-screen-xl items-center justify-between px-6 md:h-20 md:px-20">
 
           {/* LOGO */}
           <Link href="/" className="relative z-50 flex-shrink-0">
@@ -112,7 +112,50 @@ export default function Header() {
           </nav>
 
           {/* DESKTOP CTA */}
-          
+          <div className="hidden md:block">
+            <Link
+              href="/contact"
+              className="group inline-flex items-center gap-2.5 rounded-full px-5 py-2.5 text-[11px] font-medium uppercase tracking-[0.22em] transition-all duration-200"
+              style={{
+                background: scrolled ? "#0A0A0A" : "rgba(255,255,255,0.12)",
+                color: scrolled ? "#FFFFFF" : "#FFFFFF",
+                border: scrolled
+                  ? "1px solid #0A0A0A"
+                  : "1px solid rgba(255,255,255,0.25)",
+                backdropFilter: scrolled ? "none" : "blur(6px)",
+              }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget as HTMLAnchorElement;
+                if (scrolled) {
+                  el.style.background = "#F5C842";
+                  el.style.color = "#0A0A0A";
+                  el.style.border = "1px solid #F5C842";
+                } else {
+                  el.style.background = "#F5C842";
+                  el.style.color = "#0A0A0A";
+                  el.style.border = "1px solid #F5C842";
+                }
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget as HTMLAnchorElement;
+                if (scrolled) {
+                  el.style.background = "#0A0A0A";
+                  el.style.color = "#FFFFFF";
+                  el.style.border = "1px solid #0A0A0A";
+                } else {
+                  el.style.background = "rgba(255,255,255,0.12)";
+                  el.style.color = "#FFFFFF";
+                  el.style.border = "1px solid rgba(255,255,255,0.25)";
+                }
+              }}
+            >
+              Get started
+              <span className="transition-transform duration-200 group-hover:translate-x-0.5">
+                →
+              </span>
+            </Link>
+          </div>
+
           {/* MOBILE BURGER */}
           <button
             onClick={() => setMenuOpen((o) => !o)}
@@ -261,8 +304,24 @@ export default function Header() {
                 className="flex flex-col gap-6"
               >
                 {/* CTA button */}
-                
-                
+                <Link
+                  href="/contact"
+                  onClick={closeMenu}
+                  className="group inline-flex items-center justify-center gap-3 rounded-full py-4 text-sm font-medium tracking-wide transition-opacity duration-200 hover:opacity-80"
+                  style={{ background: "#F5C842", color: "#0A0A0A" }}
+                >
+                  Start the conversation
+                  <span className="transition-transform duration-200 group-hover:translate-x-1">
+                    →
+                  </span>
+                </Link>
+
+                {/* divider */}
+                <div
+                  className="h-px w-full"
+                  style={{ background: "rgba(255,255,255,0.07)" }}
+                />
+
                 {/* contact info row */}
                 <div className="flex items-center justify-between">
                   <div className="flex flex-col gap-1">
