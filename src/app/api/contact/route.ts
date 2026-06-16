@@ -20,6 +20,9 @@ export async function POST(req: NextRequest) {
       name,
       email,
       phone,
+      company,
+      industry,
+      location,
       services,
       availability,
       message,
@@ -31,12 +34,30 @@ export async function POST(req: NextRequest) {
         : formatNaira(budget);
 
     const availabilityMap: Record<string, string> = {
-      today: "Today — Ready immediately",
-      tomorrow: "Tomorrow — Next 24 hours",
-      "this-week": "This week — Within 7 days",
-      "next-week": "Next week — 7 to 14 days",
-      flexible: "Flexible — No rush",
+      today:      "Today — Ready immediately",
+      tomorrow:   "Tomorrow — Next 24 hours",
+      "this-week":"This week — Within 7 days",
+      "next-week":"Next week — 7 to 14 days",
+      flexible:   "Flexible — No rush",
     };
+
+    const row = (label: string, value: string) => `
+      <tr>
+        <td style="padding:8px 0;width:40%;">
+          <p style="margin:0;font-size:11px;color:rgba(0,0,0,0.38);font-weight:400;">${label}</p>
+        </td>
+        <td style="padding:8px 0;">
+          <p style="margin:0;font-size:14px;color:#0A0A0A;font-weight:500;">${value}</p>
+        </td>
+      </tr>`;
+
+    const sectionHeader = (title: string) => `
+      <tr>
+        <td colspan="2" style="padding-bottom:12px;border-bottom:1px solid rgba(0,0,0,0.07);">
+          <p style="margin:0;font-size:10px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:rgba(0,0,0,0.3);">${title}</p>
+        </td>
+      </tr>
+      <tr><td height="16"/></tr>`;
 
     const html = `
 <!DOCTYPE html>
@@ -82,58 +103,31 @@ export async function POST(req: NextRequest) {
 
               <!-- CONTACT DETAILS -->
               <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:32px;">
-                <tr>
-                  <td colspan="2" style="padding-bottom:12px;border-bottom:1px solid rgba(0,0,0,0.07);">
-                    <p style="margin:0;font-size:10px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:rgba(0,0,0,0.3);">Contact details</p>
-                  </td>
-                </tr>
-                <tr><td height="16"/></tr>
-                ${[
-                  ["Full name", name],
-                  ["Email address", `<a href="mailto:${email}" style="color:#0A0A0A;text-decoration:none;">${email}</a>`],
-                  ["Phone number", `<a href="tel:${phone}" style="color:#0A0A0A;text-decoration:none;">${phone}</a>`],
-                ].map(([label, value]) => `
-                <tr>
-                  <td style="padding:8px 0;width:40%;">
-                    <p style="margin:0;font-size:11px;color:rgba(0,0,0,0.38);font-weight:400;">${label}</p>
-                  </td>
-                  <td style="padding:8px 0;">
-                    <p style="margin:0;font-size:14px;color:#0A0A0A;font-weight:500;">${value}</p>
-                  </td>
-                </tr>`).join("")}
+                ${sectionHeader("Contact details")}
+                ${row("Full name", name)}
+                ${row("Email address", `<a href="mailto:${email}" style="color:#0A0A0A;text-decoration:none;">${email}</a>`)}
+                ${row("Phone number", `<a href="tel:${phone}" style="color:#0A0A0A;text-decoration:none;">${phone}</a>`)}
+              </table>
+
+              <!-- BUSINESS DETAILS -->
+              <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:32px;">
+                ${sectionHeader("Business details")}
+                ${row("Company", company || "—")}
+                ${row("Industry", industry || "—")}
+                ${row("Location", location || "—")}
               </table>
 
               <!-- ENQUIRY DETAILS -->
               <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:32px;">
-                <tr>
-                  <td colspan="2" style="padding-bottom:12px;border-bottom:1px solid rgba(0,0,0,0.07);">
-                    <p style="margin:0;font-size:10px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:rgba(0,0,0,0.3);">Enquiry details</p>
-                  </td>
-                </tr>
-                <tr><td height="16"/></tr>
-                ${[
-                  ["Business type", businessType === "established" ? "Established Business" : "Emerging Brand"],
-                  ["Monthly budget", budgetLabel + "/month"],
-                  ["Availability", availabilityMap[availability] ?? availability],
-                ].map(([label, value]) => `
-                <tr>
-                  <td style="padding:8px 0;width:40%;">
-                    <p style="margin:0;font-size:11px;color:rgba(0,0,0,0.38);font-weight:400;">${label}</p>
-                  </td>
-                  <td style="padding:8px 0;">
-                    <p style="margin:0;font-size:14px;color:#0A0A0A;font-weight:500;">${value}</p>
-                  </td>
-                </tr>`).join("")}
+                ${sectionHeader("Enquiry details")}
+                ${row("Business type", businessType === "established" ? "Established Business" : "Emerging Brand")}
+                ${row("Monthly budget", budgetLabel + "/month")}
+                ${row("Availability", availabilityMap[availability] ?? availability)}
               </table>
 
               <!-- SERVICES -->
               <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:32px;">
-                <tr>
-                  <td style="padding-bottom:12px;border-bottom:1px solid rgba(0,0,0,0.07);">
-                    <p style="margin:0;font-size:10px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:rgba(0,0,0,0.3);">Services requested</p>
-                  </td>
-                </tr>
-                <tr><td height="16"/></tr>
+                ${sectionHeader("Services requested")}
                 <tr>
                   <td>
                     <div style="display:flex;flex-wrap:wrap;gap:8px;">
@@ -148,12 +142,7 @@ export async function POST(req: NextRequest) {
               <!-- MESSAGE -->
               ${message ? `
               <table width="100%" cellpadding="0" cellspacing="0">
-                <tr>
-                  <td style="padding-bottom:12px;border-bottom:1px solid rgba(0,0,0,0.07);">
-                    <p style="margin:0;font-size:10px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:rgba(0,0,0,0.3);">Additional message</p>
-                  </td>
-                </tr>
-                <tr><td height="16"/></tr>
+                ${sectionHeader("Additional message")}
                 <tr>
                   <td style="background:#F8F7F4;border-radius:8px;padding:16px;">
                     <p style="margin:0;font-size:14px;color:rgba(0,0,0,0.6);line-height:1.7;font-weight:300;">${message}</p>
@@ -194,10 +183,10 @@ export async function POST(req: NextRequest) {
 </html>`;
 
     await resend.emails.send({
-      from: "Spotlite Africa <info@spotliteafrica.com>",
-      to: ["info@spotliteafrica.com"],
+      from:    "Spotlite Africa <info@spotliteafrica.com>",
+      to:      ["info@spotliteafrica.com"],
       replyTo: email,
-      subject: `New enquiry from ${name} — ${businessType === "established" ? "Established Business" : "Emerging Brand"} · ${budgetLabel}/month`,
+      subject: `New enquiry — ${company || name} · ${industry || businessType} · ${budgetLabel}/month`,
       html,
     });
 
