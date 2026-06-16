@@ -31,10 +31,14 @@ const pillars: Pillar[] = [
   },
 ];
 
-const fadeUp = (delay: number = 0) => ({
+const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 36 },
   whileInView: { opacity: 1, y: 0 },
-  transition: { duration: 0.72, delay, ease: [0.22, 1, 0.36, 1] },
+  transition: {
+    duration: 0.72,
+    delay,
+    ease: [0.22, 1, 0.36, 1] as const,
+  },
   viewport: { once: true, margin: "-60px" },
 });
 
