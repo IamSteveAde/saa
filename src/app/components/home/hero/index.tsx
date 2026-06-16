@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ConsultationModal from "../../../components/ConsultationModal";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Slide {
   id: string;
@@ -208,26 +209,28 @@ export default function Hero() {
               {/* CTA ROW */}
               <div className="mt-10 flex flex-wrap items-center gap-5">
                 {/* Primary */}
-                <button
-                  onClick={() => setOpenModal(true)}
-                  className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full px-7 py-3.5 transition-all duration-300"
-                  style={{ background: "#F5C842" }}
-                >
-                  <span
-                    className="relative z-10 text-sm font-medium tracking-wide"
-                    style={{ color: "#0a0a0a" }}
-                  >
-                    {slide.cta}
-                  </span>
-                  <span
-                    className="relative z-10 text-sm transition-transform duration-200 group-hover:translate-x-1"
-                    style={{ color: "rgba(10,10,10,0.55)" }}
-                  >
-                    →
-                  </span>
-                  <span className="absolute inset-0 bg-white opacity-0 transition-opacity duration-300 group-hover:opacity-10" />
-                </button>
+                <Link
+  href="/contact"
+  className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full px-7 py-3.5 transition-all duration-300"
+  style={{ background: "#F5C842" }}
+>
+  <span
+    className="relative z-10 text-sm font-medium tracking-wide"
+    style={{ color: "#0a0a0a" }}
+  >
+    {slide.cta}
+  </span>
 
+  <span
+    className="relative z-10 text-sm transition-transform duration-200 group-hover:translate-x-1"
+    style={{ color: "rgba(10,10,10,0.55)" }}
+  >
+    →
+  </span>
+
+  <span className="absolute inset-0 bg-white opacity-0 transition-opacity duration-300 group-hover:opacity-10" />
+</Link>
+                  
                 {/* Secondary */}
                 <a
                   href="/work"

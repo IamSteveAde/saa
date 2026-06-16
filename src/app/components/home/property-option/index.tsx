@@ -25,7 +25,7 @@ const panels: Panel[] = [
     sub: "Your digital presence doesn't match it.",
     desc: "We work with businesses that are already operating at a high level but whose digital presence, brand, and marketing do not reflect that. We close that gap.",
     cta: "Refine My Brand",
-    href: "/established",
+    href: "/",
     img: "/images/established.png",
     isFor: [
       "Already generating serious revenue",

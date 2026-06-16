@@ -1,219 +1,365 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { useEffect, useState, useCallback } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+
+interface NavLinkProps {
+  href: string;
+  children: React.ReactNode;
+  scrolled: boolean;
+  onClick?: () => void;
+}
+
+const navLinks = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Services", href: "/services" },
+  { name: "Work", href: "/work" },
+  { name: "Contact", href: "/contact" },
+];
+
+function DesktopNavLink({ href, children, scrolled }: NavLinkProps) {
+  return (
+    <Link
+      href={href}
+      className="group relative text-[11px] font-medium uppercase tracking-[0.28em] transition-colors duration-200"
+      style={{ color: scrolled ? "rgba(0,0,0,0.6)" : "rgba(255,255,255,0.65)" }}
+      onMouseEnter={(e) => {
+        (e.currentTarget as HTMLAnchorElement).style.color = scrolled
+          ? "#0A0A0A"
+          : "#FFFFFF";
+      }}
+      onMouseLeave={(e) => {
+        (e.currentTarget as HTMLAnchorElement).style.color = scrolled
+          ? "rgba(0,0,0,0.6)"
+          : "rgba(255,255,255,0.65)";
+      }}
+    >
+      {children}
+      <span
+        className="absolute -bottom-1 left-0 h-px w-0 transition-all duration-400 group-hover:w-full"
+        style={{ background: scrolled ? "#E8881A" : "#F5C842" }}
+      />
+    </Link>
+  );
+}
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [openModal, setOpenModal] = useState(false);
-  const [step, setStep] = useState<"choice" | "form">("choice");
-  const [type, setType] = useState("");
 
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+  const handleScroll = useCallback(() => {
+    setScrolled(window.scrollY > 40);
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen || openModal ? "hidden" : "";
-  }, [menuOpen, openModal]);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
+
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
 
   return (
     <>
-      {/* ================= NAV ================= */}
+      {/* ── NAVBAR ── */}
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-          scrolled
-            ? "bg-white text-black shadow-[0_10px_40px_rgba(0,0,0,0.08)]"
-            : "bg-transparent text-white"
-        }`}
+        className="fixed left-0 top-0 z-50 w-full transition-all duration-500"
+        style={{
+          background: scrolled
+            ? "rgba(255,255,255,0.97)"
+            : "transparent",
+          backdropFilter: scrolled ? "blur(12px)" : "none",
+          boxShadow: scrolled
+            ? "0 1px 0 rgba(0,0,0,0.07), 0 4px 24px rgba(0,0,0,0.05)"
+            : "none",
+        }}
       >
-        <div className="max-w-screen-xl mx-auto px-1 sm:px-2 lg:px-2">
-          <div className="flex items-center justify-between h-16 sm:h-20">
+        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 md:h-20 md:px-24">
 
-            {/* LOGO */}
-            <Link href="/">
-  <Image
-    src={scrolled 
-      ? "/images/logo/shh.svg" 
-      : "/images/logo/shh.svg"}
-    alt="Spotlite Africa"
-    width={140}
-    height={24}
-    priority
-    className="object-contain transition-all duration-300"
-  />
-</Link>
+          {/* LOGO */}
+          <Link href="/" className="relative z-50 flex-shrink-0">
+            <Image
+              src="/images/logo/shh.svg"
+              alt="Spotlite Africa"
+              width={140}
+              height={28}
+              priority
+              className="object-contain transition-all duration-300"
+              style={{
+                filter: scrolled ? "none" : "brightness(0) invert(1)",
+              }}
+            />
+          </Link>
 
-            {/* DESKTOP NAV */}
-            <nav className="hidden md:flex items-center gap-8 lg:gap-12">
-              <NavItem href="/">Home</NavItem>
-              <NavItem href="/about">About us</NavItem>
-              <NavItem href="/services">Services</NavItem>
-              <NavItem href="/work">Case Studies</NavItem>
-              <NavItem href="/contact">Contact</NavItem>
+          {/* DESKTOP NAV */}
+          <nav className="hidden items-center gap-10 md:flex">
+            {navLinks.map((link) => (
+              <DesktopNavLink
+                key={link.name}
+                href={link.href}
+                scrolled={scrolled}
+              >
+                {link.name}
+              </DesktopNavLink>
+            ))}
+          </nav>
 
-              
-            </nav>
-
-            {/* MOBILE BUTTON */}
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="md:hidden z-50"
-            >
-              {menuOpen ? <X size={28} /> : <Menu size={28} />}
-            </button>
-          </div>
+          {/* DESKTOP CTA */}
+          
+          {/* MOBILE BURGER */}
+          <button
+            onClick={() => setMenuOpen((o) => !o)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            className="relative z-50 flex h-10 w-10 flex-shrink-0 flex-col items-center justify-center gap-[5px] md:hidden"
+          >
+            <span
+              className="block h-px w-6 origin-center transition-all duration-300"
+              style={{
+                background: menuOpen
+                  ? "#FFFFFF"
+                  : scrolled
+                  ? "#0A0A0A"
+                  : "#FFFFFF",
+                transform: menuOpen
+                  ? "translateY(6px) rotate(45deg)"
+                  : "none",
+              }}
+            />
+            <span
+              className="block h-px w-6 transition-all duration-300"
+              style={{
+                background: menuOpen
+                  ? "#FFFFFF"
+                  : scrolled
+                  ? "#0A0A0A"
+                  : "#FFFFFF",
+                opacity: menuOpen ? 0 : 1,
+                transform: menuOpen ? "scaleX(0)" : "none",
+              }}
+            />
+            <span
+              className="block h-px w-6 origin-center transition-all duration-300"
+              style={{
+                background: menuOpen
+                  ? "#FFFFFF"
+                  : scrolled
+                  ? "#0A0A0A"
+                  : "#FFFFFF",
+                transform: menuOpen
+                  ? "translateY(-6px) rotate(-45deg)"
+                  : "none",
+              }}
+            />
+          </button>
         </div>
       </header>
 
-      {/* ================= MOBILE MENU ================= */}
+      {/* ── MOBILE MENU ── */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="fixed inset-0 bg-black text-white z-40 flex flex-col items-center justify-center space-y-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-40 flex flex-col"
+            style={{ background: "#0A0A0A" }}
           >
-            {["Home", "Established", "Emerging", "Work"].map((item) => (
-              <Link
-                key={item}
-                href={
-                  item === "Home"
-                    ? "/"
-                    : `/${item.toLowerCase()}`
-                }
-                onClick={() => setMenuOpen(false)}
-                className="text-lg tracking-[0.3em] uppercase"
-              >
-                {item}
-              </Link>
-            ))}
-
-            <button
-              onClick={() => {
-                setMenuOpen(false);
-                setOpenModal(true);
+            {/* grain */}
+            <div
+              className="pointer-events-none absolute inset-0"
+              style={{
+                opacity: 0.03,
+                backgroundImage:
+                  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E\")",
+                backgroundSize: "200px 200px",
               }}
-              className="mt-6 px-6 py-3 border border-white/20 uppercase tracking-[0.3em]"
-            >
-              Consultation
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            />
 
-      {/* ================= MODAL ================= */}
-      <AnimatePresence>
-        {openModal && (
-          <motion.div
-            className="fixed inset-0 bg-black/90 backdrop-blur-xl z-50 flex items-center justify-center p-4 sm:p-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => {
-              setOpenModal(false);
-              setStep("choice");
-            }}
-          >
-            <motion.div
-              className="bg-[#111] w-full max-w-lg sm:max-w-xl p-6 sm:p-10 border border-white/10 text-white"
-              initial={{ scale: 0.95 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.95 }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* STEP 1 */}
-              {step === "choice" && (
-                <>
-                  <h2 className="text-xl sm:text-2xl mb-6 sm:mb-8">
-                    Who are you?
-                  </h2>
+            {/* grid */}
+            <div
+              className="pointer-events-none absolute inset-0"
+              style={{
+                backgroundImage:
+                  "linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)",
+                backgroundSize: "60px 60px",
+              }}
+            />
 
-                  <div className="space-y-3 sm:space-y-4">
-                    {[
-                      "Established Company",
-                      "Emerging Brand",
-                      "Other",
-                    ].map((item) => (
-                      <button
-                        key={item}
-                        onClick={() => {
-                          setType(item);
-                          setStep("form");
-                        }}
-                        className="w-full text-left p-3 sm:p-4 border border-white/10 hover:border-[#c2410c] transition"
+            {/* gold corner accent */}
+            <div
+              className="pointer-events-none absolute left-0 top-0 h-px w-32"
+              style={{
+                background: "linear-gradient(to right, #F5C842, transparent)",
+              }}
+            />
+            <div
+              className="pointer-events-none absolute left-0 top-0 h-32 w-px"
+              style={{
+                background: "linear-gradient(to bottom, #F5C842, transparent)",
+              }}
+            />
+
+            {/* content */}
+            <div className="relative z-10 flex flex-1 flex-col justify-between px-8 pb-12 pt-24">
+
+              {/* nav links */}
+              <nav className="flex flex-col gap-1">
+                {navLinks.map((link, i) => (
+                  <motion.div
+                    key={link.name}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{
+                      duration: 0.45,
+                      delay: 0.05 + i * 0.07,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                  >
+                    <Link
+                      href={link.href}
+                      onClick={closeMenu}
+                      className="group flex items-center justify-between border-b py-5 transition-colors duration-200"
+                      style={{ borderColor: "rgba(255,255,255,0.07)" }}
+                    >
+                      <div className="flex items-center gap-4">
+                        <span
+                          className="text-[10px] font-medium"
+                          style={{ color: "rgba(255,255,255,0.2)" }}
+                        >
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <span
+                          className="text-2xl font-medium tracking-tight text-white transition-colors duration-200 group-hover:text-[#F5C842]"
+                        >
+                          {link.name}
+                        </span>
+                      </div>
+                      <span
+                        className="text-lg transition-all duration-300 group-hover:translate-x-1"
+                        style={{ color: "rgba(255,255,255,0.2)" }}
                       >
-                        {item}
-                      </button>
+                        →
+                      </span>
+                    </Link>
+                  </motion.div>
+                ))}
+              </nav>
+
+              {/* bottom — cta + contact + tagline */}
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="flex flex-col gap-6"
+              >
+                {/* CTA button */}
+                
+                
+                {/* contact info row */}
+                <div className="flex items-center justify-between">
+                  <div className="flex flex-col gap-1">
+                    <p
+                      className="text-[10px] font-medium uppercase tracking-[0.22em]"
+                      style={{ color: "rgba(255,255,255,0.22)" }}
+                    >
+                      Email
+                    </p>
+                    <a
+                      href="mailto:info@spotliteafrica.com"
+                      className="text-sm font-light transition-colors duration-200"
+                      style={{ color: "rgba(255,255,255,0.5)" }}
+                      onMouseEnter={(e) => {
+                        (e.currentTarget as HTMLAnchorElement).style.color =
+                          "#FFFFFF";
+                      }}
+                      onMouseLeave={(e) => {
+                        (e.currentTarget as HTMLAnchorElement).style.color =
+                          "rgba(255,255,255,0.5)";
+                      }}
+                    >
+                      info@spotliteafrica.com
+                    </a>
+                  </div>
+
+                  {/* social icons */}
+                  <div className="flex items-center gap-3">
+                    {[
+                      {
+                        label: "Instagram",
+                        href: "https://instagram.com/spotliteafrica",
+                        icon: (
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" strokeWidth="1.5" />
+                            <circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="1.5" />
+                            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
+                          </svg>
+                        ),
+                      },
+                      {
+                        label: "LinkedIn",
+                        href: "https://linkedin.com/company/spotliteafrica",
+                        icon: (
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <path
+                              d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7H10v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"
+                              stroke="currentColor"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                            <circle cx="4" cy="4" r="2" stroke="currentColor" strokeWidth="1.5" />
+                          </svg>
+                        ),
+                      },
+                    ].map((s) => (
+                      <a
+                        key={s.label}
+                        href={s.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={s.label}
+                        className="flex h-9 w-9 items-center justify-center rounded-full transition-all duration-200"
+                        style={{
+                          border: "1px solid rgba(255,255,255,0.1)",
+                          color: "rgba(255,255,255,0.35)",
+                        }}
+                        onMouseEnter={(e) => {
+                          const el = e.currentTarget as HTMLAnchorElement;
+                          el.style.borderColor = "rgba(255,255,255,0.3)";
+                          el.style.color = "#FFFFFF";
+                        }}
+                        onMouseLeave={(e) => {
+                          const el = e.currentTarget as HTMLAnchorElement;
+                          el.style.borderColor = "rgba(255,255,255,0.1)";
+                          el.style.color = "rgba(255,255,255,0.35)";
+                        }}
+                      >
+                        {s.icon}
+                      </a>
                     ))}
                   </div>
-                </>
-              )}
+                </div>
 
-              {/* STEP 2 */}
-              {step === "form" && (
-                <form
-                  action="https://formsubmit.co/info@spotliteafrica.com"
-                  method="POST"
-                  className="space-y-4 sm:space-y-6"
+                {/* tagline */}
+                <p
+                  className="text-[10px] font-medium uppercase tracking-[0.28em]"
+                  style={{ color: "rgba(255,255,255,0.15)" }}
                 >
-                  <h2 className="text-lg sm:text-xl">{type}</h2>
-
-                  <input type="hidden" name="_captcha" value="false" />
-
-                  <input
-                    name="name"
-                    placeholder="Your Name"
-                    required
-                    className="w-full p-3 bg-transparent border border-white/10 placeholder-white/40 focus:border-[#c2410c] outline-none"
-                  />
-
-                  <input
-                    name="email"
-                    placeholder="Email"
-                    required
-                    className="w-full p-3 bg-transparent border border-white/10 placeholder-white/40 focus:border-[#c2410c] outline-none"
-                  />
-
-                  <textarea
-                    name="message"
-                    placeholder="Tell us about your project"
-                    rows={4}
-                    className="w-full p-3 bg-transparent border border-white/10 placeholder-white/40 focus:border-[#c2410c] outline-none"
-                  />
-
-                  <button
-                    type="submit"
-                    className="w-full py-3 border border-white/20 hover:border-[#c2410c] transition"
-                  >
-                    Send Request →
-                  </button>
-                </form>
-              )}
-            </motion.div>
+                  Strategy-first.&nbsp;&nbsp;Execution-obsessed.
+                </p>
+              </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
     </>
-  );
-}
-
-/* NAV ITEM */
-function NavItem({ href, children }: any) {
-  return (
-    <Link
-      href={href}
-      className="relative text-[11px] tracking-[0.3em] uppercase group"
-    >
-      {children}
-      <span className="absolute left-1/2 bottom-[-6px] h-[1px] w-0 bg-gradient-to-r from-[#c2410c] to-[#e5e5e5] group-hover:w-full group-hover:left-0 transition-all duration-500" />
-    </Link>
   );
 }
