@@ -40,8 +40,8 @@ export default function Header() {
             <Link href="/">
   <Image
     src={scrolled 
-      ? "/images/logo/saaw.svg" 
-      : "/images/logo/saaw.svg"}
+      ? "/images/logo/shh.svg" 
+      : "/images/logo/shh.svg"}
     alt="Spotlite Africa"
     width={140}
     height={24}
@@ -53,16 +53,12 @@ export default function Header() {
             {/* DESKTOP NAV */}
             <nav className="hidden md:flex items-center gap-8 lg:gap-12">
               <NavItem href="/">Home</NavItem>
-              <NavItem href="/established">For Established Businesses</NavItem>
-              <NavItem href="/emerging">For Emerging Businesses</NavItem>
+              <NavItem href="/about">About us</NavItem>
+              <NavItem href="/services">Services</NavItem>
               <NavItem href="/work">Case Studies</NavItem>
+              <NavItem href="/contact">Contact</NavItem>
 
-              <button
-                onClick={() => setOpenModal(true)}
-                className="ml-4 px-5 py-2 rounded-full border border-black/20 text-[11px] tracking-[0.3em] uppercase hover:border-[#c2410c] transition"
-              >
-                Consultation
-              </button>
+              
             </nav>
 
             {/* MOBILE BUTTON */}

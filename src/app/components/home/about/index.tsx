@@ -2,91 +2,175 @@
 
 import { motion } from "framer-motion";
 
-const pillars = [
+interface Pillar {
+  number: string;
+  title: string;
+  desc: string;
+}
+
+const pillars: Pillar[] = [
   {
-    title: "Brand",
-    desc: "We define and standardize how your brand looks, speaks, and presents itself across every touchpoint.",
+    number: "01",
+    title: "Brand Strategy & Identity",
+    desc: "We define where your brand sits in the market, how it speaks, and how it is instantly recognised — before a single asset is designed. Strategy first. Always.",
   },
   {
-    title: "Digital",
-    desc: "We design and build your website and digital platforms to reflect a clear, structured, premium experience.",
+    number: "02",
+    title: "Digital Presence & Web",
+    desc: "We build websites and digital platforms engineered to convert — communicating your value clearly to the clients and investors you are actually going after.",
   },
   {
-    title: "Continuity",
-    desc: "We maintain and refine your presence over time, ensuring everything remains aligned as your business evolves.",
+    number: "03",
+    title: "Growth & Marketing Execution",
+    desc: "Social media, content, SEO, PR, campaigns, and performance marketing — all connected to the strategy, all tracked against measurable business outcomes.",
+  },
+  {
+    number: "04",
+    title: "Brand Infrastructure & Continuity",
+    desc: "We build systems that compound. As your business scales, your brand and marketing infrastructure scales with it — stronger every quarter.",
   },
 ];
 
+const fadeUp = (delay: number = 0) => ({
+  initial: { opacity: 0, y: 36 },
+  whileInView: { opacity: 1, y: 0 },
+  transition: { duration: 0.72, delay, ease: [0.22, 1, 0.36, 1] },
+  viewport: { once: true, margin: "-60px" },
+});
+
 export default function WhatWeDo() {
   return (
-    <section className="relative bg-[#0a0a0a] text-white py-32 px-6 md:px-20 overflow-hidden">
+    <section className="relative overflow-hidden bg-white py-32 px-6 md:px-20">
 
-      {/* 🌫 BACKGROUND GLOW */}
-      <div className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[#c2410c]/10 blur-[180px] pointer-events-none" />
+      {/* subtle top rule */}
+      <div
+        className="absolute top-0 left-0 w-full h-px"
+        style={{ background: "rgba(0,0,0,0.06)" }}
+      />
 
-      {/* 🌫 SUBTLE GRID */}
-      <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(#fff_1px,transparent_1px),linear-gradient(90deg,#fff_1px,transparent_1px)] bg-[size:60px_60px]" />
+      {/* very faint dot grid */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle, rgba(0,0,0,0.055) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+          opacity: 0.6,
+        }}
+      />
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="relative z-10 mx-auto max-w-6xl">
 
-        {/* HEADER */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="max-w-2xl"
-        >
-          <p className="text-[11px] tracking-[0.35em] uppercase text-white/40 mb-6 flex items-center gap-3">
-            <span className="w-6 h-[1px] bg-[#c2410c]" />
-            What We Handle
+        {/* ── HEADER ── */}
+        <motion.div {...fadeUp(0)} className="max-w-2xl">
+
+          <p
+            className="mb-6 flex items-center gap-3 text-[10px] font-medium uppercase tracking-[0.32em]"
+            style={{ color: "rgba(0,0,0,0.32)" }}
+          >
+            <span
+              className="block h-px w-5 flex-shrink-0"
+              style={{ background: "#E8881A" }}
+            />
+            What we handle
           </p>
 
-          <h2 className="text-3xl md:text-5xl font-medium leading-tight tracking-tight bg-gradient-to-r from-[#e5e5e5] via-white to-[#c2410c] bg-clip-text text-transparent">
-            We structure how your brand appears.
+          <h2
+            className="text-3xl font-medium leading-[1.1] tracking-tight md:text-5xl"
+            style={{ color: "#0A0A0A" }}
+          >
+            We build the infrastructure{" "}
+            <span style={{ color: "#E8881A" }}>your brand grows on.</span>
           </h2>
 
-          <p className="mt-6 text-lg text-white/60 leading-relaxed">
-            Everything your business puts out digitally should feel intentional, consistent, and aligned with your level.
+          <p
+            className="mt-6 max-w-xl text-lg font-light leading-relaxed"
+            style={{ color: "rgba(0,0,0,0.48)" }}
+          >
+            Most agencies execute. We start earlier — with a deep audit, a
+            rigorous strategy, and a plan tied to real business outcomes. Then
+            we execute. And we measure everything.
           </p>
         </motion.div>
 
-        {/* PILLARS */}
-        <div className="mt-20 grid md:grid-cols-3 gap-12">
+        {/* ── DIVIDER ── */}
+        <div
+          className="mt-16 h-px w-full"
+          style={{ background: "rgba(0,0,0,0.07)" }}
+        />
 
-          {pillars.map((item, i) => (
+        {/* ── PILLARS ── */}
+        <div className="mt-16 grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+          {pillars.map((pillar, i) => (
             <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: i * 0.15 }}
-              viewport={{ once: true }}
-              className="group relative"
+              key={pillar.number}
+              {...fadeUp(i * 0.1)}
+              className="group relative flex flex-col"
             >
-              {/* NUMBER */}
-              <div className="text-white/20 text-5xl font-light mb-6">
-                0{i + 1}
-              </div>
+              {/* number */}
+              <span
+                className="mb-6 block text-[2.8rem] font-light leading-none tracking-tight"
+                style={{ color: "rgba(0,0,0,0.1)" }}
+              >
+                {pillar.number}
+              </span>
 
-              {/* TITLE */}
-              <h3 className="text-xl font-medium tracking-wide">
-                {item.title}
+              {/* accent line */}
+              <span
+                className="mb-5 block h-px w-8 transition-all duration-500 group-hover:w-14"
+                style={{ background: "#E8881A" }}
+              />
+
+              {/* title */}
+              <h3
+                className="text-[1.05rem] font-medium leading-snug tracking-tight"
+                style={{ color: "#0A0A0A" }}
+              >
+                {pillar.title}
               </h3>
 
-              {/* DESC */}
-              <p className="mt-4 text-white/60 leading-relaxed max-w-sm">
-                {item.desc}
+              {/* desc */}
+              <p
+                className="mt-3 text-sm font-light leading-relaxed"
+                style={{ color: "rgba(0,0,0,0.5)" }}
+              >
+                {pillar.desc}
               </p>
-
-              {/* HOVER LINE */}
-              <span className="absolute left-0 bottom-[-10px] h-[1px] w-0 bg-gradient-to-r from-[#c2410c] to-white group-hover:w-full transition-all duration-500" />
             </motion.div>
           ))}
         </div>
-      </div>
 
-      {/* 🌫 BOTTOM FADE */}
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#0a0a0a] to-transparent pointer-events-none" />
+        {/* ── BOTTOM STATEMENT ── */}
+        <motion.div
+          {...fadeUp(0.2)}
+          className="mt-24 flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
+        >
+          <p
+            className="max-w-lg text-xl font-light leading-relaxed md:text-2xl"
+            style={{ color: "rgba(0,0,0,0.55)" }}
+          >
+            Every engagement begins with a deep audit.{" "}
+            <em
+              className="not-italic font-medium"
+              style={{ color: "#0A0A0A" }}
+            >
+              Nothing ships without a strategic reason behind it.
+            </em>
+          </p>
+
+          <a
+            href="/services"
+            className="group inline-flex items-center gap-3 text-sm font-medium tracking-wide transition-opacity duration-200 hover:opacity-60 flex-shrink-0"
+            style={{ color: "#0A0A0A" }}
+          >
+            See how we work
+            <span className="transition-transform duration-200 group-hover:translate-x-1">
+              →
+            </span>
+          </a>
+        </motion.div>
+
+      </div>
     </section>
   );
 }

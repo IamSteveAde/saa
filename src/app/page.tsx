@@ -3,6 +3,9 @@ import { Metadata } from "next";
 // Home sections
 import Hero from "./components/home/hero";
 import About from "./components/home/about";
+import Process from "./components/home/process";
+import Client from "./components/home/clients";
+import Team from "./components/home/team";
 import DiscoverProperties from "./components/home/property-option"; // mentor / platform section
 import Listing from "./components/home/property-list";
 import Testimonials from "./components/home/testimonial";
@@ -100,15 +103,18 @@ export default function Home() {
       {/* Core hero & positioning */}
       <Hero />
       <About />
+         <Client />
+         <Process />
+         <Team />
 
       {/* Platform / WhatsApp / AI section */}
       <DiscoverProperties />
 
       {/* Workforce scope / industries / roles */}
-      <Listing />
+   
 
       {/* Trust & social proof */}
-      <Testimonials />
+     
 
       {/* Company journey, capability & infrastructure */}
       <History />
