@@ -68,7 +68,7 @@ export default function Direction() {
   return (
     <section className="relative w-full overflow-hidden bg-[#0A0A0A]">
 
-      {/* ── HEADER — above the panels ── */}
+      {/* ── HEADER, above the panels ── */}
       <div className="relative z-10 px-6 pb-0 pt-24 md:px-20">
         <motion.div
           initial={{ opacity: 0, y: 28 }}
@@ -145,7 +145,7 @@ export default function Direction() {
                 }}
               />
 
-              {/* VERTICAL DIVIDER — between panels, desktop only */}
+              {/* VERTICAL DIVIDER, between panels, desktop only */}
               {panel.id === "established" && (
                 <div
                   className="absolute right-0 top-0 z-20 hidden h-full w-px md:block"
@@ -184,7 +184,7 @@ export default function Direction() {
                   {panel.sub}
                 </p>
 
-                {/* desc — fades in on hover */}
+                {/* desc, fades in on hover */}
                 <motion.p
                   animate={{
                     opacity: isActive ? 1 : 0,
@@ -198,7 +198,7 @@ export default function Direction() {
                   {panel.desc}
                 </motion.p>
 
-                {/* IS FOR list — fades in on hover */}
+                {/* IS FOR list, fades in on hover */}
                 <motion.div
                   animate={{
                     opacity: isActive ? 1 : 0,

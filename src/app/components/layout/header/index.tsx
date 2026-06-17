@@ -296,7 +296,7 @@ export default function Header() {
                 ))}
               </nav>
 
-              {/* bottom — cta + contact + tagline */}
+              {/* bottom, cta + contact + tagline */}
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}

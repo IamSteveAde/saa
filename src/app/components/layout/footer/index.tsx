@@ -160,7 +160,7 @@ export default function Footer() {
               style={{ color: "rgba(255,255,255,0.38)" }}
             >
               Africa&apos;s strategy-first brand and marketing agency. We take
-              African businesses from where they are — to where they deserve to be.
+              African businesses from where they are, to where they deserve to be.
             </p>
 
             {/* tagline */}

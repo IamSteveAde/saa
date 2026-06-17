@@ -31,9 +31,9 @@ const cases: CaseStudy[] = [
     client: "Soundhous",
     industry: "Premium Audio Retail",
     website: "soundhous.com",
-    tagline: "Nigeria's official Sonos retailer — taken to global standard.",
+    tagline: "Nigeria's official Sonos retailer, taken to global standard.",
     overview:
-      "Soundhous is Nigeria's authorised retailer of Sonos, Focal, and Naim — the world's most respected premium audio brands. We partnered with them to build their e-commerce platform, establish their brand identity as a destination rather than a store, and grow their digital presence across search, social, and email. Every touchpoint was refined to reflect the premium, experiential nature of what they sell.",
+      "Soundhous is Nigeria's authorised retailer of Sonos, Focal, and Naim, the world's most respected premium audio brands. We partnered with them to build their e-commerce platform, establish their brand identity as a destination rather than a store, and grow their digital presence across search, social, and email. Every touchpoint was refined to reflect the premium, experiential nature of what they sell.",
     services: [
       "E-commerce Website",
       "Brand Identity",
@@ -49,7 +49,7 @@ const cases: CaseStudy[] = [
       "/images/clients/sh4.jpeg",
     ],
     result:
-      "Elevated from a local audio shop to Nigeria's definitive premium audio destination — with a fully operational e-commerce store, consistent brand identity across all channels, and a growing organic search presence for Sonos-related queries in Nigeria.",
+      "Elevated from a local audio shop to Nigeria's definitive premium audio destination, with a fully operational e-commerce store, consistent brand identity across all channels, and a growing organic search presence for Sonos-related queries in Nigeria.",
     featured: true,
   },
   {
@@ -72,7 +72,7 @@ const cases: CaseStudy[] = [
       "/images/clients/tri3.png",
     ],
     result:
-      "A fully operational brand and digital presence for a healthcare startup — built to inspire trust from the first impression, with content that educates the Nigerian market on home healthcare as a serious, professional service.",
+      "A fully operational brand and digital presence for a healthcare startup, built to inspire trust from the first impression, with content that educates the Nigerian market on home healthcare as a serious, professional service.",
     featured: true,
   },
   {
@@ -82,7 +82,7 @@ const cases: CaseStudy[] = [
     website: "theplatformcapital.com",
     tagline: "Brand identity for one of Africa's leading investment platforms.",
     overview:
-      "Platform Capital is a Lagos-based investment platform with a portfolio spanning technology, real estate, and financial services across Africa. We delivered a complete brand refinement — updating their visual identity, brand language, and digital presence to reflect the seriousness and sophistication of the institution they have built.",
+      "Platform Capital is a Lagos-based investment platform with a portfolio spanning technology, real estate, and financial services across Africa. We delivered a complete brand refinement, updating their visual identity, brand language, and digital presence to reflect the seriousness and sophistication of the institution they have built.",
     services: ["Brand Strategy", "Brand Identity", "Visual Design"],
     images: [
       "/images/clients/pla2.png",
@@ -90,7 +90,7 @@ const cases: CaseStudy[] = [
       "/images/clients/pla3.png",
     ],
     result:
-      "A refined brand identity that reflects Platform Capital's position as a serious, institutional-grade investment platform — cohesive across all applications and aligned with the level at which they operate.",
+      "A refined brand identity that reflects Platform Capital's position as a serious, institutional-grade investment platform, cohesive across all applications and aligned with the level at which they operate.",
     featured: true,
   },
   {
@@ -100,7 +100,7 @@ const cases: CaseStudy[] = [
     website: "rensource.energy",
     tagline: "Brand and digital presence for a leading African energy company.",
     overview:
-      "Rensource Energy is one of Nigeria's leading distributed energy companies, providing clean, reliable power to businesses and communities across Africa. We supported their brand strategy and digital infrastructure — ensuring their positioning as a serious, credible energy partner was communicated clearly across all digital touchpoints.",
+      "Rensource Energy is one of Nigeria's leading distributed energy companies, providing clean, reliable power to businesses and communities across Africa. We supported their brand strategy and digital infrastructure, ensuring their positioning as a serious, credible energy partner was communicated clearly across all digital touchpoints.",
     services: ["Brand Strategy", "Digital Presence", "Content Strategy"],
     images: [
       "/images/clients/ren1.png",
@@ -118,7 +118,7 @@ const cases: CaseStudy[] = [
     website: "ced.africa",
     tagline: "Digital marketing for Africa's AV design authority.",
     overview:
-      "CED Africa is the institutional authority for professional audiovisual system design across Africa — governing how AV is specified, designed, and delivered through a certified partner ecosystem. We manage their social media presence across LinkedIn, Instagram, and YouTube, building their digital authority through technical thought leadership, project showcases, and partner communications.",
+      "CED Africa is the institutional authority for professional audiovisual system design across Africa, governing how AV is specified, designed, and delivered through a certified partner ecosystem. We manage their social media presence across LinkedIn, Instagram, and YouTube, building their digital authority through technical thought leadership, project showcases, and partner communications.",
     services: [
       "Social Media Management",
       "Content Strategy",
@@ -131,7 +131,7 @@ const cases: CaseStudy[] = [
       "/images/clients/ced3.png",
     ],
     result:
-      "An active, authoritative digital presence that reflects CED Africa's position as the governing standard for professional AV in Africa — establishing credibility with architects, system integrators, and enterprise clients.",
+      "An active, authoritative digital presence that reflects CED Africa's position as the governing standard for professional AV in Africa, establishing credibility with architects, system integrators, and enterprise clients.",
     featured: false,
   },
   {
@@ -141,7 +141,7 @@ const cases: CaseStudy[] = [
     website: "savl.pro",
     tagline: "Brand and SEO for a professional AV integration leader.",
     overview:
-      "Spectra AVL is a professional audiovisual integration company operating across Africa and the Middle East — delivering world-class AV systems for corporate, hospitality, and government clients. We delivered a complete brand identity and SEO programme that positions Spectra as the premium, credible partner of choice in a technically demanding industry.",
+      "Spectra AVL is a professional audiovisual integration company operating across Africa and the Middle East, delivering world-class AV systems for corporate, hospitality, and government clients. We delivered a complete brand identity and SEO programme that positions Spectra as the premium, credible partner of choice in a technically demanding industry.",
     services: ["Branding", "Brand Guidelines", "SEO", "Digital Presence"],
     images: [
       "/images/clients/sav1.png",
@@ -149,7 +149,7 @@ const cases: CaseStudy[] = [
       "/images/clients/sav4.png",
     ],
     result:
-      "A premium, authoritative brand identity with a structured SEO foundation — positioning Spectra AVL to be found by the right clients at the moment they are searching for professional AV integration.",
+      "A premium, authoritative brand identity with a structured SEO foundation, positioning Spectra AVL to be found by the right clients at the moment they are searching for professional AV integration.",
     featured: false,
   },
   {
@@ -159,7 +159,7 @@ const cases: CaseStudy[] = [
     website: "radiomedtech.com",
     tagline: "Digital presence for a specialist medical technology firm.",
     overview:
-      "Radiomedtech is a specialist medical technology company operating in Nigeria — supplying and servicing radiological and diagnostic imaging equipment for hospitals and healthcare institutions. We built their website and established their digital presence, translating highly technical expertise into a clear, credible, and professional brand communication.",
+      "Radiomedtech is a specialist medical technology company operating in Nigeria, supplying and servicing radiological and diagnostic imaging equipment for hospitals and healthcare institutions. We built their website and established their digital presence, translating highly technical expertise into a clear, credible, and professional brand communication.",
     services: [
       "Website Design & Development",
       "Brand Communications",
@@ -171,7 +171,7 @@ const cases: CaseStudy[] = [
       "/images/clients/rad3.png",
     ],
     result:
-      "A professional digital presence that communicates Radiomedtech's technical expertise clearly — building trust with hospital procurement teams and healthcare decision-makers.",
+      "A professional digital presence that communicates Radiomedtech's technical expertise clearly, building trust with hospital procurement teams and healthcare decision-makers.",
     featured: false,
   },
   {
@@ -181,7 +181,7 @@ const cases: CaseStudy[] = [
     website: "digitalinclusioninitiative.org",
     tagline: "Brand and digital presence for a technology access initiative.",
     overview:
-      "The Digital Inclusion Initiative works to expand access to technology and digital skills across underserved communities in Africa. We established their brand identity, communications strategy, and digital presence — ensuring the mission and impact of their work was communicated with the clarity and authority the cause deserves.",
+      "The Digital Inclusion Initiative works to expand access to technology and digital skills across underserved communities in Africa. We established their brand identity, communications strategy, and digital presence, ensuring the mission and impact of their work was communicated with the clarity and authority the cause deserves.",
     services: [
       "Brand Identity",
       "Communications Strategy",
@@ -194,7 +194,7 @@ const cases: CaseStudy[] = [
       "/images/clients/dig3.png",
     ],
     result:
-      "A cohesive brand and digital presence that communicates the scale and seriousness of the initiative — helping attract partners, funders, and communities to the mission.",
+      "A cohesive brand and digital presence that communicates the scale and seriousness of the initiative, helping attract partners, funders, and communities to the mission.",
     featured: false,
   },
 ];
@@ -202,14 +202,14 @@ const cases: CaseStudy[] = [
 const testimonials = [
   {
     quote:
-      "Spotlite Africa understood our brand at a level that surprised us from the first meeting. The strategy they built was not just impressive — it was actionable. We have seen the results.",
+      "Spotlite Africa understood our brand at a level that surprised us from the first meeting. The strategy they built was not just impressive, it was actionable. We have seen the results.",
     author: "CEO",
     company: "Soundhous",
     industry: "Premium Audio Retail",
   },
   {
     quote:
-      "They took the time to genuinely understand what CED Africa is trying to build. The content they produce carries real technical credibility — which is rare for a marketing agency.",
+      "They took the time to genuinely understand what CED Africa is trying to build. The content they produce carries real technical credibility, which is rare for a marketing agency.",
     author: "Managing Director",
     company: "CED Africa",
     industry: "AV Design & Systems",
@@ -247,7 +247,7 @@ function CaseCard({ c, i }: { c: CaseStudy; i: number }) {
       className="overflow-hidden rounded-2xl"
       style={{ border: "1.5px solid rgba(0,0,0,0.08)" }}
     >
-      {/* IMAGE AREA — white bg */}
+      {/* IMAGE AREA, white bg */}
       <div className="relative bg-white">
         {/* main image */}
         <div
@@ -291,7 +291,7 @@ function CaseCard({ c, i }: { c: CaseStudy; i: number }) {
             >
               <Image
                 src={c.images[activeImg]}
-                alt={`${c.client} — image ${activeImg + 1}`}
+                alt={`${c.client}, image ${activeImg + 1}`}
                 fill
                 className="object-cover"
                 onError={(e) => {
@@ -345,7 +345,7 @@ function CaseCard({ c, i }: { c: CaseStudy; i: number }) {
           )}
         </div>
 
-        {/* thumbnail strip — white bg */}
+        {/* thumbnail strip, white bg */}
         <div
           className="flex gap-2 px-4 py-3"
           style={{ background: "#FFFFFF", borderTop: "1px solid rgba(0,0,0,0.06)" }}
@@ -697,7 +697,7 @@ export default function WorkPage() {
               className="mt-8 max-w-xl text-lg font-light leading-relaxed"
               style={{ color: "rgba(255,255,255,0.45)" }}
             >
-              A selection of the brands we have partnered with — across
+              A selection of the brands we have partnered with, across
               technology, healthcare, energy, financial services, audio, and
               more. Every engagement started with strategy. Every result is
               measurable.
@@ -803,7 +803,7 @@ export default function WorkPage() {
             >
               Every brand in this portfolio started with a conversation. If you
               are ready to close the gap between where your business is and
-              where it should be — let&apos;s start.
+              where it should be, let&apos;s start.
             </p>
             <div className="flex flex-col items-center gap-4 sm:flex-row">
               <Link

@@ -12,22 +12,22 @@ const pillars: Pillar[] = [
   {
     number: "01",
     title: "Brand Strategy & Identity",
-    desc: "We define where your brand sits in the market, how it speaks, and how it is instantly recognised — before a single asset is designed. Strategy first. Always.",
+    desc: "We define where your brand sits in the market, how it speaks, and how it is instantly recognised, before a single asset is designed. Strategy first. Always.",
   },
   {
     number: "02",
     title: "Digital Presence & Web",
-    desc: "We build websites and digital platforms engineered to convert — communicating your value clearly to the clients and investors you are actually going after.",
+    desc: "We build websites and digital platforms engineered to convert, communicating your value clearly to the clients and investors you are actually going after.",
   },
   {
     number: "03",
     title: "Growth & Marketing Execution",
-    desc: "Social media, content, SEO, PR, campaigns, and performance marketing — all connected to the strategy, all tracked against measurable business outcomes.",
+    desc: "Social media, content, SEO, PR, campaigns, and performance marketing, all connected to the strategy, all tracked against measurable business outcomes.",
   },
   {
     number: "04",
     title: "Brand Infrastructure & Continuity",
-    desc: "We build systems that compound. As your business scales, your brand and marketing infrastructure scales with it — stronger every quarter.",
+    desc: "We build systems that compound. As your business scales, your brand and marketing infrastructure scales with it, stronger every quarter.",
   },
 ];
 
@@ -91,7 +91,7 @@ export default function WhatWeDo() {
             className="mt-6 max-w-xl text-lg font-light leading-relaxed"
             style={{ color: "rgba(0,0,0,0.48)" }}
           >
-            Most agencies execute. We start earlier — with a deep audit, a
+            Most agencies execute. We start earlier, with a deep audit, a
             rigorous strategy, and a plan tied to real business outcomes. Then
             we execute. And we measure everything.
           </p>

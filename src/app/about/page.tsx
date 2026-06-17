@@ -16,7 +16,7 @@ const values = [
   {
     number: "01",
     title: "Ownership",
-    desc: "We treat every client's brand as if it were our own. Their growth is our reputation. We do not deliver and disappear — we stay accountable to outcomes.",
+    desc: "We treat every client's brand as if it were our own. Their growth is our reputation. We do not deliver and disappear, we stay accountable to outcomes.",
   },
   {
     number: "02",
@@ -31,17 +31,17 @@ const values = [
   {
     number: "04",
     title: "Honesty",
-    desc: "We tell clients what they need to hear, not what they want to hear. The best agency relationships are built on trust — and trust requires honesty.",
+    desc: "We tell clients what they need to hear, not what they want to hear. The best agency relationships are built on trust, and trust requires honesty.",
   },
   {
     number: "05",
     title: "Selectivity",
-    desc: "We choose our clients as carefully as they choose us. This is not arrogance — it is the only way to give every engagement the focus it deserves.",
+    desc: "We choose our clients as carefully as they choose us. This is not arrogance, it is the only way to give every engagement the focus it deserves.",
   },
   {
     number: "06",
     title: "African Excellence",
-    desc: "We are proudly African. Our roots are not a limitation — they are our sharpest competitive advantage. We understand this market at a depth no outsider can replicate.",
+    desc: "We are proudly African. Our roots are not a limitation, they are our sharpest competitive advantage. We understand this market at a depth no outsider can replicate.",
   },
 ];
 
@@ -72,23 +72,24 @@ const team = [
     name: "Stephen Adediran",
     title: "Founder & Creative Director",
     role: "Vision · Strategy · Creative",
-    bio: "Stephen founded Spotlite Africa with one conviction — that African businesses deserve world-class brand and marketing, built by people who understand the continent. He leads strategy, creative direction, and client relationships across every engagement, setting the standard the agency holds itself to.",
-    image: "/images/team/stephen.jpg",
+    bio: "Stephen founded Spotlite Africa with one conviction, that African businesses deserve world-class brand and marketing, built by people who understand the continent. He leads strategy, creative direction, and client relationships across every engagement, setting the standard the agency holds itself to.",
+    image: "/images/hero/steve.png",
+  },
+   {
+    name: "Tijesu Tolulope",
+    title: "Head of Social & Content",
+    role: "Social · Content · Community",
+    bio: "Tijesu leads social media and content across all client accounts, building brand presence and community that converts. She manages content strategy, production coordination, and platform performance with an eye for what resonates.",
+    image: "/images/hero/tolu2.png",
   },
   {
     name: "Iyanu Odebode",
     title: "Digital Growth Strategist",
     role: "Performance · SEO · Analytics",
-    bio: "Iyanu owns Spotlite Africa's digital growth function — from search strategy and performance marketing to analytics and campaign optimisation. She translates data into direction, ensuring every digital move compounds over time.",
-    image: "/images/team/iyanu.jpg",
+    bio: "Iyanu owns Spotlite Africa's digital growth function, from search strategy and performance marketing to analytics and campaign optimisation. He translates data into direction, ensuring every digital move compounds over time.",
+    image: "/images/hero/iyanu.png",
   },
-  {
-    name: "Tijesu Tolulope",
-    title: "Head of Social & Content",
-    role: "Social · Content · Community",
-    bio: "Tijesu leads social media and content across all client accounts, building brand presence and community that converts. She manages content strategy, production coordination, and platform performance with an eye for what resonates.",
-    image: "/images/team/tijesu.jpg",
-  },
+ 
 ];
 
 export default function AboutPage() {
@@ -104,7 +105,7 @@ export default function AboutPage() {
     <main className="bg-white">
 
       {/* ════════════════════════════════════════
-          HERO — full bleed, parallax
+          HERO, full bleed, parallax
       ════════════════════════════════════════ */}
       <section
         ref={heroRef}
@@ -116,7 +117,7 @@ export default function AboutPage() {
           style={{ y: heroY }}
           className="absolute inset-0"
         >
-          {/* placeholder gradient — swap with a real brand photo */}
+          {/* placeholder gradient, swap with a real brand photo */}
           <div
             className="absolute inset-0"
             style={{
@@ -237,9 +238,9 @@ export default function AboutPage() {
               </h2>
               <div className="mt-8 flex flex-col gap-5">
                 {[
-                  "Most African businesses are underleveraged. Not because they lack quality — but because they lack positioning, brand infrastructure, and digital presence that matches the level they actually operate at.",
+                  "Most African businesses are underleveraged. Not because they lack quality, but because they lack positioning, brand infrastructure, and digital presence that matches the level they actually operate at.",
                   "Spotlite Africa exists to close that gap. We bring strategy, craft, and execution to businesses that deserve better than what the average Lagos agency offers.",
-                  "We are not a marketing agency in the conventional sense. We are a brand and marketing infrastructure partner — one that builds systems that compound over time, not campaigns that spike and disappear.",
+                  "We are not a marketing agency in the conventional sense. We are a brand and marketing infrastructure partner, one that builds systems that compound over time, not campaigns that spike and disappear.",
                 ].map((text, i) => (
                   <p
                     key={i}
@@ -252,7 +253,7 @@ export default function AboutPage() {
               </div>
             </motion.div>
 
-            {/* right — stats */}
+            {/* right, stats */}
             <motion.div {...fadeUp(0.1)} className="flex flex-col justify-center gap-8">
               <div className="grid grid-cols-2 gap-6">
                 {stats.map((stat, i) => (
@@ -339,7 +340,7 @@ export default function AboutPage() {
                 style={{ color: "#0A0A0A" }}
               >
                 &ldquo;African businesses are not behind. They are underleveraged.
-                The gap is not quality — it is presentation, positioning,
+                The gap is not quality, it is presentation, positioning,
                 and digital presence. We fix that.&rdquo;
               </blockquote>
               <div className="mt-8 flex items-center gap-4">
@@ -348,7 +349,7 @@ export default function AboutPage() {
                   style={{ background: "#1a1a1a" }}
                 >
                   <Image
-                    src="/images/team/stephen.jpg"
+                    src="/images/hero/steve.png"
                     alt="Stephen Adediran"
                     fill
                     className="object-cover object-top"
@@ -378,7 +379,7 @@ export default function AboutPage() {
             >
               {[
                 "Spotlite Africa was founded with a simple but powerful belief: African businesses deserve world-class marketing. Not second-tier service adapted from a Western template. Real strategy, real craft, real results.",
-                "We started by working with businesses across Lagos — energy companies, financial institutions, technology startups, premium consumer brands — and in every engagement we saw the same pattern: the business was excellent, but the brand did not show it.",
+                "We started by working with businesses across Lagos, energy companies, financial institutions, technology startups, premium consumer brands, and in every engagement we saw the same pattern: the business was excellent, but the brand did not show it.",
                 "From that insight, we built Spotlite Africa into a full-service 360° agency. One that begins every engagement with strategy, executes with the precision of the world's best agencies, and stays in the relationship long enough to see the results compound.",
               ].map((text, i) => (
                 <p
@@ -475,7 +476,7 @@ export default function AboutPage() {
       </section>
 
       {/* ════════════════════════════════════════
-          SERVICES — full list
+          SERVICES, full list
       ════════════════════════════════════════ */}
       <section className="relative overflow-hidden bg-white py-28 px-6 md:px-24">
         <div
@@ -527,7 +528,7 @@ export default function AboutPage() {
               </div>
             </motion.div>
 
-            {/* right — service list */}
+            {/* right, service list */}
             <motion.div {...fadeUp(0.1)}>
               <div className="flex flex-col divide-y" style={{ borderColor: "rgba(0,0,0,0.07)" }}>
                 {services.map((service, i) => (
@@ -715,7 +716,7 @@ export default function AboutPage() {
             {[
               {
                 title: "We start with strategy",
-                desc: "Most agencies start with execution. We start with an audit and a strategic framework. The difference is compounding — every decision we make builds on the one before it.",
+                desc: "Most agencies start with execution. We start with an audit and a strategic framework. The difference is compounding, every decision we make builds on the one before it.",
               },
               {
                 title: "We know Africa",
@@ -727,7 +728,7 @@ export default function AboutPage() {
               },
               {
                 title: "We are accountable to outcomes",
-                desc: "We measure everything. Every engagement has clear KPIs. We report honestly — including when something is not working. We come with solutions, not excuses.",
+                desc: "We measure everything. Every engagement has clear KPIs. We report honestly, including when something is not working. We come with solutions, not excuses.",
               },
             ].map((item, i) => (
               <motion.div

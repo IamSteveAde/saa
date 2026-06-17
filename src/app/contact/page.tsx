@@ -40,7 +40,7 @@ export default function ContactPage() {
           }}
         />
 
-        {/* gold accent — top left corner */}
+        {/* gold accent, top left corner */}
         <div
           className="pointer-events-none absolute left-0 top-0 h-px w-48 md:w-72"
           style={{ background: "linear-gradient(to right, #F5C842, transparent)" }}
@@ -63,7 +63,7 @@ export default function ContactPage() {
         <div className="relative z-10 mx-auto max-w-6xl">
           <div className="grid gap-16 md:grid-cols-2 md:items-end">
 
-            {/* left — headline */}
+            {/* left, headline */}
             <div>
               <motion.p
                 {...fadeUp(0)}
@@ -106,7 +106,7 @@ export default function ContactPage() {
               </motion.p>
             </div>
 
-            {/* right — quick info cards */}
+            {/* right, quick info cards */}
             <motion.div
               {...fadeUp(0.12)}
               className="flex flex-col gap-4"
@@ -237,7 +237,7 @@ export default function ContactPage() {
               {
                 step: "03",
                 title: "We meet",
-                desc: "We schedule a private consultation — no pitch decks, no pressure. A genuine conversation about your business.",
+                desc: "We schedule a private consultation, no pitch decks, no pressure. A genuine conversation about your business.",
               },
             ].map((item) => (
               <div
@@ -315,7 +315,7 @@ export default function ContactPage() {
                 className="mt-5 text-base font-light leading-relaxed"
                 style={{ color: "rgba(0,0,0,0.5)" }}
               >
-                We are selective about who we work with — not because we are
+                We are selective about who we work with, not because we are
                 difficult, but because the best work comes from the right
                 partnerships. If we do not think there is a fit, we will tell
                 you honestly and point you in the right direction.
@@ -324,11 +324,11 @@ export default function ContactPage() {
                 className="mt-4 text-base font-light leading-relaxed"
                 style={{ color: "rgba(0,0,0,0.5)" }}
               >
-                If there is a fit — you will know within 24 hours.
+                If there is a fit, you will know within 24 hours.
               </p>
             </motion.div>
 
-            {/* right — what makes a good fit */}
+            {/* right, what makes a good fit */}
             <motion.div {...fadeUp(0.1)}>
               <div
                 className="rounded-2xl p-8"
@@ -348,7 +348,7 @@ export default function ContactPage() {
                     "A real business with a real product or service",
                     "A founder or executive who understands brand investment",
                     "A willingness to commit to a 3-month minimum engagement",
-                    "Growth-focused — not looking for quick fixes or overnight results",
+                    "Growth-focused, not looking for quick fixes or overnight results",
                     "Respect for the agency's expertise and process",
                     "Budget aligned with Spotlite Africa's retainer structure",
                   ].map((item, i) => (
@@ -406,11 +406,11 @@ export default function ContactPage() {
               },
               {
                 q: "What is your minimum engagement?",
-                a: "All Spotlite Africa engagements require a minimum 3-month commitment. Brand and marketing strategy compounds over time — 30-day engagements do not produce meaningful results.",
+                a: "All Spotlite Africa engagements require a minimum 3-month commitment. Brand and marketing strategy compounds over time, 30-day engagements do not produce meaningful results.",
               },
               {
                 q: "How do you charge?",
-                a: "Monthly retainers with a 50% deposit at the start of each month and 50% at the end. Production work — video shoots, events, creator campaigns — is billed separately at a 15% management fee on the production budget.",
+                a: "Monthly retainers with a 50% deposit at the start of each month and 50% at the end. Production work, video shoots, events, creator campaigns, is billed separately at a 15% management fee on the production budget.",
               },
               {
                 q: "Do you work with businesses outside Lagos?",
@@ -422,7 +422,7 @@ export default function ContactPage() {
               },
               {
                 q: "Do you work with startups?",
-                a: "Yes — emerging brands are one of our two core audiences. We work with startups that are serious about building correctly from day one, not those looking for cheap execution without a strategy.",
+                a: "Yes, emerging brands are one of our two core audiences. We work with startups that are serious about building correctly from day one, not those looking for cheap execution without a strategy.",
               },
             ].map((faq, i) => (
               <motion.div

@@ -57,7 +57,7 @@ export default function ForEmployersAndWorkers() {
               </ul>
 
               <p className="mt-8 text-black/60 italic max-w-md">
-                We act as your trusted workforce partner — not just a recruiter.
+                We act as your trusted workforce partner, not just a recruiter.
               </p>
             </motion.div>
 

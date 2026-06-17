@@ -17,24 +17,25 @@ const team: TeamMember[] = [
     name: "Stephen Adediran",
     title: "Founder & Creative Director",
     role: "Vision · Strategy · Creative",
-    bio: "Stephen founded Spotlite Africa with one conviction — that African businesses deserve world-class brand and marketing, built by people who understand the continent. He leads strategy, creative direction, and client relationships across every engagement, setting the standard that the agency holds itself to.",
-    image: "/images/team/stephen.jpg",
-    linkedin: "https://linkedin.com/in/stephenadediran",
+    bio: "Stephen founded Spotlite Africa with one conviction, that African businesses deserve world-class brand and marketing, built by people who understand the continent. He leads strategy, creative direction, and client relationships across every engagement, setting the standard that the agency holds itself to.",
+    image: "/images/hero/steve.png",
+    linkedin: "https://www.linkedin.com/in/stephen-adediran-6852b01b4/",
+  },
+   {
+    name: "Tijesu Tolulope",
+    title: "Head of Social & Content",
+    role: "Social · Content · Community",
+    bio: "Tijesu leads social media and content across all client accounts, building brand presence and community that convert. She manages content strategy, production coordination, and platform performance with an eye for what resonates and what converts.",
+    image: "/images/hero/tolu2.png",
   },
   {
     name: "Iyanu Odebode",
     title: "Digital Growth Strategist",
     role: "Performance · SEO · Analytics",
-    bio: "Iyanu owns Spotlite Africa's digital growth function — from search strategy and performance marketing to analytics and campaign optimisation. She translates data into direction, ensuring every digital move compounds over time.",
-    image: "/images/team/iyanu.jpg",
+    bio: "Iyanu owns Spotlite Africa's digital growth function, from search strategy and performance marketing to analytics and campaign optimisation. He translates data into direction, ensuring every digital move compounds over time.",
+    image: "/images/hero/iyanu.png",
   },
-  {
-    name: "Tijesu Tolulope",
-    title: "Head of Social & Content",
-    role: "Social · Content · Community",
-    bio: "Tijesu leads social media and content across all client accounts, building brand presence and community that convert. She manages content strategy, production coordination, and platform performance with an eye for what resonates and what converts.",
-    image: "/images/team/tijesu.jpg",
-  },
+ 
 ];
 
 const fadeUp = (delay = 0) => ({
@@ -120,7 +121,7 @@ export default function Team() {
                 className="relative overflow-hidden"
                 style={{ aspectRatio: "4/5" }}
               >
-                {/* placeholder bg — remove when real image is added */}
+                {/* placeholder bg, remove when real image is added */}
                 <div
                   className="absolute inset-0"
                   style={{
@@ -146,7 +147,7 @@ export default function Team() {
                   </span>
                 </div>
 
-                {/* actual image — swap placeholder when ready */}
+                {/* actual image, swap placeholder when ready */}
                 <Image
                   src={member.image}
                   alt={member.name}
@@ -157,7 +158,7 @@ export default function Team() {
                     (e.currentTarget as HTMLImageElement).style.opacity = "1";
                   }}
                   onError={(e) => {
-                    // silently hide broken image — placeholder shows
+                    // silently hide broken image, placeholder shows
                     (e.currentTarget as HTMLImageElement).style.display = "none";
                   }}
                 />
@@ -171,7 +172,7 @@ export default function Team() {
                   }}
                 />
 
-                {/* role pills — sits over image bottom */}
+                {/* role pills, sits over image bottom */}
                 <div className="absolute bottom-5 left-5">
                   <span
                     className="inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[10px] font-medium tracking-wide"
@@ -269,7 +270,7 @@ export default function Team() {
             style={{ color: "rgba(255,255,255,0.28)" }}
           >
             Every Spotlite Africa engagement is led by senior team members
-            from start to finish. Strategy, execution, and continuity — owned
+            from start to finish. Strategy, execution, and continuity, owned
             at the top.
           </p>
 

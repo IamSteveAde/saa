@@ -26,7 +26,7 @@ const services: Service[] = [
     number: "01",
     title: "Brand Strategy & Positioning",
     category: "Strategy",
-    desc: "The foundation everything else is built on. We define who you are, who you serve, what you stand for, and how you are different — with precision.",
+    desc: "The foundation everything else is built on. We define who you are, who you serve, what you stand for, and how you are different, with precision.",
     detail:
       "Before a single logo is designed or a word of copy is written, we establish the strategic framework your brand will operate from. This is the work that makes everything downstream more effective. Without it, you are executing beautifully in the wrong direction.",
     deliverables: [
@@ -42,9 +42,9 @@ const services: Service[] = [
     number: "02",
     title: "Brand Identity & Design",
     category: "Brand",
-    desc: "Visual identity built to reflect your positioning — not just look good. Logo systems, colour, typography, and the full design language your brand lives in.",
+    desc: "Visual identity built to reflect your positioning, not just look good. Logo systems, colour, typography, and the full design language your brand lives in.",
     detail:
-      "We design brand identities that are distinctive, intentional, and built to last. Every visual decision is rooted in the brand strategy. The result is a consistent identity system that works across every application — digital, print, environmental, and beyond.",
+      "We design brand identities that are distinctive, intentional, and built to last. Every visual decision is rooted in the brand strategy. The result is a consistent identity system that works across every application, digital, print, environmental, and beyond.",
     deliverables: [
       "Logo system (primary, secondary, favicon)",
       "Colour palette with usage guidelines",
@@ -60,7 +60,7 @@ const services: Service[] = [
     category: "Digital",
     desc: "Your website is your most important brand asset. We design and build websites that communicate your value clearly, convert visitors, and reflect the level you operate at.",
     detail:
-      "We design websites that do commercial work — not just look impressive. Every page is built around a clear objective: make the visitor understand your value and take the next step. Performance, accessibility, and mobile experience are non-negotiable.",
+      "We design websites that do commercial work, not just look impressive. Every page is built around a clear objective: make the visitor understand your value and take the next step. Performance, accessibility, and mobile experience are non-negotiable.",
     deliverables: [
       "UX strategy and sitemap",
       "UI design (desktop and mobile)",
@@ -74,9 +74,9 @@ const services: Service[] = [
     number: "04",
     title: "Social Media Management",
     category: "Content",
-    desc: "End-to-end management of your social media presence — strategy, content planning, production briefing, scheduling, community management, and performance reporting.",
+    desc: "End-to-end management of your social media presence, strategy, content planning, production briefing, scheduling, community management, and performance reporting.",
     detail:
-      "We do not just post content. We manage your social media as a strategic function — building brand authority, engaging your audience, and driving measurable growth over time. Every platform is managed with a clear objective and a consistent voice.",
+      "We do not just post content. We manage your social media as a strategic function, building brand authority, engaging your audience, and driving measurable growth over time. Every platform is managed with a clear objective and a consistent voice.",
     deliverables: [
       "Monthly content calendar",
       "Content production briefing and coordination",
@@ -90,9 +90,9 @@ const services: Service[] = [
     number: "05",
     title: "Content Creation & Production",
     category: "Content",
-    desc: "Photography, videography, copywriting, and graphic design — everything your brand needs to communicate with impact across every channel.",
+    desc: "Photography, videography, copywriting, and graphic design, everything your brand needs to communicate with impact across every channel.",
     detail:
-      "Content is the execution layer of your brand strategy. We produce content that carries the quality and intentionality of the strategy behind it. Every asset — whether a social post, a campaign video, or a long-form article — is produced to global standard.",
+      "Content is the execution layer of your brand strategy. We produce content that carries the quality and intentionality of the strategy behind it. Every asset, whether a social post, a campaign video, or a long-form article, is produced to global standard.",
     deliverables: [
       "Photography art direction and production",
       "Video production and editing",
@@ -106,7 +106,7 @@ const services: Service[] = [
     number: "06",
     title: "SEO & Digital Presence",
     category: "Digital",
-    desc: "Organic search strategy that builds long-term visibility. Technical SEO, content SEO, keyword strategy, and on-page optimisation — built to compound over time.",
+    desc: "Organic search strategy that builds long-term visibility. Technical SEO, content SEO, keyword strategy, and on-page optimisation, built to compound over time.",
     detail:
       "SEO is the most underinvested channel for most Nigerian businesses. The opportunity is significant and the competition is lower than you think. We build SEO programmes that position your brand to own the search terms that matter most to your business.",
     deliverables: [
@@ -122,7 +122,7 @@ const services: Service[] = [
     number: "07",
     title: "PR & Communications",
     category: "PR",
-    desc: "Structured PR that builds authority beyond owned channels — media relations, thought leadership placement, press strategy, and brand communications.",
+    desc: "Structured PR that builds authority beyond owned channels, media relations, thought leadership placement, press strategy, and brand communications.",
     detail:
       "PR is how your brand builds credibility in rooms you are not in. We manage media relationships, craft stories that journalists actually want to tell, and position your leadership as the definitive voice in your industry.",
     deliverables: [
@@ -138,7 +138,7 @@ const services: Service[] = [
     number: "08",
     title: "Performance Marketing",
     category: "Digital",
-    desc: "Paid media across Meta, Google, and relevant platforms — strategy, creative, execution, and optimisation. Every naira tracked, every result attributed.",
+    desc: "Paid media across Meta, Google, and relevant platforms, strategy, creative, execution, and optimisation. Every naira tracked, every result attributed.",
     detail:
       "We run paid campaigns that are held to the same strategic rigour as everything else we do. No vanity metrics. No wasted spend. Every campaign has a clear objective, a defined audience, and measurable outcomes we report on honestly.",
     deliverables: [
@@ -154,9 +154,9 @@ const services: Service[] = [
     number: "09",
     title: "Email Marketing",
     category: "Digital",
-    desc: "Email programmes that build relationships and convert — newsletters, lead nurture sequences, campaign emails, and automated flows.",
+    desc: "Email programmes that build relationships and convert, newsletters, lead nurture sequences, campaign emails, and automated flows.",
     detail:
-      "Email remains the highest-ROI channel in digital marketing. We build email programmes that are designed, written, and structured to perform — from the subject line to the call to action. Every email reflects your brand at its best.",
+      "Email remains the highest-ROI channel in digital marketing. We build email programmes that are designed, written, and structured to perform, from the subject line to the call to action. Every email reflects your brand at its best.",
     deliverables: [
       "Email strategy and programme design",
       "Template design and development",
@@ -170,7 +170,7 @@ const services: Service[] = [
     number: "10",
     title: "Influencer & Talent Management",
     category: "PR",
-    desc: "Creator and influencer strategy — identifying, briefing, contracting, and managing talent for campaigns that reach the right audience authentically.",
+    desc: "Creator and influencer strategy, identifying, briefing, contracting, and managing talent for campaigns that reach the right audience authentically.",
     detail:
       "We manage influencer partnerships as a strategic function, not a transactional exercise. We identify creators whose audience matches yours, brief them with clarity, and manage the entire production and performance process.",
     deliverables: [
@@ -186,9 +186,9 @@ const services: Service[] = [
     number: "11",
     title: "Community Building",
     category: "Strategy",
-    desc: "Digital community strategy — building and managing the communities that turn your audience into advocates and your advocates into loyal customers.",
+    desc: "Digital community strategy, building and managing the communities that turn your audience into advocates and your advocates into loyal customers.",
     detail:
-      "The brands that win long-term are the ones that build communities around them. We design and manage the community programmes — LinkedIn groups, newsletters, digital events, partner ecosystems — that create belonging and compounding loyalty.",
+      "The brands that win long-term are the ones that build communities around them. We design and manage the community programmes, LinkedIn groups, newsletters, digital events, partner ecosystems, that create belonging and compounding loyalty.",
     deliverables: [
       "Community strategy and platform selection",
       "Community infrastructure setup",
@@ -202,9 +202,9 @@ const services: Service[] = [
     number: "12",
     title: "Full 360° Retainer",
     category: "Retainer",
-    desc: "Everything, integrated. One partner managing your complete brand and marketing function — strategy, brand, digital, content, PR, and performance under a single retainer.",
+    desc: "Everything, integrated. One partner managing your complete brand and marketing function, strategy, brand, digital, content, PR, and performance under a single retainer.",
     detail:
-      "Our most comprehensive engagement. We manage the entire marketing function for your business — from brand strategy to daily social media, from SEO to PR, from performance campaigns to monthly reporting. One point of accountability. Everything aligned. Nothing falling through the gaps.",
+      "Our most comprehensive engagement. We manage the entire marketing function for your business, from brand strategy to daily social media, from SEO to PR, from performance campaigns to monthly reporting. One point of accountability. Everything aligned. Nothing falling through the gaps.",
     deliverables: [
       "All services across brand, digital, content, and PR",
       "Monthly content calendar across all channels",
@@ -411,7 +411,7 @@ export default function ServicesPage() {
                           </span>
                         </div>
 
-                        {/* desc — hidden on mobile when collapsed */}
+                        {/* desc, hidden on mobile when collapsed */}
                         <p
                           className="hidden flex-1 text-sm font-light leading-relaxed md:block"
                           style={{ color: "rgba(0,0,0,0.42)" }}
@@ -612,7 +612,7 @@ export default function ServicesPage() {
                   style={{ color: "rgba(255,255,255,0.4)" }}
                 >
                   A fixed monthly fee covering all agreed services. Strategy,
-                  execution, and reporting — all included. No per-deliverable
+                  execution, and reporting, all included. No per-deliverable
                   billing, no hidden costs.
                 </p>
               </div>
@@ -623,7 +623,7 @@ export default function ServicesPage() {
               <div className="flex flex-col gap-3">
                 {[
                   "3-month minimum engagement",
-                  "Monthly invoicing — 50% upfront, 50% end of month",
+                  "Monthly invoicing, 50% upfront, 50% end of month",
                   "All agreed services included",
                   "Monthly performance report",
                   "Quarterly strategic review",
@@ -661,9 +661,9 @@ export default function ServicesPage() {
                   className="mt-2 text-sm font-light leading-relaxed"
                   style={{ color: "rgba(255,255,255,0.4)" }}
                 >
-                  Any work requiring an external production budget — video
+                  Any work requiring an external production budget, video
                   shoots, photography crews, event production, influencer
-                  campaigns — is managed under a 15% production management fee.
+                  campaigns, is managed under a 15% production management fee.
                 </p>
               </div>
               <div
@@ -723,7 +723,7 @@ export default function ServicesPage() {
             >
               Start with a consultation. We will audit your current position,
               identify what you actually need, and propose a scope that makes
-              strategic sense — not just a full list of everything we offer.
+              strategic sense, not just a full list of everything we offer.
             </p>
 
             <div className="flex flex-col items-center gap-4 sm:flex-row">

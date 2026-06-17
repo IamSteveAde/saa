@@ -6,22 +6,22 @@ const steps = [
   {
     number: "01",
     title: "Audit",
-    desc: "We assess your current brand and digital presence — identifying gaps, inconsistencies, and opportunities for refinement.",
+    desc: "We assess your current brand and digital presence, identifying gaps, inconsistencies, and opportunities for refinement.",
   },
   {
     number: "02",
     title: "Direction",
-    desc: "We define structure, positioning, and clarity — establishing how your brand should appear and communicate.",
+    desc: "We define structure, positioning, and clarity, establishing how your brand should appear and communicate.",
   },
   {
     number: "03",
     title: "Execution",
-    desc: "We design and build your digital systems — ensuring every touchpoint reflects a refined, premium experience.",
+    desc: "We design and build your digital systems, ensuring every touchpoint reflects a refined, premium experience.",
   },
   {
     number: "04",
     title: "Continuity",
-    desc: "We refine and maintain alignment over time — keeping your brand consistent as it evolves.",
+    desc: "We refine and maintain alignment over time, keeping your brand consistent as it evolves.",
   },
 ];
 

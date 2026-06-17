@@ -12,7 +12,7 @@ export default function Issue01Page() {
       <div className="relative z-10 container mx-auto px-6 lg:max-w-screen-xl pt-40 pb-32">
 
         {/* =====================================================
-            SECTION 01 — ISSUE SUMMARY
+            SECTION 01, ISSUE SUMMARY
         ===================================================== */}
         <section className="max-w-3xl space-y-10 mb-28">
 
@@ -26,7 +26,7 @@ export default function Issue01Page() {
 
           <p className="text-black/70 text-sm md:text-base leading-relaxed">
             This issue explores the quiet decisions that define experience long
-            after a space is complete — where sound belongs, technology recedes,
+            after a space is complete, where sound belongs, technology recedes,
             and intent remains intact.
           </p>
 
@@ -42,7 +42,7 @@ export default function Issue01Page() {
         </section>
 
         {/* =====================================================
-            SECTION 02 — BOOK FLIPPER
+            SECTION 02, BOOK FLIPPER
         ===================================================== */}
        <section className="relative bg-transparent shadow-[0_40px_120px_rgba(0,0,0,0.25)]">
 

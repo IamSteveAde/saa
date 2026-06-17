@@ -33,7 +33,7 @@ const slides: Slide[] = [
     eyebrow: "You only launch once.",
     titleLine1: "Start with the",
     titleLine2: "right foundation.",
-    desc: "We define your positioning, build your brand identity, and guide how you enter the market — correctly, from day one.",
+    desc: "We define your positioning, build your brand identity, and guide how you enter the market, correctly, from day one.",
     cta: "Guide My Launch",
   },
 ];
@@ -153,7 +153,7 @@ export default function Hero() {
         }}
       />
 
-      {/* ── AFRICA MISSION LINE — top left, below navbar ── */}
+      {/* ── AFRICA MISSION LINE, top left, below navbar ── */}
       {/* 
         pt-20 on mobile = 80px = clears the 64px navbar + breathing room
         pt-28 on desktop = 112px = clears the 80px navbar + breathing room
@@ -266,7 +266,7 @@ export default function Hero() {
         </AnimatePresence>
       </div>
 
-      {/* ── SLIDE CONTROLS — bottom right ── */}
+      {/* ── SLIDE CONTROLS, bottom right ── */}
       <div className="absolute bottom-20 right-5 z-20 flex items-center gap-3 md:bottom-32 md:right-10">
         <button
           onClick={prevSlide}
@@ -316,7 +316,7 @@ export default function Hero() {
         </button>
       </div>
 
-      {/* ── PROGRESS INDICATORS — desktop right ── */}
+      {/* ── PROGRESS INDICATORS, desktop right ── */}
       <div className="absolute right-10 top-1/2 z-20 hidden -translate-y-1/2 flex-col gap-6 md:flex">
         {slides.map((s, i) => (
           <button
@@ -354,7 +354,7 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* ── PROGRESS INDICATORS — mobile bottom ── */}
+      {/* ── PROGRESS INDICATORS, mobile bottom ── */}
       <div className="absolute bottom-20 left-6 z-20 flex gap-4 md:hidden">
         {slides.map((s, i) => (
           <button

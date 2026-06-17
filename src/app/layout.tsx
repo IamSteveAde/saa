@@ -19,7 +19,7 @@ import Aoscompo from "@/utils/aos";
 const dmsans = DM_Sans({ subsets: ["latin"] });
 
 /* -------------------------------------
-   METADATA — SPOTLITE AFRICA AGENCY
+   METADATA, SPOTLITE AFRICA AGENCY
 ------------------------------------- */
 export const metadata: Metadata = {
   metadataBase: new URL("https://spotliteafrica.com"),

@@ -16,7 +16,7 @@ import History from "./components/home/history";
 
 
 /* -------------------------------------
-   METADATA — SPOTLITE AFRICA AGENCY
+   METADATA, SPOTLITE AFRICA AGENCY
 ------------------------------------- */
 export const metadata: Metadata = {
   metadataBase: new URL("https://spotliteafrica.com"),
@@ -111,7 +111,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main>
-      {/* Audio welcome — brief, professional, plays once per visit */}
+      {/* Audio welcome, brief, professional, plays once per visit */}
      
 
       {/* Core hero & positioning */}

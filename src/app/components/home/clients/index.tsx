@@ -22,7 +22,7 @@ const work: WorkItem[] = [
   {
     client: "CED Africa",
     industry: "AV Design & Systems",
-    what: "Full 360° digital marketing partnership — social media, content, SEO, and thought leadership for Africa's AV authority.",
+    what: "Full 360° digital marketing partnership, social media, content, SEO, and thought leadership for Africa's AV authority.",
     slug: "ced-africa",
     tags: ["Strategy", "Social", "SEO", "Content"],
   },
@@ -189,22 +189,19 @@ export default function SelectedWork() {
             style={{ color: "rgba(255,255,255,0.28)" }}
           >
             We work with a select group of businesses. Every engagement is built
-            on a foundation of strategy — not just execution.
+            on a foundation of strategy, not just execution.
           </p>
 
-          <button
-            onClick={() => {
-              const modal = document.getElementById("consultation-trigger");
-              if (modal) modal.click();
-            }}
-            className="group inline-flex items-center gap-3 self-start rounded-full px-7 py-3.5 text-sm font-medium tracking-wide transition-opacity duration-200 hover:opacity-80 md:self-auto"
-            style={{ background: "#F5C842", color: "#0A0A0A" }}
-          >
-            Start the conversation
-            <span className="transition-transform duration-200 group-hover:translate-x-1">
-              →
-            </span>
-          </button>
+          <Link
+  href="/contact"
+  className="group inline-flex items-center gap-3 self-start rounded-full px-7 py-3.5 text-sm font-medium tracking-wide transition-opacity duration-200 hover:opacity-80 md:self-auto"
+  style={{ background: "#F5C842", color: "#0A0A0A" }}
+>
+  Start the conversation
+  <span className="transition-transform duration-200 group-hover:translate-x-1">
+    →
+  </span>
+</Link>
         </motion.div>
 
       </div>

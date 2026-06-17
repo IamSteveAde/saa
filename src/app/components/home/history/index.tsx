@@ -450,7 +450,7 @@ export default function Contact() {
                     />
                   </div>
 
-                  {/* Industry — dropdown */}
+                  {/* Industry, dropdown */}
                   <div className="flex flex-col gap-2">
                     <label className="text-[10px] font-medium uppercase tracking-[0.25em]" style={{ color: "rgba(0,0,0,0.38)" }}>
                       Industry

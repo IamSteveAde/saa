@@ -12,7 +12,7 @@ const cases = [
     challenge:
       "A premium AV retail brand with strong physical presence, but a digital experience that lacked structure and clarity.",
     resolution:
-      "We restructured the entire digital layer — refining presentation, simplifying ecommerce flow, and aligning it with the brand’s level.",
+      "We restructured the entire digital layer, refining presentation, simplifying ecommerce flow, and aligning it with the brand’s level.",
   },
   {
     name: "CED Africa",
@@ -21,7 +21,7 @@ const cases = [
     challenge:
       "An AV consulting firm operating at a high level, yet without a digital presence that communicated its authority.",
     resolution:
-      "We introduced a minimal, structured digital system — positioning the firm as a premium advisory brand.",
+      "We introduced a minimal, structured digital system, positioning the firm as a premium advisory brand.",
   },
   {
     name: "Platform Capital",
@@ -30,7 +30,7 @@ const cases = [
     challenge:
       "A glo-cal investment advisory firm required a complete reset across brand, structure, and multiple business arms.",
     resolution:
-      "We executed a full 360° development — brand system, company profile, and digital platforms aligned with its global positioning.",
+      "We executed a full 360° development, brand system, company profile, and digital platforms aligned with its global positioning.",
   },
   {
     name: "Digital Inclusion Initiative",
@@ -39,7 +39,7 @@ const cases = [
     challenge:
       "A mission-driven organisation working to bridge the digital divide needed clarity and structured communication.",
     resolution:
-      "We refined its digital presence — simplifying how its work is communicated across access, skills, and inclusion initiatives.",
+      "We refined its digital presence, simplifying how its work is communicated across access, skills, and inclusion initiatives.",
   },
   {
     name: "Spectra AVL",
@@ -48,7 +48,7 @@ const cases = [
     challenge:
       "A fast-moving AV solutions company required immediate execution without compromising quality.",
     resolution:
-      "Within a week, we delivered a complete brand and digital system — ensuring speed with structure and clarity.",
+      "Within a week, we delivered a complete brand and digital system, ensuring speed with structure and clarity.",
   },
   {
     name: "Rensource Energy",
@@ -66,7 +66,7 @@ const cases = [
     challenge:
       "A high-level New Year thanksgiving required a controlled digital approach aligned with the stature of its host.",
     resolution:
-      "We created the full digital plan, premium invitations, and a refined personal profile — ensuring precision across all touchpoints.",
+      "We created the full digital plan, premium invitations, and a refined personal profile, ensuring precision across all touchpoints.",
   },
 ];
 

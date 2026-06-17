@@ -34,11 +34,11 @@ export async function POST(req: NextRequest) {
         : formatNaira(budget);
 
     const availabilityMap: Record<string, string> = {
-      today:      "Today — Ready immediately",
-      tomorrow:   "Tomorrow — Next 24 hours",
-      "this-week":"This week — Within 7 days",
-      "next-week":"Next week — 7 to 14 days",
-      flexible:   "Flexible — No rush",
+      today:      "Today, Ready immediately",
+      tomorrow:   "Tomorrow, Next 24 hours",
+      "this-week":"This week, Within 7 days",
+      "next-week":"Next week, 7 to 14 days",
+      flexible:   "Flexible, No rush",
     };
 
     const row = (label: string, value: string) => `
@@ -65,7 +65,7 @@ export async function POST(req: NextRequest) {
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>New Enquiry — Spotlite Africa</title>
+<title>New Enquiry, Spotlite Africa</title>
 </head>
 <body style="margin:0;padding:0;background:#F8F7F4;font-family:Arial,sans-serif;">
 
@@ -186,7 +186,7 @@ export async function POST(req: NextRequest) {
       from:    "Spotlite Africa <info@spotliteafrica.com>",
       to:      ["info@spotliteafrica.com"],
       replyTo: email,
-      subject: `New enquiry — ${company || name} · ${industry || businessType} · ${budgetLabel}/month`,
+      subject: `New enquiry, ${company || name} · ${industry || businessType} · ${budgetLabel}/month`,
       html,
     });
 

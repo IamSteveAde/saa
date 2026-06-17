@@ -38,7 +38,7 @@ const steps: Step[] = [
   {
     number: "03",
     title: "Execution",
-    desc: "We build, produce, and deploy — at global standard.",
+    desc: "We build, produce, and deploy, at global standard.",
     detail: [
       "Brand identity and design systems",
       "Website and digital platforms",
@@ -84,7 +84,7 @@ function StepCard({ step, index }: { step: Step; index: number }) {
       }}
       className="group relative flex flex-col"
     >
-      {/* top accent line — grows on hover */}
+      {/* top accent line, grows on hover */}
       <div
         className="mb-8 h-px w-full"
         style={{ background: "rgba(0,0,0,0.08)" }}
@@ -189,7 +189,7 @@ export default function Process() {
             style={{ color: "rgba(0,0,0,0.45)" }}
           >
             We do not start executing on day one. Every Spotlite Africa
-            engagement begins with deep thinking — because strategy is what
+            engagement begins with deep thinking, because strategy is what
             makes execution compound over time.
           </p>
         </motion.div>
@@ -201,7 +201,7 @@ export default function Process() {
           ))}
         </div>
 
-        {/* ── CONNECTOR LINE — desktop only ── */}
+        {/* ── CONNECTOR LINE, desktop only ── */}
         <motion.div
           {...fadeUp(0.4)}
           className="mt-16 hidden items-center gap-0 md:flex"
@@ -218,7 +218,7 @@ export default function Process() {
               >
                 {step.number}
               </div>
-              {/* line — not after last */}
+              {/* line, not after last */}
               {i < steps.length - 1 && (
                 <div
                   className="h-px flex-1"
